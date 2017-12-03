@@ -35,8 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="xLearn 0.1.0 documentation" href="#"/>
-        <link rel="next" title="&lt;no title&gt;" href="getstarted.html"/> 
+    <link rel="top" title="xLearn 0.1.0 documentation" href="#"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -91,7 +90,12 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Get Started with xLearn !</a></li>
+<li><a class="reference internal" href="#">Get Started with xLearn !</a><ul>
+<li><a class="reference internal" href="#link-to-helpful-other-resources">Link to Helpful Other Resources</a></li>
+<li><a class="reference internal" href="#quick-install">Quick Install</a></li>
+<li><a class="reference internal" href="#python-demo">Python Demo</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -157,7 +161,51 @@
             
   <div class="section" id="get-started-with-xlearn">
 <h1>Get Started with xLearn !<a class="headerlink" href="#get-started-with-xlearn" title="Permalink to this headline">¶</a></h1>
+<p>xLearn is a <em>high-performance</em>, <em>easy-to-use</em>, and <em>scalable</em> machine learning package,
+which can be used to solve large-scale machine learning problems. xLearn is especially useful
+for solving large-scale sparse data, which is very common in the scenes like CTR prediction and
+recommender system. If you are the user of liblinear, libfm, or libffm, now xLearn the
+your another better choice.</p>
+<p>This is a quick start tutorial showing snippets for you to quickly try out xLearn on the demo
+dataset on a binary classfication task.</p>
+<div class="section" id="link-to-helpful-other-resources">
+<h2>Link to Helpful Other Resources<a class="headerlink" href="#link-to-helpful-other-resources" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>See <a class="reference external" href="install">Installation Guide</a> on how to install xLearn.</li>
+<li>See <a class="reference external" href="commandline">Command Line Guide</a> on how to use xLearn command line.</li>
+<li>See <a class="reference external" href="pythonapi">Python API Guide</a> on how to use xLearn Python API.</li>
+<li>See <a class="reference external" href="demo">Demo Page</a> Learning to use xLearn by Examples</li>
+<li>See <a class="reference external" href="tutorial">Tutorials</a> on tutorial on specific tasks.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="quick-install">
+<h2>Quick Install<a class="headerlink" href="#quick-install" title="Permalink to this headline">¶</a></h2>
+<p>We can install xLearn by using pip. The follow command will download the xLearn
+source code and build it locally. We will update the xLearn source code on pip weekly.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span> <span class="n">xlearnn</span>
+</pre></div>
+</div>
+<p>You can see the installation details from <a class="reference external" href="install">Installation Guide</a>.</p>
+</div>
+<div class="section" id="python-demo">
+<h2>Python Demo<a class="headerlink" href="#python-demo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span> <span class="c1"># Create FFM model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span> <span class="c1"># Training set</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span> <span class="c1"># Validation set</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span> <span class="c1"># Set parameter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span> <span class="c1"># Train model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span> <span class="c1"># Test set</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span> <span class="c1"># Predict</span>
+</pre></div>
+</div>
+<p>This example shows how to use xlearn to solve a binary classification task.</p>
+<blockquote>
+<div></div></blockquote>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -168,13 +216,6 @@
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="getstarted.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
