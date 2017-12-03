@@ -3,11 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to xlearn_doc's documentation!
+Welcome to xLearn documentation!
 ======================================
 
 .. toctree::
    :maxdepth: 2
+
+   Get Started
+   Installation
+
+
    :caption: Contents:
 
 
