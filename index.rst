@@ -13,8 +13,7 @@ Welcome to xLearn documentation!
    Get Started
    Installation
 
-
-
+  
 Indices and tables
 ==================
 
