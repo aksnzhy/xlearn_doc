@@ -8,12 +8,10 @@ Welcome to xLearn documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
    Get Started
    Installation
-
-
-   :caption: Contents:
 
 
 
