@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = xlearn_doc
+SPHINXPROJ    = xLearn
 SOURCEDIR     = .
 BUILDDIR      = _build
 

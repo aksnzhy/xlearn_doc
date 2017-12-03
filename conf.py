@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'xlearn_doc'
+project = u'xLearn'
 copyright = u'2017, Chao Ma'
 author = u'Chao Ma'
 
