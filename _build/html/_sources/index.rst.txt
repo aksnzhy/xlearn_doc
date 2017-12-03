@@ -11,11 +11,3 @@ Get Started with xLearn !
 
    getstarted
    install
-
-  
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
