@@ -43,7 +43,7 @@ you can see how to build xLearn from source code from `Installation Guide`__.
 Python Demo
 ----------------------------------
 
-Here is a simple python demo no how to use xLearn. Now type **python** and get started !
+Here is a simple python demo no how to use xLearn.
 
 .. code-block:: python
 
