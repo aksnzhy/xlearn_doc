@@ -32,6 +32,11 @@ source code and build it locally. We will update the xLearn source code on pip w
 
     sudo pip install --index-url https://test.pypi.org/simple/ xlearnn 
 
+Now you can type the following code in python shell to check the installation:
+
+>>> import xlearn as xl
+>>> xl.hello()
+
 If you want to build the lastest code on github, or you want to use the xLearn command line, 
 you can see how to build xLearn from source code from `Installation Guide`__.
 
