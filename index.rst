@@ -32,7 +32,8 @@ source code and build it locally. We will update the xLearn source code on pip w
 
     sudo pip install --index-url https://test.pypi.org/simple/ xlearnn 
 
-You can see the installation details from `Installation Guide`__.
+If you want to build the lastest code, or you want to use the xLearn command line
+interface, you can see how to build xLearn from source code from `Installation Guide`__.
 
 Python Demo
 ----------------------------------
