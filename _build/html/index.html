@@ -35,7 +35,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="xLearn 0.1.0 documentation" href="#"/> 
+    <link rel="top" title="xLearn 0.1.0 documentation" href="#"/>
+        <link rel="next" title="Installation Guide" href="install.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,16 +89,14 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Get Started with xLearn !</a><ul>
-<li><a class="reference internal" href="#link-to-helpful-other-resources">Link to Helpful Other Resources</a></li>
-<li><a class="reference internal" href="#quick-install">Quick Install</a></li>
-<li><a class="reference internal" href="#python-demo">Python Demo</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_line.html">xLearn Command Line Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo.html">xLearn Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">xLearn Tutorials</a></li>
 </ul>
-</li>
-</ul>
-</div>
+
             
           
         </div>
@@ -168,47 +167,85 @@ recommender system. If you are the user of liblinear, libfm, or libffm, now xLea
 your another better choice.</p>
 <p>This is a quick start tutorial showing snippets for you to quickly try out xLearn on the demo
 dataset on a binary classfication task.</p>
-<div class="section" id="link-to-helpful-other-resources">
-<h2>Link to Helpful Other Resources<a class="headerlink" href="#link-to-helpful-other-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="link-to-the-other-helpful-resources">
+<h2>Link to the Other Helpful Resources<a class="headerlink" href="#link-to-the-other-helpful-resources" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>See <a class="reference external" href="install">Installation Guide</a> on how to install xLearn.</li>
-<li>See <a class="reference external" href="commandline">Command Line Guide</a> on how to use xLearn command line.</li>
-<li>See <a class="reference external" href="pythonapi">Python API Guide</a> on how to use xLearn Python API.</li>
-<li>See <a class="reference external" href="demo">Demo Page</a> Learning to use xLearn by Examples</li>
-<li>See <a class="reference external" href="tutorial">Tutorials</a> on tutorial on specific tasks.</li>
+<li>See <a class="reference external" href="install.html">Installation Guide</a> on how to install xLearn.</li>
+<li>See <a class="reference external" href="install.html">Command Line Guide</a> on how to use xLearn command line.</li>
+<li>See <a class="reference external" href="command_line.html">Python API Guide</a> on how to use xLearn Python API.</li>
+<li>See <a class="reference external" href="python_api.html">Demo Page</a> Learning to use xLearn by Examples</li>
+<li>See <a class="reference external" href="demo.html">Tutorial</a> on tutorials on specific tasks.</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="quick-install">
 <h2>Quick Install<a class="headerlink" href="#quick-install" title="Permalink to this headline">¶</a></h2>
-<p>We can install xLearn by using pip. The follow command will download the xLearn
+<p>We can install xLearn by using pip. The following command will download the xLearn
 source code and build it locally. We will update the xLearn source code on pip weekly.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span> <span class="n">xlearnn</span>
 </pre></div>
 </div>
 <p>If you want to build the lastest code on github, or you want to use the xLearn command line,
-you can see how to build xLearn from source code from <a class="reference external" href="install">Installation Guide</a>.</p>
+you can see how to build xLearn from source code from <a class="reference external" href="tutorial.html">Installation Guide</a>.</p>
 </div>
 <div class="section" id="python-demo">
 <h2>Python Demo<a class="headerlink" href="#python-demo" title="Permalink to this headline">¶</a></h2>
-<p>Here is a simple python demo no how to use xLearn. Now type <strong>python</strong> and get started!</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>  <span class="c1"># create ffm model</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>  <span class="c1"># set training data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span> <span class="c1"># Validation data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span>  <span class="c1"># set parameters</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>  <span class="c1"># train model</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>  <span class="c1"># set test data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>  <span class="c1"># predict</span>
+<p>Here is a simple python demo no how to use xLearn. Now type <strong>python</strong> and get started !</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
+
+<span class="c1"># create ffm model</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="c1"># Set training data</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="c1"># Set validation data</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="c1"># set some hyper-parameters</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+          <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span>
+          <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span>
+<span class="c1"># Train model</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set test data</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="c1"># Convert output result to 0~1</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
+<span class="c1"># Predict</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This example shows how to use xlearn to solve a simple binary classification task.
-You can find the demo data <strong>small_train.txt</strong> and <strong>small_test.txt</strong> from the <strong>demo/classification/criteo_ctr/</strong></p>
-<blockquote>
-<div></div></blockquote>
-<div class="toctree-wrapper compound">
+You can find the demo data <strong>small_train.txt</strong> and <strong>small_test.txt</strong> from
+the <strong>demo/classification/criteo_ctr/</strong> directory.</p>
 </div>
+<div class="section" id="other-helpful-resources">
+<h2>Other Helpful Resources<a class="headerlink" href="#other-helpful-resources" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-gcc-or-clang">Install GCC or Clang</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command_line.html">xLearn Command Line Guide</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="demo.html">xLearn Demo</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">xLearn Tutorials</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div></blockquote>
 </div>
 </div>
 
@@ -219,6 +256,13 @@ You can find the demo data <strong>small_train.txt</strong> and <strong>small_te
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
