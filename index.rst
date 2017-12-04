@@ -32,22 +32,25 @@ source code and build it locally. We will update the xLearn source code on pip w
 
     sudo pip install --index-url https://test.pypi.org/simple/ xlearnn 
 
-If you want to build the lastest code, or you want to use the xLearn command line
-interface, you can see how to build xLearn from source code from `Installation Guide`__.
+If you want to build the lastest code on github, or you want to use the xLearn command line, 
+you can see how to build xLearn from source code from `Installation Guide`__.
 
 Python Demo
 ----------------------------------
 
->>> import xlearn as xl
->>> ffm_model = xl.create_ffm() # Create FFM model
->>> ffm_model.setTrain("./small_train.txt") # Training set
->>> ffm_model.setValidate("./small_test.txt") # Validation set
->>> param = { 'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric':'auc'} # Set parameter
->>> ffm_model.fit(param, "./model.out") # Train model
->>> ffm_model.setTest("./small_test.txt") # Test set
->>> ffm_model.predict("./model.out", "./output.txt") # Predict
+Here is a simple python demo no how to use xLearn. Now type **python** and get started!
 
-This example shows how to use xlearn to solve a binary classification task.
+>>> import xlearn as xl
+>>> ffm_model = xl.create_ffm()  # create ffm model
+>>> ffm_model.setTrain("./small_train.txt")  # set training data
+>>> ffm_model.setValidate("./small_test.txt") # Validation data
+>>> param = { 'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric':'auc'}  # set parameters
+>>> ffm_model.fit(param, "./model.out")  # train model
+>>> ffm_model.setTest("./small_test.txt")  # set test data
+>>> ffm_model.predict("./model.out", "./output.txt")  # predict
+
+This example shows how to use xlearn to solve a simple binary classification task. 
+You can find the demo data **small_train.txt** and **small_test.txt** from the **demo/classification/criteo_ctr/**
 
  .. __: install
  .. __: commandline
