@@ -88,7 +88,8 @@ First you need is to clone the code from github ::
 
 and then build xLearn using the folloing commands ::
 
-  cd xlearn; mkdir build; cd build
+  cd xlearn; mkdir build
+  cd build
   cmake ..
   make
 
