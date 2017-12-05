@@ -6,7 +6,7 @@
 Get Started with xLearn !
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-xLearn is a *high-performance*, *easy-to-use*, and *scalable* machine learning package, 
+xLearn is a high-performance, easy-to-use, and scalable machine learning package, 
 which can be used to solve large-scale machine learning problems, especially for for the 
 problems on large-scale sparse data, which is very common in scenes like CTR prediction and 
 recommender system. If you are the user of liblinear, libfm, or libffm, now xLearn is your 
