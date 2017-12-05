@@ -61,7 +61,7 @@ Here is a simple python demo no how to use xLearn.
 
    # Prediction task
    ffm_model.setTest("./small_test.txt")  
-   ffm_model.setSigmoid()
+   ffm_model.setSigmoid()  # Convert output to 0~1
    ffm_model.predict("./model.out", "./output.txt")  
 
 This example shows how to use xlearn to solve a simple binary classification task. 
