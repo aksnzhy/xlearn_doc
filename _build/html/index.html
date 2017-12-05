@@ -201,25 +201,17 @@ in <a class="reference external" href="tutorial.html">Installation Guide</a>.</p
 <p>Here is a simple python demo no how to use xLearn.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
 
-<span class="c1"># create ffm model</span>
+<span class="c1"># Training task</span>
 <span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
-<span class="c1"># Set training data</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
-<span class="c1"># Set validation data</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
-<span class="c1"># set some hyper-parameters</span>
-<span class="n">param</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
-          <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span>
-          <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span>
-<span class="c1"># Train model</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+         <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
 
-<span class="c1"># Set test data</span>
+<span class="c1"># Prediction task</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
-<span class="c1"># Convert output result to 0~1</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
-<span class="c1"># Predict</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>

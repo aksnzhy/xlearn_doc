@@ -51,25 +51,17 @@ Here is a simple python demo no how to use xLearn.
 
    import xlearn as xl
 
-   # create ffm model
+   # Training task
    ffm_model = xl.create_ffm()
-   # Set training data
    ffm_model.setTrain("./small_train.txt")  
-   # Set validation data
    ffm_model.setValidate("./small_test.txt") 
-   # set some hyper-parameters
-   param = { 'task':'binary', 
-             'lr':0.2, 
-             'lambda':0.002, 
-             'metric':'auc'} 
-   # Train model
+   param = {'task':'binary', 'lr':0.2, 
+            'lambda':0.002, 'metric':'auc'} 
    ffm_model.fit(param, "./model.out")  
 
-   # Set test data
+   # Prediction task
    ffm_model.setTest("./small_test.txt")  
-   # Convert output result to 0~1
    ffm_model.setSigmoid()
-   # Predict
    ffm_model.predict("./model.out", "./output.txt")  
 
 This example shows how to use xlearn to solve a simple binary classification task. 
