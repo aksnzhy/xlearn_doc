@@ -22,24 +22,25 @@ Link to the Other Helpful Resources
  * See `Installation Guide`__ on how to install xLearn.
  * See `Command Line Guide`__ on how to use xLearn command line. 
  * See `Python API Guide`__ on how to use xLearn Python API.
- * See `Demo Page`__ Learning to use xLearn by Examples
+ * See `Demo Page`__ Learning to use xLearn by Examples.
  * See `Tutorial`__ on tutorials on specific tasks.
 
 Quick Install
 ----------------------------------
 
-We can install xLearn by using pip. The following command will download the xLearn 
+The easiest way to install xLearn is to use pip. The following command will download the xLearn 
 source code and build it locally. We will update the xLearn source code on pip weekly. ::
 
     sudo pip install xlearn
 
-Now you can type the following code in python shell to check the installation:
+Now you can type the following script in python shell to check whether we install xLearn successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
 
-If you want to build the lastest code on github, or you want to use the xLearn command line, 
-you can see how to build xLearn from source code from `Installation Guide`__.
+If you meet any installation problem, or you want to build the lastest code on github, or you want to 
+use the xLearn command line instead of the python API, you can see how to build xLearn from source code 
+in `Installation Guide`__.
 
 Python Demo
 ----------------------------------
