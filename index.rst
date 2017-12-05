@@ -65,9 +65,9 @@ Here is a simple python demo no how to use xLearn.
    ffm_model.setSigmoid()
    ffm_model.predict("./model.out", "./output.txt")  
 
-This example shows how to use xlearn to solve a simple binary classification task. 
-You can find the demo data **small_train.txt** and **small_test.txt** from 
-the **demo/classification/criteo_ctr/** directory.
+This example shows how to use field-aware factorizations machine (ffm) to solve a 
+simple binary classification task. You can check out the demo data 
+(``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``
 
 Other Helpful Resources
 --------------------------------------------
