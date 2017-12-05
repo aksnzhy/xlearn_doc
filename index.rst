@@ -30,7 +30,7 @@ Quick Install
 We can install xLearn by using pip. The following command will download the xLearn 
 source code and build it locally. We will update the xLearn source code on pip weekly. ::
 
-    sudo pip install --index-url https://test.pypi.org/simple/ xlearnn 
+    sudo pip install xlearn
 
 Now you can type the following code in python shell to check the installation:
 
@@ -85,7 +85,6 @@ Other Helpful Resources
  .. __: tutorial.html
 
  .. toctree::
-   :maxdepth: 0
 
    install.rst
    command_line.rst
