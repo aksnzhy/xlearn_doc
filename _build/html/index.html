@@ -211,7 +211,8 @@ in <a class="reference external" href="tutorial.html">Installation Guide</a>.</p
 
 <span class="c1"># Prediction task</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>  <span class="c1"># Convert output to 0~1</span>
+<span class="c1"># Convert output to 0~1</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
