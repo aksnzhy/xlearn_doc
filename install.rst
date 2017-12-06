@@ -4,24 +4,26 @@ Installation Guide
 For now, xLearn can support Linux and Mac OSX. We will support it on Windows in 
 the near future. This page gives instructions on how to build and install the xLearn 
 package using pip, or from source code. Whatever way you choose, make sure that your 
-OS has already installed GCC (or Clang) and CMake, and your compiler need to support 
-C++11.
+OS has already installed ``GCC`` (or ``Clang``) and ``CMake``, and your compiler need 
+to support ``C++11``. If you have not installed them, please see `this page`__ on how to 
+install GCC and CMake.
 
 Install xLearn from pip
 ---------------------------
 
-The easiest way to install xLearn by using pip. The following command will download the xLearn 
-source code and build it locally. We will update the xLearn source code on pip weekly. ::
+The easiest way to install xLearn is to use ``pip``. The following command will download the xLearn 
+source code from pip and build it locally. We will update the xLearn source code on pip weekly. ::
 
-    sudo pip install --index-url https://test.pypi.org/simple/ xlearnn 
+    sudo pip install xlearn
 
-Now you can type the following code in python shell to check the installation:
+The installation process will take a while. And then you can type the following script in python 
+shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
 
-If you want to build the lastest code on github, or you want to use the xLearn command line, 
-you can see how to build xLearn from source code as follow.
+If you want to build the lastest code from github, or you want to use the xLearn command line 
+instead of the python API, you can see how to build xLearn from source code as follow.
 
 
 Install xLearn from source code
@@ -29,11 +31,12 @@ Install xLearn from source code
 
 Building xLearn from source code consists tow steps:
 
-* First, build the executable files (**xlearn_train** and **xlearn_predict**) and shared library (**libxlearn.so** for Linux and **libxlearn.dylib** for Mac OSX) from the C++ codes.
-* Then, install the python package.
+1. First, build the executable files (``learn_train`` and ``xlearn_predict``) and shared library (``libxlearn.so`` 
+for Linux and ``libxlearn.dylib`` for Mac OSX) from the C++ code.
 
-Build C++ code
->>>>>>>>>>>>>>>>
+2. Then, install the python package.
+
+Fortunately, we write a script ``build.sh`` to do all the things for users.
 
 First you need is to clone the code from github ::
 
@@ -41,76 +44,26 @@ First you need is to clone the code from github ::
 
 and then build xLearn using the folloing commands ::
 
-  cd xlearn; mkdir build
-  cd build
-  cmake ..
-  make
+  cd xlearn
+  ./build.sh
+
+Test
+----------------------------------
 
 Now you can check your building by using xlearn command line ::
 
-  ./xlearn_train ./small_train.txt -v ./small_test.txt -s 2
-  ./xlearn_predict ./small_test.txt ./small_train.txt.model
+  cd build
+  ./run_example.sh
 
 
-Install python package
->>>>>>>>>>>>>>>>>>>>>>>>>>
+You can also test the python package by using ::
 
-Users can use the install-python.sh script to install python package ::
+  cd python-package/test
+  python test_python.py
 
-    cd python-package
-    ./install-python.sh
+.. __: install_cmake.html
 
-The users can make a test ::
+ .. toctree::
+   :hidden:
 
-    python test_python.py
-
-
-Install GCC or Clang
----------------------------
-
-If you have already installed your compiler before, you can skip this step.
-
-* On Cygwin, run setup.exe and install gcc and binutils.
-* On Debian/Ubuntu Linux, type the command ::
-
-      sudo apt-get install gcc binutils 
-
-  to install GCC, or install Clang by using :: 
-
-      sudo apt-get install clang 
-
-* On FreeBSD, type the following command to install Clang :: 
-
-      sudo pkg_add -r clang 
-
-* On Mac OS X, install XCode gets you Clang.
-
-
-Install CMake
----------------------------
-
-If you have already installed CMake before, you can skip this step.
-
-To install CMake from binary packages:
-
-* On Cygwin, run setup.exe and install cmake.
-* On Debian/Ubuntu Linux, type the command to install cmake ::
-
-      sudo apt-get install cmake
-
-* On FreeBSD, type the command ::
-   
-      sudo pkg_add -r cmake
-
-On Mac OS X, if you have homebrew, you can use the command :: 
-
-     brew install cmake
-
-or if you have MacPorts, run :: 
-
-     sudo port install cmake
-
-You won't want to have both Homebrew and !MacPorts installed.
-
-.. toctree::
-   :maxdepth: 1
+    install_cmake.rst

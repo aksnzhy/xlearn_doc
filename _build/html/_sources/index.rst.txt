@@ -28,8 +28,8 @@ Link to the Other Helpful Resources
 Quick Install
 ----------------------------------
 
-The easiest way to install xLearn is to use pip. The following command will download the xLearn 
-source code and build it locally. We will update the xLearn source code on pip weekly. ::
+The easiest way to install xLearn is to use ``pip``. The following command will download the 
+xLearn source code and build it locally. We will update the xLearn source code on pip weekly. ::
 
     sudo pip install xlearn
 

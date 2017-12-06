@@ -1,5 +1,5 @@
 xLearn Demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   :maxdepth: 1
+ .. toctree::
+   :hidden:

@@ -93,13 +93,8 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from source code</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build-c-code">Build C++ code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-python-package">Install python package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#install-gcc-or-clang">Install GCC or Clang</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-cmake">Install CMake</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test">Test</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -176,115 +171,60 @@
 <p>For now, xLearn can support Linux and Mac OSX. We will support it on Windows in
 the near future. This page gives instructions on how to build and install the xLearn
 package using pip, or from source code. Whatever way you choose, make sure that your
-OS has already installed GCC (or Clang) and CMake, and your compiler need to support
-C++11.</p>
+OS has already installed <code class="docutils literal"><span class="pre">GCC</span></code> (or <code class="docutils literal"><span class="pre">Clang</span></code>) and <code class="docutils literal"><span class="pre">CMake</span></code>, and your compiler need
+to support <code class="docutils literal"><span class="pre">C++11</span></code>. If you have not installed them, please see <a class="reference external" href="install_cmake.html">this page</a> on how to
+install GCC and CMake.</p>
 <div class="section" id="install-xlearn-from-pip">
 <h2>Install xLearn from pip<a class="headerlink" href="#install-xlearn-from-pip" title="Permalink to this headline">¶</a></h2>
-<p>The easiest way to install xLearn by using pip. The following command will download the xLearn
-source code and build it locally. We will update the xLearn source code on pip weekly.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span> <span class="n">xlearnn</span>
+<p>The easiest way to install xLearn is to use <code class="docutils literal"><span class="pre">pip</span></code>. The following command will download the xLearn
+source code from pip and build it locally. We will update the xLearn source code on pip weekly.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">xlearn</span>
 </pre></div>
 </div>
-<p>Now you can type the following code in python shell to check the installation:</p>
+<p>The installation process will take a while. And then you can type the following script in python
+shell to check whether the xLearn has been installed successfully:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xl</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to build the lastest code on github, or you want to use the xLearn command line,
-you can see how to build xLearn from source code as follow.</p>
+<p>If you want to build the lastest code from github, or you want to use the xLearn command line
+instead of the python API, you can see how to build xLearn from source code as follow.</p>
 </div>
 <div class="section" id="install-xlearn-from-source-code">
 <h2>Install xLearn from source code<a class="headerlink" href="#install-xlearn-from-source-code" title="Permalink to this headline">¶</a></h2>
 <p>Building xLearn from source code consists tow steps:</p>
-<ul class="simple">
-<li>First, build the executable files (<strong>xlearn_train</strong> and <strong>xlearn_predict</strong>) and shared library (<strong>libxlearn.so</strong> for Linux and <strong>libxlearn.dylib</strong> for Mac OSX) from the C++ codes.</li>
+<p>1. First, build the executable files (<code class="docutils literal"><span class="pre">learn_train</span></code> and <code class="docutils literal"><span class="pre">xlearn_predict</span></code>) and shared library (<code class="docutils literal"><span class="pre">libxlearn.so</span></code>
+for Linux and <code class="docutils literal"><span class="pre">libxlearn.dylib</span></code> for Mac OSX) from the C++ code.</p>
+<ol class="arabic simple" start="2">
 <li>Then, install the python package.</li>
-</ul>
-<div class="section" id="build-c-code">
-<h3>Build C++ code<a class="headerlink" href="#build-c-code" title="Permalink to this headline">¶</a></h3>
+</ol>
+<p>Fortunately, we write a script <code class="docutils literal"><span class="pre">build.sh</span></code> to do all the things for users.</p>
 <p>First you need is to clone the code from github</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aksnzhy</span><span class="o">/</span><span class="n">xlearn</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>and then build xLearn using the folloing commands</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">xlearn</span><span class="p">;</span> <span class="n">mkdir</span> <span class="n">build</span>
-<span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span>
-<span class="n">make</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">xlearn</span>
+<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="test">
+<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
 <p>Now you can check your building by using xlearn command line</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span>
-<span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build</span>
+<span class="o">./</span><span class="n">run_example</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="install-python-package">
-<h3>Install python package<a class="headerlink" href="#install-python-package" title="Permalink to this headline">¶</a></h3>
-<p>Users can use the install-python.sh script to install python package</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">package</span>
-<span class="o">./</span><span class="n">install</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">sh</span>
+<p>You can also test the python package by using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">package</span><span class="o">/</span><span class="n">test</span>
+<span class="n">python</span> <span class="n">test_python</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>The users can make a test</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test_python</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
+<blockquote>
+<div><div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
-<div class="section" id="install-gcc-or-clang">
-<h2>Install GCC or Clang<a class="headerlink" href="#install-gcc-or-clang" title="Permalink to this headline">¶</a></h2>
-<p>If you have already installed your compiler before, you can skip this step.</p>
-<ul>
-<li><p class="first">On Cygwin, run setup.exe and install gcc and binutils.</p>
-</li>
-<li><p class="first">On Debian/Ubuntu Linux, type the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">binutils</span>
-</pre></div>
-</div>
-<p>to install GCC, or install Clang by using</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clang</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On FreeBSD, type the following command to install Clang</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">clang</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On Mac OS X, install XCode gets you Clang.</p>
-</li>
-</ul>
-</div>
-<div class="section" id="install-cmake">
-<h2>Install CMake<a class="headerlink" href="#install-cmake" title="Permalink to this headline">¶</a></h2>
-<p>If you have already installed CMake before, you can skip this step.</p>
-<p>To install CMake from binary packages:</p>
-<ul>
-<li><p class="first">On Cygwin, run setup.exe and install cmake.</p>
-</li>
-<li><p class="first">On Debian/Ubuntu Linux, type the command to install cmake</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On FreeBSD, type the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<p>On Mac OS X, if you have homebrew, you can use the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-<p>or if you have MacPorts, run</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-<p>You won’t want to have both Homebrew and !MacPorts installed.</p>
-<div class="toctree-wrapper compound">
-</div>
+</div></blockquote>
 </div>
 </div>
 

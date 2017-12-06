@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xLearn Python API Guide &mdash; xLearn 0.1.0 documentation</title>
+  <title>Install GCC or Clang &mdash; xLearn 0.1.0 documentation</title>
   
 
   
@@ -35,9 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="xLearn 0.1.0 documentation" href="index.html"/>
-        <link rel="next" title="xLearn Demo" href="demo.html"/>
-        <link rel="prev" title="xLearn Command Line Guide" href="command_line.html"/> 
+    <link rel="top" title="xLearn 0.1.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,12 +88,10 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_line.html">xLearn Command Line Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Python API Guide</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">xLearn Demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">xLearn Tutorials</a></li>
 </ul>
@@ -142,13 +138,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>xLearn Python API Guide</li>
+      <li>Install GCC or Clang</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/python_api.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/install_cmake.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,8 +157,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xlearn-python-api-guide">
-<h1>xLearn Python API Guide<a class="headerlink" href="#xlearn-python-api-guide" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="install-gcc-or-clang">
+<h1>Install GCC or Clang<a class="headerlink" href="#install-gcc-or-clang" title="Permalink to this headline">¶</a></h1>
+<p>If you have already installed your compiler before, you can skip this step.</p>
+<ul>
+<li><p class="first">On Cygwin, run setup.exe and install gcc and binutils.</p>
+</li>
+<li><p class="first">On Debian/Ubuntu Linux, type the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">binutils</span>
+</pre></div>
+</div>
+<p>to install GCC, or install Clang by using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clang</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On FreeBSD, type the following command to install Clang</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">clang</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On Mac OS X, install XCode gets you Clang.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="install-cmake">
+<h1>Install CMake<a class="headerlink" href="#install-cmake" title="Permalink to this headline">¶</a></h1>
+<p>If you have already installed CMake before, you can skip this step.</p>
+<p>To install CMake from binary packages:</p>
+<ul>
+<li><p class="first">On Cygwin, run setup.exe and install cmake.</p>
+</li>
+<li><p class="first">On Debian/Ubuntu Linux, type the command to install cmake</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On FreeBSD, type the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>On Mac OS X, if you have homebrew, you can use the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<p>or if you have MacPorts, run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<p>You won’t want to have both Homebrew and !MacPorts installed.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 </div>
@@ -176,15 +221,6 @@
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="demo.html" class="btn btn-neutral float-right" title="xLearn Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="command_line.html" class="btn btn-neutral" title="xLearn Command Line Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
