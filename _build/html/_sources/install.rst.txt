@@ -50,7 +50,7 @@ and then build xLearn using the folloing commands ::
 Test
 ----------------------------------
 
-Now you can check your building by using xLearn command line ::
+Now you can test your building by using xLearn command line ::
 
   cd build
   ./run_example.sh
