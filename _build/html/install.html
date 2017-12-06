@@ -92,14 +92,14 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install-gcc-or-clang">Install GCC or Clang</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-cmake">Install CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from source code</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-c-code">Build C++ code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-python-package">Install python package</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="#install-python-package">Install python package</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#install-gcc-or-clang">Install GCC or Clang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-cmake">Install CMake</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -173,62 +173,11 @@
             
   <div class="section" id="installation-guide">
 <h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
-<p>For now, xLearn can support Linux and Mac OSX. We will support Windows in the future.
-This page gives instructions on how to build and install the xLearn package from
-source code or using pip. Whatever way you choose, make sure that your OS has already
-installed GCC (or Clang) and CMake.</p>
-<div class="section" id="install-gcc-or-clang">
-<h2>Install GCC or Clang<a class="headerlink" href="#install-gcc-or-clang" title="Permalink to this headline">¶</a></h2>
-<p>If you have already installed your compiler before, you can skip this step.</p>
-<ul>
-<li><p class="first">On Cygwin, run setup.exe and install gcc and binutils.</p>
-</li>
-<li><p class="first">On Debian/Ubuntu Linux, type the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">binutils</span>
-</pre></div>
-</div>
-<p>to install GCC, or install Clang by using</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clang</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On FreeBSD, type the following command to install Clang</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">clang</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On Mac OS X, install XCode gets you Clang.</p>
-</li>
-</ul>
-</div>
-<div class="section" id="install-cmake">
-<h2>Install CMake<a class="headerlink" href="#install-cmake" title="Permalink to this headline">¶</a></h2>
-<p>If you have already installed CMake before, you can skip this step.</p>
-<p>To install CMake from binary packages:</p>
-<ul>
-<li><p class="first">On Cygwin, run setup.exe and install cmake.</p>
-</li>
-<li><p class="first">On Debian/Ubuntu Linux, type the command to install cmake</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">On FreeBSD, type the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<p>On Mac OS X, if you have homebrew, you can use the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-<p>or if you have MacPorts, run</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">cmake</span>
-</pre></div>
-</div>
-<p>You won’t want to have both Homebrew and !MacPorts installed.</p>
-</div>
+<p>For now, xLearn can support Linux and Mac OSX. We will support it on Windows in
+the near future. This page gives instructions on how to build and install the xLearn
+package using pip, or from source code. Whatever way you choose, make sure that your
+OS has already installed GCC (or Clang) and CMake, and your compiler need to support
+C++11.</p>
 <div class="section" id="install-xlearn-from-pip">
 <h2>Install xLearn from pip<a class="headerlink" href="#install-xlearn-from-pip" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to install xLearn by using pip. The following command will download the xLearn
@@ -281,8 +230,60 @@ you can see how to build xLearn from source code as follow.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test_python</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
+</div>
+<div class="section" id="install-gcc-or-clang">
+<h2>Install GCC or Clang<a class="headerlink" href="#install-gcc-or-clang" title="Permalink to this headline">¶</a></h2>
+<p>If you have already installed your compiler before, you can skip this step.</p>
+<ul>
+<li><p class="first">On Cygwin, run setup.exe and install gcc and binutils.</p>
+</li>
+<li><p class="first">On Debian/Ubuntu Linux, type the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">binutils</span>
+</pre></div>
+</div>
+<p>to install GCC, or install Clang by using</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clang</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On FreeBSD, type the following command to install Clang</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">clang</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On Mac OS X, install XCode gets you Clang.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="install-cmake">
+<h2>Install CMake<a class="headerlink" href="#install-cmake" title="Permalink to this headline">¶</a></h2>
+<p>If you have already installed CMake before, you can skip this step.</p>
+<p>To install CMake from binary packages:</p>
+<ul>
+<li><p class="first">On Cygwin, run setup.exe and install cmake.</p>
+</li>
+<li><p class="first">On Debian/Ubuntu Linux, type the command to install cmake</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On FreeBSD, type the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pkg_add</span> <span class="o">-</span><span class="n">r</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>On Mac OS X, if you have homebrew, you can use the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<p>or if you have MacPorts, run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<p>You won’t want to have both Homebrew and !MacPorts installed.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>
