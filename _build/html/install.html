@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="xLearn 0.1.0 documentation" href="index.html"/>
-        <link rel="next" title="xLearn Command Line Guide" href="command_line.html"/>
+        <link rel="next" title="Install GCC or Clang" href="install_cmake.html"/>
         <link rel="prev" title="Get Started with xLearn !" href="index.html"/> 
 
   
@@ -94,7 +94,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test">Test</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#test">Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install_cmake.html">Install GCC or Clang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_cmake.html#install-cmake">Install CMake</a></li>
 </ul>
 </li>
 </ul>
@@ -181,8 +183,8 @@ source code from pip and build it locally. We will update the xLearn source code
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">xlearn</span>
 </pre></div>
 </div>
-<p>The installation process will take a while. And then you can type the following script in python
-shell to check whether the xLearn has been installed successfully:</p>
+<p>The installation process will take a while to complete. And then you can type the following script
+in python shell to check whether the xLearn has been installed successfully:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xl</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>
 </pre></div>
@@ -238,7 +240,7 @@ for Linux and <code class="docutils literal"><span class="pre">libxlearn.dylib</
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="command_line.html" class="btn btn-neutral float-right" title="xLearn Command Line Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install_cmake.html" class="btn btn-neutral float-right" title="Install GCC or Clang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Get Started with xLearn !" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -16,8 +16,8 @@ source code from pip and build it locally. We will update the xLearn source code
 
     sudo pip install xlearn
 
-The installation process will take a while. And then you can type the following script in python 
-shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete. And then you can type the following script 
+in python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
@@ -66,4 +66,4 @@ You can also test the python package by using ::
  .. toctree::
    :hidden:
 
-    install_cmake.rst
+   install_cmake.rst

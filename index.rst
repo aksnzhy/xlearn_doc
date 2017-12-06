@@ -33,8 +33,8 @@ xLearn source code and build it locally. We will update the xLearn source code o
 
     sudo pip install xlearn
 
-The installation process will take a while. And then you can type the following script in python 
-shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete. And then you can type the following 
+script in python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
