@@ -33,12 +33,13 @@ source code and build it locally. We will update the xLearn source code on pip w
 
     sudo pip install xlearn
 
-Now you can type the following script in python shell to check whether we install xLearn successfully:
+The installation process will take a while. And then you can type the following script in python 
+shell to check whether we install xLearn successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
 
-If you meet any installation problem, or you want to build the lastest code on github, or you want to 
+If you meet any installation problem, or you want to build the lastest code from github, or you want to 
 use the xLearn command line instead of the python API, you can see how to build xLearn from source code 
 in `Installation Guide`__.
 
@@ -69,9 +70,6 @@ This example shows how to use field-aware factorizations machine (ffm) to solve 
 simple binary classification task. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``
 
-Other Helpful Resources
---------------------------------------------
-
  .. __: install.html
  .. __: install.html
  .. __: command_line.html
@@ -80,6 +78,7 @@ Other Helpful Resources
  .. __: tutorial.html
 
  .. toctree::
+   :hidden:
 
    install.rst
    command_line.rst
