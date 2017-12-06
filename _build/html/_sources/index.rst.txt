@@ -34,7 +34,7 @@ source code and build it locally. We will update the xLearn source code on pip w
     sudo pip install xlearn
 
 The installation process will take a while. And then you can type the following script in python 
-shell to check whether we install xLearn successfully:
+shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
@@ -68,7 +68,7 @@ Here is a simple python demo no how to use xLearn.
 
 This example shows how to use field-aware factorizations machine (ffm) to solve a 
 simple binary classification task. You can check out the demo data 
-(``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``
+(``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
  .. __: install.html
  .. __: install.html
