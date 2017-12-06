@@ -55,7 +55,7 @@ Now you can test your building by using xLearn command line ::
   cd build
   ./run_example.sh
 
-You can also test the python package by using ::
+You can also test the python package by using the following command line ::
 
   cd python-package/test
   python test_python.py
