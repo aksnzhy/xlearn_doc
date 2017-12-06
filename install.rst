@@ -1,11 +1,11 @@
 Installation Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For now, xLearn can support Linux and Mac OSX. We will support it on Windows in 
+For now, xLearn can support Linux and Mac OSX. We will support it on Windows platform in 
 the near future. This page gives instructions on how to build and install the xLearn 
-package using pip, or from source code. Whatever way you choose, make sure that your 
-OS has already installed ``GCC`` (or ``Clang``) and ``CMake``, and your compiler need 
-to support ``C++11``. If you have not installed them, please see `this page`__ on how to 
+package using pip and how to build it from source code. No matter what way you choose, make 
+sure that your OS has already installed ``GCC`` (or ``Clang``) and ``CMake``, and your compiler 
+need to support ``C++11``. If you have not installed them, please see `this page`__ on how to 
 install GCC and CMake.
 
 Install xLearn from pip
@@ -26,19 +26,19 @@ If you want to build the lastest code from github, or you want to use the xLearn
 instead of the python API, you can see how to build xLearn from source code as follow.
 
 
-Install xLearn from source code
+Install xLearn from Source Code
 ----------------------------------
 
-Building xLearn from source code consists tow steps:
+Building xLearn from source code consists two steps:
 
-1. First, build the executable files (``learn_train`` and ``xlearn_predict``) and shared library (``libxlearn.so`` 
-for Linux and ``libxlearn.dylib`` for Mac OSX) from the C++ code.
+First, build the executable files (``xlearn_train`` and ``xlearn_predict``) and the shared library 
+(``libxlearn.so`` for Linux and ``libxlearn.dylib`` for Mac OSX) from the C++ code.
 
-2. Then, install the python package.
+Then, install the python package.
 
 Fortunately, we write a script ``build.sh`` to do all the things for users.
 
-First you need is to clone the code from github ::
+For users, you just need to clone the code from github ::
 
   git clone https://github.com/aksnzhy/xlearn.git
 
@@ -50,11 +50,10 @@ and then build xLearn using the folloing commands ::
 Test
 ----------------------------------
 
-Now you can check your building by using xlearn command line ::
+Now you can check your building by using xLearn command line ::
 
   cd build
   ./run_example.sh
-
 
 You can also test the python package by using ::
 
