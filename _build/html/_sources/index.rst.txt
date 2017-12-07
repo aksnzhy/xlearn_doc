@@ -58,6 +58,7 @@ Here is a simple python demo no how to use xLearn.
    ffm_model.setValidate("./small_test.txt") 
    param = {'task':'binary', 'lr':0.2, 
             'lambda':0.002, 'metric':'auc'} 
+            
    ffm_model.fit(param, "./model.out")  
 
    # Prediction task

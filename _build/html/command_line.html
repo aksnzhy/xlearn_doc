@@ -93,7 +93,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Command Line Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#a-quick-start">A Quick Start</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -167,13 +168,77 @@
   <div class="section" id="xlearn-command-line-guide">
 <h1>xLearn Command Line Guide<a class="headerlink" href="#xlearn-command-line-guide" title="Permalink to this headline">¶</a></h1>
 <p>Once you build xLearn successfully, you will get two executable files <code class="docutils literal"><span class="pre">xlearn_train</span></code>
-and <code class="docutils literal"><span class="pre">xlearn_predict</span></code>. You can use these two executable file to perform training task
-and prediction task.</p>
-<div class="section" id="a-quick-start">
-<h2>A Quick Start<a class="headerlink" href="#a-quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Make sure that you are in the build path of xLearn.</p>
-<div class="toctree-wrapper compound">
+and <code class="docutils literal"><span class="pre">xlearn_predict</span></code> in your <code class="docutils literal"><span class="pre">build</span></code> directory. Now you can use these two executable
+files to perform training task and prediction task.</p>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>Make sure that you are in the build path of xLearn, and you will find the <code class="docutils literal"><span class="pre">small_test.txt</span></code>
+and <code class="docutils literal"><span class="pre">small_train.txt</span></code> in this directory. Now you can type the following command to train a
+model</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
 </div>
+<p>Here we print a portion of the output</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.567514</span>                <span class="mf">0.00</span>
+    <span class="mi">2</span>            <span class="mf">0.516861</span>                <span class="mf">0.00</span>
+    <span class="mi">3</span>            <span class="mf">0.489884</span>                <span class="mf">0.00</span>
+    <span class="mi">4</span>            <span class="mf">0.469971</span>                <span class="mf">0.00</span>
+    <span class="mi">5</span>            <span class="mf">0.452699</span>                <span class="mf">0.00</span>
+    <span class="mi">6</span>            <span class="mf">0.437590</span>                <span class="mf">0.00</span>
+    <span class="mi">7</span>            <span class="mf">0.425759</span>                <span class="mf">0.00</span>
+    <span class="mi">8</span>            <span class="mf">0.415190</span>                <span class="mf">0.00</span>
+    <span class="mi">9</span>            <span class="mf">0.405954</span>                <span class="mf">0.00</span>
+   <span class="mi">10</span>            <span class="mf">0.396313</span>                <span class="mf">0.00</span>
+</pre></div>
+</div>
+<p>On default, xLearn will use the logistic regression (LR) to train our model for 10 epoch.</p>
+<p>We can see that there is a new file called <code class="docutils literal"><span class="pre">small_train.txt.model</span></code> in current directory. This
+is the trainned model checkpoint file. We can use the model file to make prediction like this</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span>
+</pre></div>
+</div>
+<p>Then we can get a new file called <code class="docutils literal"><span class="pre">small_test.txt.out</span></code>. This is output prediction result.
+Let’s see the first ten lines of result by using the following command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">out</span>
+
+<span class="o">-</span><span class="mf">1.9872</span>
+<span class="o">-</span><span class="mf">0.0707959</span>
+<span class="o">-</span><span class="mf">0.456214</span>
+<span class="o">-</span><span class="mf">0.170811</span>
+<span class="o">-</span><span class="mf">1.28986</span>
+<span class="o">-</span><span class="mf">0.618315</span>
+<span class="o">-</span><span class="mf">1.60154</span>
+<span class="o">-</span><span class="mf">1.50124</span>
+<span class="o">-</span><span class="mf">0.347515</span>
+<span class="o">-</span><span class="mf">1.12173</span>
+</pre></div>
+</div>
+<p>This is the score for every example in test set. The negative data represents a negative example and
+positive data represents the positive example. You can convert the score to 0~1 by using <code class="docutils literal"><span class="pre">--sigmoid</span></code> option,
+or you can convert your result to bianry result (0 and 1) by using <code class="docutils literal"><span class="pre">--sign</span></code> option</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span> <span class="o">--</span><span class="n">sigmoid</span>
+<span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">out</span>
+
+<span class="mf">0.120553</span>
+<span class="mf">0.482308</span>
+<span class="mf">0.387884</span>
+<span class="mf">0.457401</span>
+<span class="mf">0.215877</span>
+<span class="mf">0.350165</span>
+<span class="mf">0.167766</span>
+<span class="mf">0.182241</span>
+<span class="mf">0.413985</span>
+<span class="mf">0.245691</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="choose-machine-learning-model">
+<h2>Choose Machine Learning Model<a class="headerlink" href="#choose-machine-learning-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+</div>
+</div></blockquote>
 </div>
 </div>
 
