@@ -20,7 +20,6 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -142,7 +141,6 @@ latex_documents = [
      u'Chao Ma', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -151,7 +149,6 @@ man_pages = [
     (master_doc, 'xlearn_doc', u'xlearn_doc Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -163,6 +160,3 @@ texinfo_documents = [
      author, 'xlearn_doc', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-

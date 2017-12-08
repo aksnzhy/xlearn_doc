@@ -72,5 +72,7 @@ by using ``--sigmoid`` option, or you can convert your result to bianry result (
 Choose Machine Learning Model
 ----------------------------------------
 
+For now, xLearn can support three different machine learning model, including LR, FM and FFM.
+
  .. toctree::
    :hidden:
