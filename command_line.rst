@@ -76,6 +76,13 @@ by using ``-m`` option ::
   ./xlearn_train ./small_train.txt -m model_1.bin
   ./xlearn_train ./small_train.txt -s 1 -m model_2.bin   
 
+Also, users can dump the model in txt format by using ``-t`` option. For example: ::
+
+  ./xlearn_train ./small_train.txt -t model.txt
+
+Here, we get a file called ``model.txt`` that stores the trainned model in txt format.
+For now, only bias and linear term can be wirtten to the txt file.
+
 Choose Machine Learning Model
 ----------------------------------------
 
@@ -153,12 +160,15 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
     
     ./xlearn_train ./small_train.txt -f 3 --cv
 
-The xLearn will calcluate the avergae validation loss at the end of it's message. ::
+Here, we set the number of folds to ``3``. The xLearn will calcluate the avergae validation loss at the end 
+of it's message. ::
 
     [------------] Average log_loss: 0.549417
     [ ACTION     ] Finish Cross-Validation
     [ ACTION     ] Clear the xLearn environment ...
     [------------] Total time cost: 0.03 (sec)
+
+
 
 
 
