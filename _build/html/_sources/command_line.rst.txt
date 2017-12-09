@@ -1,20 +1,20 @@
 xLearn Command Line Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once you build xLearn from source code successfully, you will get two executable files 
+Once you built xLearn from source code successfully, you will get two executable files 
 ``xlearn_train`` and ``xlearn_predict`` in your ``build`` directory. Now you can use these 
-two executable files to perform training task and prediction task.
+two executable files to perform training and prediction task.
 
 Quick Start
 ----------------------------------------
 
-Make sure that you are in the build path of xLearn, and you will find the demo data 
+Make sure that you are in the ``build`` directory of xLearn, and you will find the demo data 
 ``small_test.txt`` and ``small_train.txt`` in this directory. Now you can type the following 
 command to train a model ::
 
     ./xlearn_train ./small_train.txt
 
-Here we print a portion of the output ::
+Here, we show a portion of the xLearn's output ::
 
     Epoch      Train log_loss     Time cost (sec)
         1            0.567514                0.00
@@ -28,10 +28,11 @@ Here we print a portion of the output ::
         9            0.405954                0.00
        10            0.396313                0.00
 
-On default, xLearn will use the logistic regression (LR) to train our model for 10 epoch.
+On default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.
 
 We can see that a new file called ``small_train.txt.model`` has been generated in current directory. 
-This file stores the trainned model checkpoint, and we can use this model file to make prediction ::
+This file stores the trainned model checkpoint, and we can use this model file to make prediction in 
+the future ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model
 
@@ -46,10 +47,10 @@ prediction result. Let's see the first five lines of output by using the followi
     -0.170811
     -1.28986
 
-The ten lines of data is the score for every example in test set. The negative data represents the 
-negative example and positive data represents the positive example. You can convert the score to (0-1) 
-by using ``--sigmoid`` option, or you can convert your result to bianry result (0 and 1) by using 
-``--sign`` option ::
+These five lines of data is the prediction score calculated for every example in test set. The 
+negative data represents the negative example and positive data represents the positive example. 
+You can convert the score to (0-1) by using ``--sigmoid`` option, or you can convert your result 
+to bianry result (0 and 1) by using ``--sign`` option ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model --sigmoid
     head -n 5 ./small_test.txt.out
@@ -68,6 +69,12 @@ by using ``--sigmoid`` option, or you can convert your result to bianry result (
     0
     0
     0
+
+Users may generate many model files, so you can set the name of the model checkpoint file 
+by using ``-m`` option ::
+
+  ./xlearn_train ./small_train.txt -m model_1.bin
+  ./xlearn_train ./small_train.txt -e 5 -m model_2.bin   
 
 Choose Machine Learning Model
 ----------------------------------------

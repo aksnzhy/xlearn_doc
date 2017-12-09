@@ -47,7 +47,7 @@ and then build xLearn using the folloing commands ::
   cd xlearn
   ./build.sh
 
-The ``build.sh`` will build xLearn in ``build`` directory in current path.
+The ``build.sh`` will build xLearn in the ``build`` directory in current path.
 
 Test
 ----------------------------------

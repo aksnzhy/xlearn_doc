@@ -167,18 +167,18 @@
             
   <div class="section" id="xlearn-command-line-guide">
 <h1>xLearn Command Line Guide<a class="headerlink" href="#xlearn-command-line-guide" title="Permalink to this headline">¶</a></h1>
-<p>Once you build xLearn from source code successfully, you will get two executable files
+<p>Once you built xLearn from source code successfully, you will get two executable files
 <code class="docutils literal"><span class="pre">xlearn_train</span></code> and <code class="docutils literal"><span class="pre">xlearn_predict</span></code> in your <code class="docutils literal"><span class="pre">build</span></code> directory. Now you can use these
-two executable files to perform training task and prediction task.</p>
+two executable files to perform training and prediction task.</p>
 <div class="section" id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Make sure that you are in the build path of xLearn, and you will find the demo data
+<p>Make sure that you are in the <code class="docutils literal"><span class="pre">build</span></code> directory of xLearn, and you will find the demo data
 <code class="docutils literal"><span class="pre">small_test.txt</span></code> and <code class="docutils literal"><span class="pre">small_train.txt</span></code> in this directory. Now you can type the following
 command to train a model</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>Here we print a portion of the output</p>
+<p>Here, we show a portion of the xLearn’s output</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
     <span class="mi">1</span>            <span class="mf">0.567514</span>                <span class="mf">0.00</span>
     <span class="mi">2</span>            <span class="mf">0.516861</span>                <span class="mf">0.00</span>
@@ -192,9 +192,10 @@ command to train a model</p>
    <span class="mi">10</span>            <span class="mf">0.396313</span>                <span class="mf">0.00</span>
 </pre></div>
 </div>
-<p>On default, xLearn will use the logistic regression (LR) to train our model for 10 epoch.</p>
+<p>On default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.</p>
 <p>We can see that a new file called <code class="docutils literal"><span class="pre">small_train.txt.model</span></code> has been generated in current directory.
-This file stores the trainned model checkpoint, and we can use this model file to make prediction</p>
+This file stores the trainned model checkpoint, and we can use this model file to make prediction in
+the future</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span>
 </pre></div>
 </div>
@@ -209,10 +210,10 @@ prediction result. Let’s see the first five lines of output by using the follo
 <span class="o">-</span><span class="mf">1.28986</span>
 </pre></div>
 </div>
-<p>The ten lines of data is the score for every example in test set. The negative data represents the
-negative example and positive data represents the positive example. You can convert the score to (0-1)
-by using <code class="docutils literal"><span class="pre">--sigmoid</span></code> option, or you can convert your result to bianry result (0 and 1) by using
-<code class="docutils literal"><span class="pre">--sign</span></code> option</p>
+<p>These five lines of data is the prediction score calculated for every example in test set. The
+negative data represents the negative example and positive data represents the positive example.
+You can convert the score to (0-1) by using <code class="docutils literal"><span class="pre">--sigmoid</span></code> option, or you can convert your result
+to bianry result (0 and 1) by using <code class="docutils literal"><span class="pre">--sign</span></code> option</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span> <span class="o">--</span><span class="n">sigmoid</span>
 <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">out</span>
 
@@ -230,6 +231,12 @@ by using <code class="docutils literal"><span class="pre">--sigmoid</span></code
 <span class="mi">0</span>
 <span class="mi">0</span>
 <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Users may generate many model files, so you can set the name of the model checkpoint file
+by using <code class="docutils literal"><span class="pre">-m</span></code> option</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_1</span><span class="o">.</span><span class="n">bin</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">5</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_2</span><span class="o">.</span><span class="n">bin</span>
 </pre></div>
 </div>
 </div>
