@@ -34,7 +34,7 @@ Building xLearn from source code consists two steps:
 First, build the executable files (``xlearn_train`` and ``xlearn_predict``) and the shared library 
 (``libxlearn.so`` for Linux and ``libxlearn.dylib`` for Mac OSX) from the C++ code.
 
-Then, install the python package.
+Then, you can install the python package through ``install-python.sh``.
 
 Fortunately, we write a script ``build.sh`` to do all the things for users.
 
@@ -47,10 +47,12 @@ and then build xLearn using the folloing commands ::
   cd xlearn
   ./build.sh
 
+The ``build.sh`` will build xLearn in ``build`` directory in current path.
+
 Test
 ----------------------------------
 
-Now you can test your building by using xLearn command line ::
+Now you can test your installation by using the following xLearn command line ::
 
   cd build
   ./run_example.sh
