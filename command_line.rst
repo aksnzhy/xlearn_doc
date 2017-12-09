@@ -123,7 +123,7 @@ A portion of xLearn's output: ::
         9            0.404554            0.546218                0.00
 
 Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes 
-down first, and then goes up. This is because our model is overfit current training data set.
+down first, and then goes up. This is because our model has already overfitted current training data set.
 
 
 
