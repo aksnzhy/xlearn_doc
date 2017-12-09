@@ -92,5 +92,10 @@ Users can choose different machine learning models by using ``-s`` option ::
          4 -- factorization machines (FM)
          5 -- field-aware factorization machines (FFM)
 
+For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while for FFM, the input
+data should be the ``libffm`` format.
+
+
+
  .. toctree::
    :hidden:
