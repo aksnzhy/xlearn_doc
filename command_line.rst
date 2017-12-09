@@ -151,7 +151,7 @@ Cross Validation
 
 Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing 
 how the results of a statistical analysis will generalize to an independent data set. In xLearn, users 
-can use ``--cv`` option to use this technique. For example: ::
+can set the ``--cv`` option to use this technique. For example: ::
 
     ./xlearn_train ./small_train.txt --cv
 
