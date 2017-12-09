@@ -74,12 +74,23 @@ Users may generate many model files, so you can set the name of the model checkp
 by using ``-m`` option ::
 
   ./xlearn_train ./small_train.txt -m model_1.bin
-  ./xlearn_train ./small_train.txt -e 5 -m model_2.bin   
+  ./xlearn_train ./small_train.txt -s 1 -m model_2.bin   
 
 Choose Machine Learning Model
 ----------------------------------------
 
 For now, xLearn can support three different machine learning model, including LR, FM and FFM.
+Users can choose different machine learning models by using ``-s`` option ::
+
+  -s <type> : Type of machine learning model (default 0)
+     for classification task:
+         0 -- linear model (GLM)
+         1 -- factorization machines (FM)
+         2 -- field-aware factorization machines (FFM)
+     for regression task:
+         3 -- linear model (GLM)
+         4 -- factorization machines (FM)
+         5 -- field-aware factorization machines (FFM)
 
  .. toctree::
    :hidden:

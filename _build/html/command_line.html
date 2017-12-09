@@ -94,9 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Command Line Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a></li>
@@ -236,17 +234,28 @@ to bianry result (0 and 1) by using <code class="docutils literal"><span class="
 <p>Users may generate many model files, so you can set the name of the model checkpoint file
 by using <code class="docutils literal"><span class="pre">-m</span></code> option</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_1</span><span class="o">.</span><span class="n">bin</span>
-<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">5</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_2</span><span class="o">.</span><span class="n">bin</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_2</span><span class="o">.</span><span class="n">bin</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="choose-machine-learning-model">
 <h2>Choose Machine Learning Model<a class="headerlink" href="#choose-machine-learning-model" title="Permalink to this headline">¶</a></h2>
-<p>For now, xLearn can support three different machine learning model, including LR, FM and FFM.</p>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p>For now, xLearn can support three different machine learning model, including LR, FM and FFM.
+Users can choose different machine learning models by using <code class="docutils literal"><span class="pre">-s</span></code> option</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="p">:</span> <span class="n">Type</span> <span class="n">of</span> <span class="n">machine</span> <span class="n">learning</span> <span class="n">model</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">classification</span> <span class="n">task</span><span class="p">:</span>
+        <span class="mi">0</span> <span class="o">--</span> <span class="n">linear</span> <span class="n">model</span> <span class="p">(</span><span class="n">GLM</span><span class="p">)</span>
+        <span class="mi">1</span> <span class="o">--</span> <span class="n">factorization</span> <span class="n">machines</span> <span class="p">(</span><span class="n">FM</span><span class="p">)</span>
+        <span class="mi">2</span> <span class="o">--</span> <span class="n">field</span><span class="o">-</span><span class="n">aware</span> <span class="n">factorization</span> <span class="n">machines</span> <span class="p">(</span><span class="n">FFM</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">regression</span> <span class="n">task</span><span class="p">:</span>
+        <span class="mi">3</span> <span class="o">--</span> <span class="n">linear</span> <span class="n">model</span> <span class="p">(</span><span class="n">GLM</span><span class="p">)</span>
+        <span class="mi">4</span> <span class="o">--</span> <span class="n">factorization</span> <span class="n">machines</span> <span class="p">(</span><span class="n">FM</span><span class="p">)</span>
+        <span class="mi">5</span> <span class="o">--</span> <span class="n">field</span><span class="o">-</span><span class="n">aware</span> <span class="n">factorization</span> <span class="n">machines</span> <span class="p">(</span><span class="n">FFM</span><span class="p">)</span>
+
+<span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+  <span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+</pre></div>
 </div>
-</div></blockquote>
 </div>
 </div>
 
