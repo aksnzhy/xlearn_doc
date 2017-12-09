@@ -95,7 +95,7 @@ Users can choose different machine learning models by using ``-s`` option ::
 For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while for FFM, the 
 input data should be the ``libffm`` format. You can give a ``libffm`` file to LR and FM. At that 
 time, xLearn will treat this data as ``libsvm`` format. The following command shows how to use different
-machine learning model to solve the binary classification problem  ::
+machine learning model to solve the binary classification problem:  ::
 
 ./xlearn_train ./small_train.txt -s 0  # Using linear model
 ./xlearn_train ./small_train.txt -s 1  # Using factorization machine (FM)
