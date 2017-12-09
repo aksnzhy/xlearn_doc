@@ -104,5 +104,28 @@ machine learning model to solve the binary classification problem:  ::
 Set Validation Dataset
 ----------------------------------------
 
+A validation dataset is a set of examples used to tune the hyperparameters of a machine learning model. 
+In xLearn, users can use ``-v`` option to set the validation data set. For example: ::
+
+    ./xlearn_train ./small_train.txt -v ./small_test.txt    
+
+A portion of xLearn's output: ::
+
+    Epoch      Train log_loss       Test log_loss     Time cost (sec)
+        1            0.575049            0.530560                0.00
+        2            0.517496            0.537741                0.00
+        3            0.488428            0.527205                0.00
+        4            0.469010            0.538175                0.00
+        5            0.452817            0.537245                0.00
+        6            0.438929            0.536588                0.00
+        7            0.423491            0.532349                0.00
+        8            0.416492            0.541107                0.00
+        9            0.404554            0.546218                0.00
+
+Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes 
+down first, and then goes up. This is because our model is overfit current training data set.
+
+
+
  .. toctree::
    :hidden:

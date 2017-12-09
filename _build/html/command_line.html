@@ -268,6 +268,26 @@ machine learning model to solve the binary classification problem:</p>
 </div>
 <div class="section" id="set-validation-dataset">
 <h2>Set Validation Dataset<a class="headerlink" href="#set-validation-dataset" title="Permalink to this headline">¶</a></h2>
+<p>A validation dataset is a set of examples used to tune the hyperparameters of a machine learning model.
+In xLearn, users can use <code class="docutils literal"><span class="pre">-v</span></code> option to set the validation data set. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>A portion of xLearn’s output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.575049</span>            <span class="mf">0.530560</span>                <span class="mf">0.00</span>
+    <span class="mi">2</span>            <span class="mf">0.517496</span>            <span class="mf">0.537741</span>                <span class="mf">0.00</span>
+    <span class="mi">3</span>            <span class="mf">0.488428</span>            <span class="mf">0.527205</span>                <span class="mf">0.00</span>
+    <span class="mi">4</span>            <span class="mf">0.469010</span>            <span class="mf">0.538175</span>                <span class="mf">0.00</span>
+    <span class="mi">5</span>            <span class="mf">0.452817</span>            <span class="mf">0.537245</span>                <span class="mf">0.00</span>
+    <span class="mi">6</span>            <span class="mf">0.438929</span>            <span class="mf">0.536588</span>                <span class="mf">0.00</span>
+    <span class="mi">7</span>            <span class="mf">0.423491</span>            <span class="mf">0.532349</span>                <span class="mf">0.00</span>
+    <span class="mi">8</span>            <span class="mf">0.416492</span>            <span class="mf">0.541107</span>                <span class="mf">0.00</span>
+    <span class="mi">9</span>            <span class="mf">0.404554</span>            <span class="mf">0.546218</span>                <span class="mf">0.00</span>
+</pre></div>
+</div>
+<p>Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes
+down first, and then goes up. This is because our model is overfit current training data set.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 </div>
