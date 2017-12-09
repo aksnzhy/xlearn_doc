@@ -95,9 +95,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Command Line Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a></li>
@@ -289,11 +288,46 @@ In xLearn, users can use <code class="docutils literal"><span class="pre">-v</sp
 <p>Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes
 down first, and then goes up. This is because our model has already overfitted current training data set. On
 default, xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
-metric by using <code class="docutils literal"><span class="pre">-x</span></code> option.</p>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+metric by using <code class="docutils literal"><span class="pre">-x</span></code> option. For classification problem, the metric can be : <code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code>
+(precision), <code class="docutils literal"><span class="pre">f1</span></code> (f1 score), <code class="docutils literal"><span class="pre">auc</span></code> (AUC score). For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">acc</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">prec</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">f1</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">auc</span>
+</pre></div>
 </div>
-</div></blockquote>
+<p>For regression problem, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse). For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">demo</span><span class="o">/</span><span class="n">house_price</span><span class="o">/</span>
+<span class="o">../../</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">house_price_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">3</span> <span class="o">-</span><span class="n">x</span> <span class="n">rmse</span> <span class="o">--</span><span class="n">cv</span>
+<span class="o">../../</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">house_price_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">3</span> <span class="o">-</span><span class="n">x</span> <span class="n">rmsd</span> <span class="o">--</span><span class="n">cv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cross-validation">
+<h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing
+how the results of a statistical analysis will generalize to an independent data set. In xLearn, users
+can use <code class="docutils literal"><span class="pre">--cv</span></code> option to use this technique. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">cv</span>
+</pre></div>
+</div>
+<p>On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using
+<code class="docutils literal"><span class="pre">-f</span></code> option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">f</span> <span class="mi">3</span> <span class="o">--</span><span class="n">cv</span>
+</pre></div>
+</div>
+<p>The xLearn will calcluate the avergae validation loss at the end of it’s message.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="p">[</span><span class="o">------------</span><span class="p">]</span> <span class="n">Average</span> <span class="n">log_loss</span><span class="p">:</span> <span class="mf">0.549417</span>
+   <span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Finish</span> <span class="n">Cross</span><span class="o">-</span><span class="n">Validation</span>
+   <span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Clear</span> <span class="n">the</span> <span class="n">xLearn</span> <span class="n">environment</span> <span class="o">...</span>
+   <span class="p">[</span><span class="o">------------</span><span class="p">]</span> <span class="n">Total</span> <span class="n">time</span> <span class="n">cost</span><span class="p">:</span> <span class="mf">0.03</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+
+
+
+<span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+  <span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+</pre></div>
+</div>
 </div>
 </div>
 

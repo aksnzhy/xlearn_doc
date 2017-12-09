@@ -125,7 +125,40 @@ A portion of xLearn's output: ::
 Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes 
 down first, and then goes up. This is because our model has already overfitted current training data set. On 
 default, xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
-metric by using ``-x`` option.
+metric by using ``-x`` option. For classification problem, the metric can be : ``acc`` (accuracy), ``prec`` 
+(precision), ``f1`` (f1 score), ``auc`` (AUC score). For example: ::
+
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -x acc
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -x prec
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -x f1
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -x auc
+
+For regression problem, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). For example: ::
+
+    cd demo/house_price/
+    ../../xlearn_train ./house_price_train.txt -s 3 -x rmse --cv
+    ../../xlearn_train ./house_price_train.txt -s 3 -x rmsd --cv
+
+Cross Validation
+----------------------------------------
+
+Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing 
+how the results of a statistical analysis will generalize to an independent data set. In xLearn, users 
+can use ``--cv`` option to use this technique. For example: ::
+
+    ./xlearn_train ./small_train.txt --cv
+
+On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using 
+``-f`` option: ::
+    
+    ./xlearn_train ./small_train.txt -f 3 --cv
+
+The xLearn will calcluate the avergae validation loss at the end of it's message. ::
+
+    [------------] Average log_loss: 0.549417
+    [ ACTION     ] Finish Cross-Validation
+    [ ACTION     ] Clear the xLearn environment ...
+    [------------] Total time cost: 0.03 (sec)
 
 
 
