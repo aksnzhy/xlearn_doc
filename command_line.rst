@@ -161,12 +161,16 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
     ./xlearn_train ./small_train.txt -f 3 --cv
 
 Here, we set the number of folds to ``3``. The xLearn will calcluate the avergae validation loss at the end 
-of it's message. ::
+of it's output message. ::
 
     [------------] Average log_loss: 0.549417
     [ ACTION     ] Finish Cross-Validation
     [ ACTION     ] Clear the xLearn environment ...
     [------------] Total time cost: 0.03 (sec)
+
+
+Choose Optimization Method
+----------------------------------------
 
 
 
