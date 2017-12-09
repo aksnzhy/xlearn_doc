@@ -287,7 +287,9 @@ In xLearn, users can use <code class="docutils literal"><span class="pre">-v</sp
 </pre></div>
 </div>
 <p>Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes
-down first, and then goes up. This is because our model has already overfitted current training data set.</p>
+down first, and then goes up. This is because our model has already overfitted current training data set. On
+default, xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
+metric by using <code class="docutils literal"><span class="pre">-x</span></code> option.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 </div>
