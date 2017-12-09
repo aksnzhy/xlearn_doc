@@ -168,10 +168,10 @@ of it's output message. ::
     [ ACTION     ] Clear the xLearn environment ...
     [------------] Total time cost: 0.03 (sec)
 
-
 Choose Optimization Method
 ----------------------------------------
-
+ 
+In xLearn, users can choose different optimization methods by using ``-o`` option.  
 
 
 
