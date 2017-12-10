@@ -47,17 +47,17 @@ Here is a simple python demo no how to use xLearn. You can check out the demo da
 
 Here, we show a portion of the xLearn's output ::
 
-  [------------] Epoch      Train log_loss       Test log_loss     Time cost (sec)
-  [   10%      ]     1            0.593750            0.535847                0.00
-  [   20%      ]     2            0.539226            0.543829                0.00
-  [   30%      ]     3            0.520034            0.531732                0.00
-  [   40%      ]     4            0.505186            0.537418                0.00
-  [   50%      ]     5            0.494089            0.533448                0.00
-  [   60%      ]     6            0.483678            0.534629                0.00
-  [   70%      ]     7            0.470848            0.528086                0.00
-  [   80%      ]     8            0.466330            0.533253                0.00
-  [   90%      ]     9            0.456660            0.535635                0.00
-  [ ACTION     ] Early-stopping at epoch 7
+  Epoch      Train log_loss       Test log_loss     Time cost (sec)
+      1            0.593750            0.535847                0.00
+      2            0.539226            0.543829                0.00
+      3            0.520034            0.531732                0.00
+      4            0.505186            0.537418                0.00
+      5            0.494089            0.533448                0.00
+      6            0.483678            0.534629                0.00
+      7            0.470848            0.528086                0.00
+      8            0.466330            0.533253                0.00
+      9            0.456660            0.535635                0.00
+  Early-stopping at epoch 7
 
 In this example, we use FFM to train our model within 9 epoch.
 
