@@ -239,27 +239,51 @@ Set Epoch Number and Early Stopping
 
 Users can set the epoch number for training by using ``-e`` option. ::
 
-  ./xlearn_train ./small_train.txt -e 3
-  ./xlearn_train ./small_train.txt -e 5
-  ./xlearn_train ./small_train.txt -e 10   
+    ./xlearn_train ./small_train.txt -e 3
+    ./xlearn_train ./small_train.txt -e 5
+    ./xlearn_train ./small_train.txt -e 10   
 
 While, if you set the validation data, xLearn will performance early-stopping by default. For example: ::
   
-  ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
+    ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
 
-Here, we set epoch number to ``10``, but xLearn stopped at epoch 7, because we get the best model at that epoch ::
+Here, we set epoch number to ``10``, but xLearn stopped at epoch 7, because we get the best model at that epoch 
+(you may get different a number on your machine) ::
 
   [ ACTION     ] Early-stopping at epoch 7
   [ ACTION     ] Start to save model ...
 
 Users can disable early stopping by useing ``--dis-es`` option ::
 
-  ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
+    ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 
 At this time, xLearn will perform ``10`` epoch for training.
 
 Lock-Free Training
 ----------------------------------------
+
+On default, xLearn performs ``Hogwild!`` lock-free training, which takes advantages of multiple core to accelerate
+training task. But lock-free training is *non-deterministic*. For example, we if run the following command many times,
+we will get different final loss value at epoch 10. ::
+
+   ./xlearn_train ./small_train.txt 
+
+   The 1st time: 0.396352
+   The 2nd time: 0.396119
+   The 3nd time: 0.396187
+   ...
+
+Users can disable lock-free training by using ``--dis-lock-free`` ::
+
+  ./xlearn_train ./small_train.txt --dis-lock-free
+
+In thie time, our result are *determinnistic*, and we will get the same final loss if we run xLearn many times. ::
+
+   The 1st time: 0.396372
+   The 2nd time: 0.396372
+   The 3nd time: 0.396372
+
+The disadvantage of ``--dis-lock-free`` is that it is slower than lock-free training. 
 
 Instance-Wise Normalization
 ----------------------------------------
