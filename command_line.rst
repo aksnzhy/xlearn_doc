@@ -214,7 +214,13 @@ For FTRL method, we also need to tune anoter four hyperparameters, including ``-
 
     ./xlearn_train ./small_train.txt -o ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
 
-For fm and ffm, users need to set the size of latent factor by using ``-k`` option. For example:
+For fm and ffm, users need to set the size of latent factor by using ``-k`` option. On default, xLearn uses ``4`` for this value.
+
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 2
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 4
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 5
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 8
+
 
  .. toctree::
    :hidden:
