@@ -303,7 +303,7 @@ it just train the model quietly ::
 
   ./xlearn_train ./small_train.txt --quiet
 
-In this way, xLearn can accerlate its training speed.
+In this way, xLearn can accelerate its training speed.
 
 
  .. toctree::
