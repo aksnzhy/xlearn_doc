@@ -426,8 +426,8 @@ this value.</p>
 <div class="section" id="lock-free-training">
 <h2>Lock-Free Training<a class="headerlink" href="#lock-free-training" title="Permalink to this headline">¶</a></h2>
 <p>On default, xLearn performs <code class="docutils literal"><span class="pre">Hogwild!</span></code> lock-free training, which takes advantages of multiple core to accelerate
-training task. But lock-free training is <em>non-deterministic</em>. For example, we if run the following command many times,
-we will get different loss value at epoch 10.</p>
+training task. But lock-free training is <em>non-deterministic</em>. For example, if we run the following command many times,
+we will get different loss value at the last epoch.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span>
 
 <span class="n">The</span> <span class="mi">1</span><span class="n">st</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396352</span>
@@ -440,16 +440,22 @@ we will get different loss value at epoch 10.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">dis</span><span class="o">-</span><span class="n">lock</span><span class="o">-</span><span class="n">free</span>
 </pre></div>
 </div>
-<p>In thie time, our result are <em>determinnistic</em>, and we will get the same loss at epoch 10 if we run xLearn many times.</p>
+<p>In thie time, our result are <em>determinnistic</em>, and we will get the same loss at the last epoch if we run xLearn many times.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="mi">1</span><span class="n">st</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>
 <span class="n">The</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>
 <span class="n">The</span> <span class="mi">3</span><span class="n">nd</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>
 </pre></div>
 </div>
-<p>The disadvantage of <code class="docutils literal"><span class="pre">--dis-lock-free</span></code> is that it is slower than lock-free training.</p>
+<p>The disadvantage of <code class="docutils literal"><span class="pre">--dis-lock-free</span></code> is that it is much slower than lock-free training.</p>
 </div>
 <div class="section" id="instance-wise-normalization">
 <h2>Instance-Wise Normalization<a class="headerlink" href="#instance-wise-normalization" title="Permalink to this headline">¶</a></h2>
+<p>For FM and FFM, xLearn uses <em>instance-wise normalizarion</em> by default. In some scenes like CTR prediction, this feature is very
+useful. But sometimes it hurts convergence. So users can disable instance-wise normalization by using <code class="docutils literal"><span class="pre">--no-norm</span></code> option</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">norm</span>
+</pre></div>
+</div>
+<p>We usually use <code class="docutils literal"><span class="pre">no-norm</span></code> in regression tasks.</p>
 </div>
 <div class="section" id="quiet-training">
 <h2>Quiet Training<a class="headerlink" href="#quiet-training" title="Permalink to this headline">¶</a></h2>

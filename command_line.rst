@@ -263,8 +263,8 @@ Lock-Free Training
 ----------------------------------------
 
 On default, xLearn performs ``Hogwild!`` lock-free training, which takes advantages of multiple core to accelerate
-training task. But lock-free training is *non-deterministic*. For example, we if run the following command many times,
-we will get different loss value at epoch 10. ::
+training task. But lock-free training is *non-deterministic*. For example, if we run the following command many times,
+we will get different loss value at the last epoch. ::
 
    ./xlearn_train ./small_train.txt 
 
@@ -277,16 +277,23 @@ Users can disable lock-free training by using ``--dis-lock-free`` ::
 
   ./xlearn_train ./small_train.txt --dis-lock-free
 
-In thie time, our result are *determinnistic*, and we will get the same loss at epoch 10 if we run xLearn many times. ::
+In thie time, our result are *determinnistic*, and we will get the same loss at the last epoch if we run xLearn many times. ::
 
    The 1st time: 0.396372
    The 2nd time: 0.396372
    The 3nd time: 0.396372
 
-The disadvantage of ``--dis-lock-free`` is that it is slower than lock-free training. 
+The disadvantage of ``--dis-lock-free`` is that it is much slower than lock-free training. 
 
 Instance-Wise Normalization
 ----------------------------------------
+
+For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, this feature is very
+useful. But sometimes it hurts convergence. So users can disable instance-wise normalization by using ``--no-norm`` option ::
+
+  ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt --no-norm
+
+We usually use ``no-norm`` in regression tasks.
 
 Quiet Training
 ----------------------------------------
