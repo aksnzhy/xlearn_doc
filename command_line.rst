@@ -293,7 +293,7 @@ useful. But sometimes it hurts convergence. So users can disable instance-wise n
 
   ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt --no-norm
 
-We usually use ``no-norm`` in regression tasks.
+We usually use ``--no-norm`` in regression tasks.
 
 Quiet Training
 ----------------------------------------
