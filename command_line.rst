@@ -193,7 +193,28 @@ In machine learning, a ``hyperparameter`` is a parameter whose value is set befo
 By contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing
 a set of optimal hyperparameters for a learning algorithm. 
 
+First, ``learning rate`` is one of the most important hyperparameter used in machine learning. On default, this 
+value is ``0.2``. For example, we can tune this value by using ``-r`` option: ::
 
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.5
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.01
+
+
+We can also use the ``-b`` option to perform regularization. On default, xLearn uses ``L2`` regularization, and 
+the regular lambda has been set to ``0.00002``. ::
+
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.001
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.002
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.01
+
+
+For FTRL method, we also need to tune anoter four hyperparameters, including ``-alpha``, ``-beta``, ``-lambda_1``, and
+``-lambda_2``. For example:
+
+    ./xlearn_train ./small_train.txt -v ./small_test.txt -o ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
+
+For fm and ffm, users need to set the size of latent factor by using ``-k`` option. For example:
 
  .. toctree::
    :hidden:
