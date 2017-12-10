@@ -98,9 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-optimization-method">Choose Optimization Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python_api.html">xLearn Python API Guide</a></li>
@@ -375,16 +373,18 @@ the regular lambda has been set to <code class="docutils literal"><span class="p
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">ftrl</span> <span class="o">-</span><span class="n">alpha</span> <span class="mf">0.002</span> <span class="o">-</span><span class="n">beta</span> <span class="mf">0.8</span> <span class="o">-</span><span class="n">lambda_1</span> <span class="mf">0.001</span> <span class="o">-</span><span class="n">lambda_2</span> <span class="mf">1.0</span>
 </pre></div>
 </div>
-<p>For fm and ffm, users need to set the size of latent factor by using <code class="docutils literal"><span class="pre">-k</span></code> option. On default, xLearn uses <code class="docutils literal"><span class="pre">4</span></code> for this value.</p>
-<blockquote>
-<div><blockquote>
-<div>./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 2
-./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 4
-./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 5
-./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 8</div></blockquote>
-<div class="toctree-wrapper compound">
+<p>For fm and ffm, users need to set the size of latent factor by using <code class="docutils literal"><span class="pre">-k</span></code> option. On default, xLearn uses <code class="docutils literal"><span class="pre">4</span></code> for
+this value.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">k</span> <span class="mi">2</span>
+   <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">k</span> <span class="mi">4</span>
+   <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">k</span> <span class="mi">5</span>
+   <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">k</span> <span class="mi">8</span>
+
+
+<span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+  <span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+</pre></div>
 </div>
-</div></blockquote>
 </div>
 </div>
 
