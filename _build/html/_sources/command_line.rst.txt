@@ -172,9 +172,19 @@ Choose Optimization Method
 ----------------------------------------
  
 In xLearn, users can choose different optimization methods by using ``-o`` option. For now, users can 
-choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` method.
+choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` method. 
+For example: ::
 
+    ./xlearn_train ./small_train.txt -o sgd
+    ./xlearn_train ./small_train.txt -o adagrad
+    ./xlearn_train ./small_train.txt -o ftrl
 
+Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing
+larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
+for dealing with sparse data. In addtion, ``sgd`` is more sensetive to the learning rate compared with `adagrad```.
+
+``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse problem.
+To use ``FTRL``, users need to tune more hyperparameters compared with ``sgd`` and ``adagard``. 
 
 
  .. toctree::

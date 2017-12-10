@@ -337,7 +337,18 @@ of it’s output message.</p>
 <div class="section" id="choose-optimization-method">
 <h2>Choose Optimization Method<a class="headerlink" href="#choose-optimization-method" title="Permalink to this headline">¶</a></h2>
 <p>In xLearn, users can choose different optimization methods by using <code class="docutils literal"><span class="pre">-o</span></code> option. For now, users can
-choose <code class="docutils literal"><span class="pre">sgd</span></code>, <code class="docutils literal"><span class="pre">adagrad</span></code>, and <code class="docutils literal"><span class="pre">ftrl</span></code> method. On default, xLearn uses the <code class="docutils literal"><span class="pre">adagrad</span></code> method.</p>
+choose <code class="docutils literal"><span class="pre">sgd</span></code>, <code class="docutils literal"><span class="pre">adagrad</span></code>, and <code class="docutils literal"><span class="pre">ftrl</span></code> method. On default, xLearn uses the <code class="docutils literal"><span class="pre">adagrad</span></code> method.
+For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">sgd</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">adagrad</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">ftrl</span>
+</pre></div>
+</div>
+<p>Compared to traditional <code class="docutils literal"><span class="pre">sgd</span></code> method, <code class="docutils literal"><span class="pre">adagrad</span></code> adapts the learning rate to the parameters, performing
+larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
+for dealing with sparse data. In addtion, <code class="docutils literal"><span class="pre">sgd</span></code> is more sensetive to the learning rate compared with <cite>adagrad``</cite>.</p>
+<p><code class="docutils literal"><span class="pre">FTRL</span></code> (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse problem.
+To use <code class="docutils literal"><span class="pre">FTRL</span></code>, users need to tune more hyperparameters compared with <code class="docutils literal"><span class="pre">sgd</span></code> and <code class="docutils literal"><span class="pre">adagard</span></code>.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 </div>
