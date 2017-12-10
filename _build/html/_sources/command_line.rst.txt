@@ -222,6 +222,8 @@ this value. ::
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 5
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 8
 
+xLearn uses SSE instruction to accerlate vectorization, and hence the time cost for k=2 and k=4 are the same.
+
 
  .. toctree::
    :hidden:
