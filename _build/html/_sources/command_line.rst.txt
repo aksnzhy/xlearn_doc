@@ -258,6 +258,14 @@ Users can disable early stopping by useing ``--dis-es`` option ::
 
 At this time, xLearn will perform ``10`` epoch for training.
 
+Lock-Free Training
+----------------------------------------
+
+Instance-Wise Normalization
+----------------------------------------
+
+Quiet Training
+----------------------------------------
 
  .. toctree::
    :hidden:
