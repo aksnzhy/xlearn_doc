@@ -83,6 +83,10 @@ Also, users can dump the model in txt format by using ``-t`` option. For example
 Here, we get a file called ``model.txt`` that stores the trainned model in txt format.
 For now, only bias and linear term can be wirtten to the txt file.
 
+User can also set ``-o`` option to specify the output file. For example: ::
+
+  ./xlearn_predict ./small_test.txt ./small_train.txt.model -o output.txt  
+
 Choose Machine Learning Model
 ----------------------------------------
 
@@ -171,13 +175,13 @@ of it's output message. ::
 Choose Optimization Method
 ----------------------------------------
  
-In xLearn, users can choose different optimization methods by using ``-o`` option. For now, users can 
+In xLearn, users can choose different optimization methods by using ``-p`` option. For now, users can 
 choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` method. 
 For example: ::
 
-    ./xlearn_train ./small_train.txt -o sgd
-    ./xlearn_train ./small_train.txt -o adagrad
-    ./xlearn_train ./small_train.txt -o ftrl
+    ./xlearn_train ./small_train.txt -p sgd
+    ./xlearn_train ./small_train.txt -p adagrad
+    ./xlearn_train ./small_train.txt -p ftrl
 
 Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing
 larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
@@ -224,6 +228,11 @@ this value. ::
 
 xLearn uses SSE instruction to accerlate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
 
+For FM and FFM, users can also set the hyperparameter ``-u`` for model initialization. On defualt, this value is 0.66. ::
+
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.80
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
+    ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.10
 
  .. toctree::
    :hidden:
