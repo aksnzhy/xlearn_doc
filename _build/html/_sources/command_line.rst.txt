@@ -171,7 +171,8 @@ of it's output message. ::
 Choose Optimization Method
 ----------------------------------------
  
-In xLearn, users can choose different optimization methods by using ``-o`` option.  
+In xLearn, users can choose different optimization methods by using ``-o`` option. For now, users can 
+choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` method.
 
 
 
