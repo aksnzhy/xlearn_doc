@@ -298,5 +298,13 @@ We usually use ``--no-norm`` in regression tasks.
 Quiet Training
 ----------------------------------------
 
+When using ``--quiet`` option, xLearn will not calculate any evaluation information during the training, and 
+it just train the model quietly ::
+
+  ./xlearn_train ./small_train.txt --quiet
+
+In this way, xLearn can accerlate its training speed.
+
+
  .. toctree::
    :hidden:

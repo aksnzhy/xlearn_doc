@@ -459,6 +459,12 @@ useful. But sometimes it hurts convergence. So users can disable instance-wise n
 </div>
 <div class="section" id="quiet-training">
 <h2>Quiet Training<a class="headerlink" href="#quiet-training" title="Permalink to this headline">¶</a></h2>
+<p>When using <code class="docutils literal"><span class="pre">--quiet</span></code> option, xLearn will not calculate any evaluation information during the training, and
+it just train the model quietly</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">quiet</span>
+</pre></div>
+</div>
+<p>In this way, xLearn can accerlate its training speed.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 </div>
