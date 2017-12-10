@@ -104,9 +104,9 @@ input data should be the ``libffm`` format. You can give a ``libffm`` file to LR
 time, xLearn will treat this data as ``libsvm`` format. The following command shows how to use different
 machine learning model to solve the binary classification problem:  ::
 
-./xlearn_train ./small_train.txt -s 0  # Using linear model
-./xlearn_train ./small_train.txt -s 1  # Using factorization machine (FM)
-./xlearn_train ./small_train.txt -s 2  # Using field-awre factorization machine (FFM)
+./xlearn_train ./small_train.txt -s 0  # Linear model
+./xlearn_train ./small_train.txt -s 1  # Factorization machine (FM)
+./xlearn_train ./small_train.txt -s 2  # Field-awre factorization machine (FFM)
 
 Set Validation Dataset
 ----------------------------------------
