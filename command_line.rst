@@ -181,10 +181,10 @@ For example: ::
 
 Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing
 larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
-for dealing with sparse data. In addtion, ``sgd`` is more sensetive to the learning rate compared with ``adagrad``.
+for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.
 
-``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse problem.
-To use ``FTRL``, users need to tune more hyperparameters compared with ``sgd`` and ``adagard``. 
+``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse 
+problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard. 
 
 Hyper-parameter Tuning
 ----------------------------------------
