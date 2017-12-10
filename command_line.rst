@@ -210,7 +210,7 @@ the regular lambda has been set to ``0.00002``. ::
 
 
 For FTRL method, we also need to tune anoter four hyperparameters, including ``-alpha``, ``-beta``, ``-lambda_1``, and
-``-lambda_2``. For example:
+``-lambda_2``. For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -o ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
 
