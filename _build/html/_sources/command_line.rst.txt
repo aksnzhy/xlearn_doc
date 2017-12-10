@@ -234,5 +234,30 @@ For FM and FFM, users can also set the hyperparameter ``-u`` for model initializ
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.10
 
+Set Epoch Number and Early Stopping
+----------------------------------------
+
+Users can set the epoch number for training by using ``-e`` option. ::
+
+  ./xlearn_train ./small_train.txt -e 3
+  ./xlearn_train ./small_train.txt -e 5
+  ./xlearn_train ./small_train.txt -e 10   
+
+While, if you set the validation data, xLearn will performance early-stopping by default. For example: ::
+  
+  ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
+
+Here, we set epoch number to ``10``, but xLearn stopped at epoch 7, because we get the best model at that epoch ::
+
+  [ ACTION     ] Early-stopping at epoch 7
+  [ ACTION     ] Start to save model ...
+
+Users can disable early stopping by useing ``--dis-es`` option ::
+
+  ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
+
+At this time, xLearn will perform ``10`` epoch for training.
+
+
  .. toctree::
    :hidden:
