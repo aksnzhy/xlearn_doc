@@ -79,8 +79,12 @@ For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while fo
 input data should be the ``libffm`` format. You can give a ``libffm`` file to LR and FM. At 
 that time, xLearn will treat this data as ``libsvm`` format. 
 
-Set Validation Dataset
+Set Dataset
 ----------------------------------------
+
+Users can set dataset by using ``setTrain()``, ``setTest()``, and ``setValidate()`` dataset.
+The ``setTrain()`` and ``setValidate()`` are used for training task, and the ``setTest()`` are
+used for prediction task.
 
 
 Cross Validation

@@ -96,7 +96,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Python API Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-dataset">Set Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-optimization-method">Choose Optimization Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a></li>
@@ -248,8 +248,11 @@ For example:</p>
 input data should be the <code class="docutils literal"><span class="pre">libffm</span></code> format. You can give a <code class="docutils literal"><span class="pre">libffm</span></code> file to LR and FM. At
 that time, xLearn will treat this data as <code class="docutils literal"><span class="pre">libsvm</span></code> format.</p>
 </div>
-<div class="section" id="set-validation-dataset">
-<h2>Set Validation Dataset<a class="headerlink" href="#set-validation-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="set-dataset">
+<h2>Set Dataset<a class="headerlink" href="#set-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Users can set dataset by using <code class="docutils literal"><span class="pre">setTrain()</span></code>, <code class="docutils literal"><span class="pre">setTest()</span></code>, and <code class="docutils literal"><span class="pre">setValidate()</span></code> dataset.
+The <code class="docutils literal"><span class="pre">setTrain()</span></code> and <code class="docutils literal"><span class="pre">setValidate()</span></code> are used for training task, and the <code class="docutils literal"><span class="pre">setTest()</span></code> are
+used for prediction task.</p>
 </div>
 <div class="section" id="cross-validation">
 <h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
