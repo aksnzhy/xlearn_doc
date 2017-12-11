@@ -61,10 +61,23 @@ Here, we show a portion of the xLearn's output ::
 
 In this example, we use FFM to train our model within 9 epoch.
 
-
 Choose Machine Learning Model
 ----------------------------------------
 
+For now, xLearn can support three different machine learning models, including
+LR, FM, and FFM. Users can create different models by using ``create_xxx()`` API.
+For example: ::
+   
+    import xlearn as xl
+
+    ffm_model = xl.create_ffm()
+    fm_model = xl.create_fm()
+    lr_model = xl.create_lr()
+
+
+For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while for FFM, the 
+input data should be the ``libffm`` format. You can give a ``libffm`` file to LR and FM. At 
+that time, xLearn will treat this data as ``libsvm`` format. 
 
 Set Validation Dataset
 ----------------------------------------
