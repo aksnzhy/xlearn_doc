@@ -1,8 +1,3 @@
-.. xlearn_doc documentation master file, created by
-   sphinx-quickstart on Sun Dec  3 18:43:51 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Get Started with xLearn !
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -77,14 +72,3 @@ simple binary classification task. You can check out the demo data
  .. __: python_api.html
  .. __: demo.html
  .. __: tutorial.html
-
- .. toctree::
-   :hidden:
-
-   start.rst
-   install.rst
-   command_line.rst
-   python_api.rst
-   large_scale.rst
-   demo.rst
-   tutorial.rst
