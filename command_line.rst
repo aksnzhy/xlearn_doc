@@ -50,7 +50,7 @@ prediction result. Let's see the first five lines of output by using the followi
 These five lines of data is the prediction score calculated for every example in test set. The 
 negative data represents the negative example and positive data represents the positive example. 
 You can convert the score to (0-1) by using ``--sigmoid`` option, or you can convert your result 
-to bianry result (0 and 1) by using ``--sign`` option ::
+to binary result (0 and 1) by using ``--sign`` option ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model --sigmoid
     head -n 5 ./small_test.txt.out

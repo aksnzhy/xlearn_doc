@@ -211,8 +211,6 @@ shell and perform the following python code to check your installation:</p>
 
 <span class="c1"># Prediction task</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
-<span class="c1"># Convert output to 0~1</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -230,7 +228,56 @@ shell and perform the following python code to check your installation:</p>
 <span class="n">Early</span><span class="o">-</span><span class="n">stopping</span> <span class="n">at</span> <span class="n">epoch</span> <span class="mi">7</span>
 </pre></div>
 </div>
-<p>In this example, we use FFM to train our model within 9 epoch.</p>
+<p>In this example, we use FFM to train our model within 9 epoch. We can see that a new
+file called <code class="docutils literal"><span class="pre">model.out</span></code> has been generated in current directory. This file stores the
+trainned model checkpoint, and we can use this model file to make prediction in the future</p>
+<p>After we perform the python code</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we can get a new file called <code class="docutils literal"><span class="pre">output.txt</span></code> in current directory. This is output prediction
+result. Let’s see the first five lines of output by using the following command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="o">-</span><span class="mf">1.5927</span>
+<span class="o">-</span><span class="mf">0.560985</span>
+<span class="o">-</span><span class="mf">0.773492</span>
+<span class="o">-</span><span class="mf">0.551364</span>
+<span class="o">-</span><span class="mf">1.22954</span>
+</pre></div>
+</div>
+<p>These five lines of data is the prediction score calculated for every example in test set. The
+negative data represents the negative example and the positive data prepresents the positive example.
+You can convert the score to <code class="docutils literal"><span class="pre">(0-1)</span></code> by using <code class="docutils literal"><span class="pre">setSigmoid()</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Prediction task</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then we can get the result</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.162849</span>
+<span class="mf">0.352197</span>
+<span class="mf">0.308373</span>
+<span class="mf">0.356715</span>
+<span class="mf">0.217436</span>
+</pre></div>
+</div>
+<p>We can also convert the score to binary result <code class="docutils literal"><span class="pre">(0</span> <span class="pre">and</span> <span class="pre">1)</span></code> by using <code class="docutils literal"><span class="pre">setSign()</span></code> API</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Prediction task</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSign</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="choose-machine-learning-model">
 <h2>Choose Machine Learning Model<a class="headerlink" href="#choose-machine-learning-model" title="Permalink to this headline">¶</a></h2>

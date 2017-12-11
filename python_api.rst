@@ -41,8 +41,6 @@ Here is a simple python demo no how to use xLearn. You can check out the demo da
 
    # Prediction task
    ffm_model.setTest("./small_test.txt")  
-   # Convert output to 0~1
-   ffm_model.setSigmoid()
    ffm_model.predict("./model.out", "./output.txt")  
 
 Here, we show a portion of the xLearn's output ::
@@ -59,7 +57,57 @@ Here, we show a portion of the xLearn's output ::
       9            0.456660            0.535635                0.00
   Early-stopping at epoch 7
 
-In this example, we use FFM to train our model within 9 epoch.
+In this example, we use FFM to train our model within 9 epoch. We can see that a new
+file called ``model.out`` has been generated in current directory. This file stores the 
+trainned model checkpoint, and we can use this model file to make prediction in the future
+
+After we perform the python code ::
+
+    ffm_model.predict("./model.out", "./output.txt")      
+
+we can get a new file called ``output.txt`` in current directory. This is output prediction
+result. Let's see the first five lines of output by using the following command ::
+
+    head -n 5 ./output.txt
+
+    -1.5927
+    -0.560985
+    -0.773492
+    -0.551364
+    -1.22954
+
+These five lines of data is the prediction score calculated for every example in test set. The
+negative data represents the negative example and the positive data prepresents the positive example.
+You can convert the score to ``(0-1)`` by using ``setSigmoid()`` ::
+
+   # Prediction task
+   ffm_model.setTest("./small_test.txt")  
+   ffm_model.setSigmoid()
+   ffm_model.predict("./model.out", "./output.txt")      
+
+and then we can get the result ::
+
+   0.162849
+   0.352197
+   0.308373
+   0.356715
+   0.217436
+
+We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` API ::
+
+   # Prediction task
+   ffm_model.setTest("./small_test.txt")  
+   ffm_model.setSign()
+   ffm_model.predict("./model.out", "./output.txt")
+
+Output ::
+
+   0
+   0
+   0
+   0
+   0
+
 
 Choose Machine Learning Model
 ----------------------------------------
