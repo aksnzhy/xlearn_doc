@@ -1,6 +1,8 @@
 xLearn API List
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+This page gives the xLearn API List for command line, Python package, and R pakcage.
+
 xLearn Command Line Usage
 ------------------------------
 
@@ -10,7 +12,7 @@ For training: ::
 
 Options: ::
 
-      -s <type> : Type of machine learning model (default 0)
+  -s <type> : Type of machine learning model (default 0)
      for classification task:
          0 -- linear model (GLM)
          1 -- factorization machines (FM)
@@ -76,7 +78,7 @@ Options: ::
                                                                  
   --quiet              :  Don't print any evaluation information during the training and
                           just train the model quietly.
-                          
+
   -alpha               :  Used by ftrl.
                                        
   -beta                :  Used by ftrl.
