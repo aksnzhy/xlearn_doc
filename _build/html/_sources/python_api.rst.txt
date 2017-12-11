@@ -112,7 +112,6 @@ Output ::
    0
    0
 
-
 Choose Machine Learning Model
 ----------------------------------------
 
@@ -164,10 +163,55 @@ any evaluation metric. For example: ::
 Cross Validation
 ----------------------------------------
 
+Cross-validation, sometimes called rotation estimation, is a model validation technique 
+for assessing how the results of a statistical analysis will generalize to an independent 
+data set. In xLearn, users can use ``cv()`` API to perform cross-validation. For example: ::
+
+    import xlearn as xl
+
+    # Training task
+    ffm_model = xl.create_ffm()
+    ffm_model.setTrain("./small_train.txt")  
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+    ffm_model.cv(param) 
+
+
+On default, xLearn uses 5-folds cross validation, and users can set number of fold 
+by using the ``fold`` parameter in ``param`` ::
+
+    import xlearn as xl
+
+    # Training task
+    ffm_model = xl.create_ffm()
+    ffm_model.setTrain("./small_train.txt")  
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'fold':3} 
+            
+    ffm_model.cv(param)     
+
+In this example, xLearn performs cross-validation in 3 folds.
 
 Choose Optimization Method
 ----------------------------------------
 
+In xLearn, users can choose different optimization methods by using ``opt`` parameter. For now, 
+users can choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` 
+method. For example: ::
+
+   ...
+
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'sgd'} 
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'adagrad'} 
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'ftrl'} 
+
+   ffm_model.fit(param, "./model.out") 
+
+Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing 
+larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited 
+for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.
+
+``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse 
+problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard.
 
 Hyper-parameter Tuning
 ----------------------------------------

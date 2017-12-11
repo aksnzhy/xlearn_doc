@@ -331,9 +331,52 @@ any evaluation metric. For example:</p>
 </div>
 <div class="section" id="cross-validation">
 <h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation, sometimes called rotation estimation, is a model validation technique
+for assessing how the results of a statistical analysis will generalize to an independent
+data set. In xLearn, users can use <code class="docutils literal"><span class="pre">cv()</span></code> API to perform cross-validation. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On default, xLearn uses 5-folds cross validation, and users can set number of fold
+by using the <code class="docutils literal"><span class="pre">fold</span></code> parameter in <code class="docutils literal"><span class="pre">param</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;fold&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, xLearn performs cross-validation in 3 folds.</p>
 </div>
 <div class="section" id="choose-optimization-method">
 <h2>Choose Optimization Method<a class="headerlink" href="#choose-optimization-method" title="Permalink to this headline">¶</a></h2>
+<p>In xLearn, users can choose different optimization methods by using <code class="docutils literal"><span class="pre">opt</span></code> parameter. For now,
+users can choose <code class="docutils literal"><span class="pre">sgd</span></code>, <code class="docutils literal"><span class="pre">adagrad</span></code>, and <code class="docutils literal"><span class="pre">ftrl</span></code> method. On default, xLearn uses the <code class="docutils literal"><span class="pre">adagrad</span></code>
+method. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;opt&#39;</span><span class="p">:</span><span class="s1">&#39;sgd&#39;</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;opt&#39;</span><span class="p">:</span><span class="s1">&#39;adagrad&#39;</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;opt&#39;</span><span class="p">:</span><span class="s1">&#39;ftrl&#39;</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Compared to traditional <code class="docutils literal"><span class="pre">sgd</span></code> method, <code class="docutils literal"><span class="pre">adagrad</span></code> adapts the learning rate to the parameters, performing
+larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
+for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.</p>
+<p><code class="docutils literal"><span class="pre">FTRL</span></code> (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse
+problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard.</p>
 </div>
 <div class="section" id="hyper-parameter-tuning">
 <h2>Hyper-parameter Tuning<a class="headerlink" href="#hyper-parameter-tuning" title="Permalink to this headline">¶</a></h2>
