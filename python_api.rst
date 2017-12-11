@@ -135,9 +135,31 @@ Set Dataset
 ----------------------------------------
 
 Users can set dataset by using ``setTrain()``, ``setTest()``, and ``setValidate()`` dataset.
-The ``setTrain()`` and ``setValidate()`` are used for training task, and the ``setTest()`` are
-used for prediction task.
+The ``setTrain()`` and ``setValidate()`` are used for training task, while the ``setTest()`` 
+is used for prediction task. If users don't set the validation file, xLearn will not calculate
+any evaluation metric. For example: ::
 
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+
+   Epoch      Train log_loss     Time cost (sec)
+       1            0.593791                0.00
+       2            0.540819                0.00
+       3            0.518385                0.00
+       4            0.504790                0.00
+       5            0.492556                0.00
+       6            0.481522                0.00
+       7            0.473634                0.00
+       8            0.464028                0.00
+       9            0.456445                0.00
+      10            0.448745                0.00
 
 Cross Validation
 ----------------------------------------

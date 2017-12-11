@@ -302,8 +302,32 @@ that time, xLearn will treat this data as <code class="docutils literal"><span c
 <div class="section" id="set-dataset">
 <h2>Set Dataset<a class="headerlink" href="#set-dataset" title="Permalink to this headline">¶</a></h2>
 <p>Users can set dataset by using <code class="docutils literal"><span class="pre">setTrain()</span></code>, <code class="docutils literal"><span class="pre">setTest()</span></code>, and <code class="docutils literal"><span class="pre">setValidate()</span></code> dataset.
-The <code class="docutils literal"><span class="pre">setTrain()</span></code> and <code class="docutils literal"><span class="pre">setValidate()</span></code> are used for training task, and the <code class="docutils literal"><span class="pre">setTest()</span></code> are
-used for prediction task.</p>
+The <code class="docutils literal"><span class="pre">setTrain()</span></code> and <code class="docutils literal"><span class="pre">setValidate()</span></code> are used for training task, while the <code class="docutils literal"><span class="pre">setTest()</span></code>
+is used for prediction task. If users don’t set the validation file, xLearn will not calculate
+any evaluation metric. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+
+
+<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.593791</span>                <span class="mf">0.00</span>
+    <span class="mi">2</span>            <span class="mf">0.540819</span>                <span class="mf">0.00</span>
+    <span class="mi">3</span>            <span class="mf">0.518385</span>                <span class="mf">0.00</span>
+    <span class="mi">4</span>            <span class="mf">0.504790</span>                <span class="mf">0.00</span>
+    <span class="mi">5</span>            <span class="mf">0.492556</span>                <span class="mf">0.00</span>
+    <span class="mi">6</span>            <span class="mf">0.481522</span>                <span class="mf">0.00</span>
+    <span class="mi">7</span>            <span class="mf">0.473634</span>                <span class="mf">0.00</span>
+    <span class="mi">8</span>            <span class="mf">0.464028</span>                <span class="mf">0.00</span>
+    <span class="mi">9</span>            <span class="mf">0.456445</span>                <span class="mf">0.00</span>
+   <span class="mi">10</span>            <span class="mf">0.448745</span>                <span class="mf">0.00</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cross-validation">
 <h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
