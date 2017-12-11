@@ -85,6 +85,8 @@ simple binary classification task. You can check out the demo data
    install.rst
    command_line.rst
    python_api.rst
+   r_api.rst
+   xlearn_api.rst
    large_scale.rst
    demo.rst
    tutorial.rst
