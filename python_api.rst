@@ -201,8 +201,8 @@ method. For example: ::
    ...
 
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'sgd'} 
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'adagrad'} 
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'ftrl'} 
+   # param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'adagrad'} 
+   # param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'ftrl'} 
 
    ffm_model.fit(param, "./model.out") 
 
