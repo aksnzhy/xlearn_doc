@@ -87,6 +87,8 @@ You can convert the score to ``(0-1)`` by using ``setSigmoid()`` ::
 
 and then we can get the result ::
 
+   head -n 5 ./output.txt
+
    0.162849
    0.352197
    0.308373
@@ -101,6 +103,8 @@ We can also convert the score to binary result ``(0 and 1)`` by using ``setSign(
    ffm_model.predict("./model.out", "./output.txt")
 
 Output ::
+
+   head -n 5 ./output.txt
 
    0
    0
