@@ -317,24 +317,95 @@ In this example, xLearn stops at the 7th epoch. Users can disable early stopping
    ffm_model = xl.create_ffm()
    ffm_model.setTrain("./small_train.txt")  
    ffm_model.disableEarlyStop()
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':15} 
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
             
    ffm_model.fit(param, "./model.out") 
 
-In this time, xLearn performs 15 epoch.
+In this time, xLearn performs 15 epoch without early-stopping.
 
 Lock-Free Training
 ----------------------------------------
 
+On default, xLearn performs ``Hogwild!`` lock-free training, which takes advantages of multiple core to accelerate 
+training task. But lock-free training is non-deterministic. For example, if we run the following command many 
+times, we will get different loss value at the last epoch. ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.disableEarlyStop()
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+Run tree times and show the final loss ::
+
+   The 1st time: 0.396352
+   The 2nd time: 0.396119
+   The 3nd time: 0.396187
+   ...
+
+Users can disable lock-free training by using ``disableLockFree()`` API. ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.disableEarlyStop()
+   ffm_model.disableLockFree()
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+In this time, our result are *deterministic*, and we will get the same loss at the last epoch
+if we run xLearn many times. ::
+
+   The 1st time: 0.419957
+   The 2nd time: 0.419957
+   The 3nd time: 0.419957
+   ...   
+
+The disadvantage of using ``disableEarlyStop()`` is that it is much slower than lock-free training.
 
 Instance-Wise Normalization
 ----------------------------------------
 
+For FM and FFM, xLearn uses *instance-wise normalization* by default. In some scenes like CTR prediction, 
+this feature is very useful. But sometimes it hurts convergence. So users can disable instance-wise 
+normalization by using ``disableNorm()`` API. ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.disableNorm()
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+We usually use ``diableNorm()`` API in regression tasks.
 
 Quiet Training
 ----------------------------------------
 
+When using ``setQuiet()`` API, xLearn will not calculate any evaluation information during the training,
+and it will just train the model quietly. ::
 
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.setQuiet()
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+In this way, xLearn can accelerate its training speed.
 
  .. toctree::
    :hidden:
