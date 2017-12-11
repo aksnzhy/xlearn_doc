@@ -228,9 +228,14 @@ shell and perform the following python code to check your installation:</p>
 <span class="n">Early</span><span class="o">-</span><span class="n">stopping</span> <span class="n">at</span> <span class="n">epoch</span> <span class="mi">7</span>
 </pre></div>
 </div>
-<p>In this example, we use FFM to train our model within 9 epoch. We can see that a new
-file called <code class="docutils literal"><span class="pre">model.out</span></code> has been generated in current directory. This file stores the
-trainned model checkpoint, and we can use this model file to make prediction in the future</p>
+<p>In this example, we use FFM to train our model within 9 epoch for a binary classification
+task. If you want train a regression model. You can reset the <code class="docutils literal"><span class="pre">task</span></code> parameter to <code class="docutils literal"><span class="pre">reg</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We can see that a new file called <code class="docutils literal"><span class="pre">model.out</span></code> has been generated in current directory.
+This file stores the trainned model checkpoint, and we can use this model file to make
+prediction in the future</p>
 <p>After we perform the python code</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
@@ -380,9 +385,105 @@ problem. To use FTRL, users need to tune more hyperparameters compared with sgd 
 </div>
 <div class="section" id="hyper-parameter-tuning">
 <h2>Hyper-parameter Tuning<a class="headerlink" href="#hyper-parameter-tuning" title="Permalink to this headline">¶</a></h2>
+<p>In machine learning, a <code class="docutils literal"><span class="pre">hyperparameter</span></code> is a parameter whose value is set before the learning process begins. By
+contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing
+a set of optimal hyperparameters for a learning algorithm.</p>
+<p>First, <code class="docutils literal"><span class="pre">learning</span> <span class="pre">rate</span></code> is one of the most important hyperparameter used in machine learning. On default, this value
+is <code class="docutils literal"><span class="pre">0.2</span></code>. For example, we can tune this value by using <code class="docutils literal"><span class="pre">lr</span></code> parameter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">}</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>We can also set the <code class="docutils literal"><span class="pre">lambda</span></code> parameter to perform regularization. On default, xLearn uses <code class="docutils literal"><span class="pre">L2</span></code> regularization, and the
+regular lambda has been set to <code class="docutils literal"><span class="pre">0.00002</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.02</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>For FTRL method, we also need to tune another four hyperparameters, including <code class="docutils literal"><span class="pre">alpha</span></code>, <code class="docutils literal"><span class="pre">beta</span></code>, <code class="docutils literal"><span class="pre">lambda_1</span></code>,
+and <code class="docutils literal"><span class="pre">lambda_2</span></code>. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;lambda_1&#39;</span><span class="p">:</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;lambda_2&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For FM and FFM. users need to set the size of latent factor by using <code class="docutils literal"><span class="pre">k</span></code> parameters. On default, xLearn uses <code class="docutils literal"><span class="pre">4</span></code> for
+this value.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">}</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>xLearn uses SSE instruction to accerlate vector operation, and hence the time cost for
+<code class="docutils literal"><span class="pre">k=2</span></code> and <code class="docutils literal"><span class="pre">k=4</span></code> are the same.</p>
+<p>For FM and FFM,  users can also set the hyperparameter <code class="docutils literal"><span class="pre">init</span></code> for model initialization.
+On defualt, this value is <code class="docutils literal"><span class="pre">0.66</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">}</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="set-epoch-number-and-early-stopping">
 <h2>Set Epoch Number and Early Stopping<a class="headerlink" href="#set-epoch-number-and-early-stopping" title="Permalink to this headline">¶</a></h2>
+<p>Users can set the epoch number for training by using <code class="docutils literal"><span class="pre">epoch</span></code> parameter.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;epoch&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;epoch&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;epoch&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>While, if the validation file has been set, xLearn will perform early-stopping by default.
+For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;epoch&#39;</span><span class="p">:</span><span class="mi">15</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Start</span> <span class="n">to</span> <span class="n">train</span> <span class="o">...</span>
+<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.596511</span>            <span class="mf">0.541254</span>                <span class="mf">0.00</span>
+    <span class="mi">2</span>            <span class="mf">0.536490</span>            <span class="mf">0.547355</span>                <span class="mf">0.00</span>
+    <span class="mi">3</span>            <span class="mf">0.520169</span>            <span class="mf">0.531791</span>                <span class="mf">0.00</span>
+    <span class="mi">4</span>            <span class="mf">0.506654</span>            <span class="mf">0.535538</span>                <span class="mf">0.00</span>
+    <span class="mi">5</span>            <span class="mf">0.493861</span>            <span class="mf">0.533926</span>                <span class="mf">0.00</span>
+    <span class="mi">6</span>            <span class="mf">0.481926</span>            <span class="mf">0.535290</span>                <span class="mf">0.00</span>
+    <span class="mi">7</span>            <span class="mf">0.468731</span>            <span class="mf">0.527707</span>                <span class="mf">0.00</span>
+    <span class="mi">8</span>            <span class="mf">0.465345</span>            <span class="mf">0.533434</span>                <span class="mf">0.00</span>
+    <span class="mi">9</span>            <span class="mf">0.456871</span>            <span class="mf">0.534466</span>                <span class="mf">0.00</span>
+<span class="n">Early</span><span class="o">-</span><span class="n">stopping</span> <span class="n">at</span> <span class="n">epoch</span> <span class="mi">7</span>
+<span class="n">Start</span> <span class="n">to</span> <span class="n">save</span> <span class="n">model</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>In this example, xLearn stops at the 7th epoch. Users can disable early stopping by using
+<code class="docutils literal"><span class="pre">disableEarlyStop()</span></code> API.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">disableEarlyStop</span><span class="p">()</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;epoch&#39;</span><span class="p">:</span><span class="mi">15</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this time, xLearn performs 15 epoch.</p>
 </div>
 <div class="section" id="lock-free-training">
 <h2>Lock-Free Training<a class="headerlink" href="#lock-free-training" title="Permalink to this headline">¶</a></h2>

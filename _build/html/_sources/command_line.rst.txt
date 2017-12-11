@@ -243,7 +243,7 @@ Users can set the epoch number for training by using ``-e`` option. ::
     ./xlearn_train ./small_train.txt -e 5
     ./xlearn_train ./small_train.txt -e 10   
 
-While, if you set the validation data, xLearn will performance early-stopping by default. For example: ::
+While, if you set the validation data, xLearn will perform early-stopping by default. For example: ::
   
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
 
@@ -253,7 +253,7 @@ Here, we set epoch number to ``10``, but xLearn stopped at epoch 7, because we g
   [ ACTION     ] Early-stopping at epoch 7
   [ ACTION     ] Start to save model ...
 
-Users can disable early stopping by useing ``--dis-es`` option ::
+Users can disable early stopping by using ``--dis-es`` option ::
 
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 

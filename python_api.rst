@@ -57,9 +57,14 @@ Here, we show a portion of the xLearn's output ::
       9            0.456660            0.535635                0.00
   Early-stopping at epoch 7
 
-In this example, we use FFM to train our model within 9 epoch. We can see that a new
-file called ``model.out`` has been generated in current directory. This file stores the 
-trainned model checkpoint, and we can use this model file to make prediction in the future
+In this example, we use FFM to train our model within 9 epoch for a binary classification
+task. If you want train a regression model. You can reset the ``task`` parameter to ``reg``. ::
+
+    param = {'task':'reg', 'lr':0.2, 'lambda':0.002} 
+
+We can see that a new file called ``model.out`` has been generated in current directory. 
+This file stores the trainned model checkpoint, and we can use this model file to make 
+prediction in the future
 
 After we perform the python code ::
 
@@ -216,10 +221,107 @@ problem. To use FTRL, users need to tune more hyperparameters compared with sgd 
 Hyper-parameter Tuning
 ----------------------------------------
 
+In machine learning, a ``hyperparameter`` is a parameter whose value is set before the learning process begins. By 
+contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing 
+a set of optimal hyperparameters for a learning algorithm.
+
+First, ``learning rate`` is one of the most important hyperparameter used in machine learning. On default, this value 
+is ``0.2``. For example, we can tune this value by using ``lr`` parameter: ::
+
+    param = {'task':'binary', 'lr':0.2} 
+    param = {'task':'binary', 'lr':0.5}
+    param = {'task':'binary', 'lr':0.01}
+
+    ...  
+
+We can also set the ``lambda`` parameter to perform regularization. On default, xLearn uses ``L2`` regularization, and the
+regular lambda has been set to ``0.00002``. ::
+
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.02} 
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+
+    ...
+
+For FTRL method, we also need to tune another four hyperparameters, including ``alpha``, ``beta``, ``lambda_1``, 
+and ``lambda_2``. For example: ::
+
+    param = {'alpha':0.002, 'beta':0.8, 'lambda_1':0.001, 'lambda_2': 1.0}    
+
+For FM and FFM. users need to set the size of latent factor by using ``k`` parameters. On default, xLearn uses ``4`` for 
+this value. ::
+
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':2}    
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':4}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':5}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':8}
+
+    ...
+
+xLearn uses SSE instruction to accerlate vector operation, and hence the time cost for 
+``k=2`` and ``k=4`` are the same.         
+
+For FM and FFM,  users can also set the hyperparameter ``init`` for model initialization. 
+On defualt, this value is ``0.66``. ::
+
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.5}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.8}
+
+    ...    
 
 Set Epoch Number and Early Stopping
 ----------------------------------------
 
+Users can set the epoch number for training by using ``epoch`` parameter. ::
+
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':3}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':5}
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':10}
+
+    ...
+
+While, if the validation file has been set, xLearn will perform early-stopping by default. 
+For example: ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':15} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+Output ::
+
+    Start to train ...
+    Epoch      Train log_loss       Test log_loss     Time cost (sec)
+        1            0.596511            0.541254                0.00
+        2            0.536490            0.547355                0.00
+        3            0.520169            0.531791                0.00
+        4            0.506654            0.535538                0.00
+        5            0.493861            0.533926                0.00
+        6            0.481926            0.535290                0.00
+        7            0.468731            0.527707                0.00
+        8            0.465345            0.533434                0.00
+        9            0.456871            0.534466                0.00
+    Early-stopping at epoch 7
+    Start to save model ...
+
+In this example, xLearn stops at the 7th epoch. Users can disable early stopping by using 
+``disableEarlyStop()`` API. ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.disableEarlyStop()
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':15} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+In this time, xLearn performs 15 epoch.
 
 Lock-Free Training
 ----------------------------------------
