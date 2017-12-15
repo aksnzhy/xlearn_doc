@@ -41,35 +41,35 @@ instead of the Python API, you can see how to build xLearn from source code as f
 Install xLearn from Source Code
 ----------------------------------
 
-Building xLearn from source code consists two steps:
+Building xLearn from source code consists two steps.
 
-First, build the executable files (``xlearn_train`` and ``xlearn_predict``) and the shared library 
-(``libxlearn.so`` for Linux and ``libxlearn.dylib`` for Mac OSX) from the C++ code.
+First, you need to build the executable files (``xlearn_train`` and ``xlearn_predict``), as well as the 
+shared library (``libxlearn_api.so`` for Linux and ``libxlearn_api.dylib`` for Mac OSX) from the C++ code.
 
-Then, you can install the python package through ``install-python.sh``.
+Then, you can install the Python package through ``install-python.sh``.
 
-Fortunately, we write a script ``build.sh`` to do all the things for users.
+Fortunately, we write a script ``build.sh`` to do all the cumbersome work for users.
 
 For users, you just need to clone the code from github ::
 
   git clone https://github.com/aksnzhy/xlearn.git
 
-and then build xLearn using the folloing commands ::
+and then build xLearn using the folloing commands: ::
 
   cd xlearn
   ./build.sh
 
-The ``build.sh`` will build xLearn in the ``build`` directory in current path.
+You may be asked to input your password during installation.
 
-Test
+Test Your Building
 ----------------------------------
 
-Now you can test your installation by using the following xLearn command line ::
+Now you can test your installation by using the following command: ::
 
   cd build
   ./run_example.sh
 
-You can also test the python package by using the following command line ::
+You can also test the Python package by using the following command: ::
 
   cd python-package/test
   python test_python.py

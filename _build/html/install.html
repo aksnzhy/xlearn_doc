@@ -95,7 +95,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test">Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-your-building">Test Your Building</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="install_cmake.html">Install GCC or Clang</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install_cmake.html#install-cmake">Install CMake</a></li>
 </ul>
@@ -211,30 +211,30 @@ instead of the Python API, you can see how to build xLearn from source code as f
 </div>
 <div class="section" id="install-xlearn-from-source-code">
 <h2>Install xLearn from Source Code<a class="headerlink" href="#install-xlearn-from-source-code" title="Permalink to this headline">¶</a></h2>
-<p>Building xLearn from source code consists two steps:</p>
-<p>First, build the executable files (<code class="docutils literal"><span class="pre">xlearn_train</span></code> and <code class="docutils literal"><span class="pre">xlearn_predict</span></code>) and the shared library
-(<code class="docutils literal"><span class="pre">libxlearn.so</span></code> for Linux and <code class="docutils literal"><span class="pre">libxlearn.dylib</span></code> for Mac OSX) from the C++ code.</p>
-<p>Then, you can install the python package through <code class="docutils literal"><span class="pre">install-python.sh</span></code>.</p>
-<p>Fortunately, we write a script <code class="docutils literal"><span class="pre">build.sh</span></code> to do all the things for users.</p>
+<p>Building xLearn from source code consists two steps.</p>
+<p>First, you need to build the executable files (<code class="docutils literal"><span class="pre">xlearn_train</span></code> and <code class="docutils literal"><span class="pre">xlearn_predict</span></code>), as well as the
+shared library (<code class="docutils literal"><span class="pre">libxlearn_api.so</span></code> for Linux and <code class="docutils literal"><span class="pre">libxlearn_api.dylib</span></code> for Mac OSX) from the C++ code.</p>
+<p>Then, you can install the Python package through <code class="docutils literal"><span class="pre">install-python.sh</span></code>.</p>
+<p>Fortunately, we write a script <code class="docutils literal"><span class="pre">build.sh</span></code> to do all the cumbersome work for users.</p>
 <p>For users, you just need to clone the code from github</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aksnzhy</span><span class="o">/</span><span class="n">xlearn</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>and then build xLearn using the folloing commands</p>
+<p>and then build xLearn using the folloing commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">xlearn</span>
 <span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">build.sh</span></code> will build xLearn in the <code class="docutils literal"><span class="pre">build</span></code> directory in current path.</p>
+<p>You may be asked to input your password during installation.</p>
 </div>
-<div class="section" id="test">
-<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
-<p>Now you can test your installation by using the following xLearn command line</p>
+<div class="section" id="test-your-building">
+<h2>Test Your Building<a class="headerlink" href="#test-your-building" title="Permalink to this headline">¶</a></h2>
+<p>Now you can test your installation by using the following command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build</span>
 <span class="o">./</span><span class="n">run_example</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>You can also test the python package by using the following command line</p>
+<p>You can also test the Python package by using the following command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">package</span><span class="o">/</span><span class="n">test</span>
 <span class="n">python</span> <span class="n">test_python</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
