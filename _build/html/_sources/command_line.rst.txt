@@ -105,7 +105,7 @@ Users can also set ``-o`` option to specify the output file. For example: ::
 
 By default, the name of the output file equals to ``test_data_name`` + ``.out`` .
 
-Choose Machine Learning Model
+Choose Machine Learning Algorithm
 ----------------------------------------
 
 For now, xLearn can support three different machine learning model, including LR, FM and FFM.
