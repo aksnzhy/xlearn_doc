@@ -108,8 +108,8 @@ By default, the name of the output file equals to ``test_data_name`` + ``.out`` 
 Choose Machine Learning Algorithm
 ----------------------------------------
 
-For now, xLearn can support three different machine learning model, including LR, FM and FFM.
-Users can choose different machine learning models by using ``-s`` option ::
+For now, xLearn can support three different machine learning algorithms, including LR, FM and FFM.
+Users can choose different machine learning algorithms by using ``-s`` option: ::
 
   -s <type> : Type of machine learning model (default 0)
      for classification task:
