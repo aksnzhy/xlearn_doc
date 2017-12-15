@@ -24,16 +24,29 @@ Link to the Other Helpful Resources
 Quick Install
 ----------------------------------
 
-The easiest way to install xLearn is to use ``pip``. The following command will download the 
-xLearn source code and build it locally. ::
+The easiest way to install xLearn Python package is to use ``pip``. The following command will 
+download the xLearn source code and install python package it locally. ::
 
     sudo pip install xlearn
 
 The installation process will take a while to complete. And then you can type the following 
-script in python shell to check whether the xLearn has been installed successfully:
+script in your python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
+
+You will see: ::
+
+  -------------------------------------------------------------------------
+           _
+          | |
+     __  _| |     ___  __ _ _ __ _ __
+     \ \/ / |    / _ \/ _` | '__| '_ \
+      >  <| |___|  __/ (_| | |  | | | |
+     /_/\_\_____/\___|\__,_|_|  |_| |_|
+
+        xLearn   -- 0.10 Version --
+  -------------------------------------------------------------------------
 
 If you meet any installation problem, or you want to build the lastest code from github, or you want to 
 use the xLearn command line instead of the python API, you can see how to build xLearn from source code 
