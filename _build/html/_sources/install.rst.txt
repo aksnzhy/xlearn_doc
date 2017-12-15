@@ -35,7 +35,7 @@ You will see: ::
         xLearn   -- 0.10 Version --
   -------------------------------------------------------------------------
 
-If you want to build the latest code from Github, or you want to use the xLearn command line 
+If you want to build the latest code from `Github`__, or you want to use the xLearn command line 
 instead of the Python API, you can see how to build xLearn from source code as follow.
 
 Install xLearn from Source Code
@@ -75,6 +75,7 @@ You can also test the python package by using the following command line ::
   python test_python.py
 
 .. __: install_cmake.html
+.. __: https://github.com/aksnzhy/xlearn
 
  .. toctree::
    :hidden:
