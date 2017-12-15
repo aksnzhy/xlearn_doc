@@ -3,18 +3,19 @@ xLearn Command Line Guide
 
 Once you built xLearn from source code successfully, you will get two executable files 
 ``xlearn_train`` and ``xlearn_predict`` in your ``build`` directory. Now you can use these 
-two executable files to perform training and prediction task.
+two executable files to perform training and prediction tasks.
 
 Quick Start
 ----------------------------------------
 
-Make sure that you are in the ``build`` directory of xLearn, and you will find the demo data 
-``small_test.txt`` and ``small_train.txt`` in this directory. Now you can type the following 
-command to train a model ::
+Make sure that you are in the ``build`` directory of xLearn, and you can find the demo data 
+``small_test.txt`` and ``small_train.txt`` in this directory. Now type the following 
+command to train a model: ::
 
     ./xlearn_train ./small_train.txt
 
-Here, we show a portion of the xLearn's output ::
+Here, we show a portion of the xLearn's output. Note that the loss value shown in your machine 
+could be different. ::
 
     Epoch      Train log_loss     Time cost (sec)
         1            0.567514                0.00
@@ -28,16 +29,16 @@ Here, we show a portion of the xLearn's output ::
         9            0.405954                0.00
        10            0.396313                0.00
 
-On default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.
+By default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.
 
-We can see that a new file called ``small_train.txt.model`` has been generated in current directory. 
-This file stores the trainned model checkpoint, and we can use this model file to make prediction in 
+We can see that a new file called ``small_train.txt.model`` has been generated in the current directory. 
+This file stores the trained model checkpoint, and we can use this model file to make prediction in 
 the future ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model
 
-Then we can get a new file called ``small_test.txt.out`` in current directory. This is output 
-prediction result. Let's see the first five lines of output by using the following command ::
+After that, we can get a new file called ``small_test.txt.out`` in the current directory. This is output 
+prediction. Here we show the first five lines of this output by using the following command ::
     
     head -n 5 ./small_test.txt.out
 
@@ -47,10 +48,10 @@ prediction result. Let's see the first five lines of output by using the followi
     -0.170811
     -1.28986
 
-These five lines of data is the prediction score calculated for every example in test set. The 
+These lines of data are the prediction score calculated for examples in the test set. The 
 negative data represents the negative example and positive data represents the positive example. 
-You can convert the score to (0-1) by using ``--sigmoid`` option, or you can convert your result 
-to binary result (0 and 1) by using ``--sign`` option ::
+In xLearn, you can convert the score to (0-1) by using ``--sigmoid`` option, or you can convert 
+your result to binary result (0 and 1) by using ``--sign`` option ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model --sigmoid
     head -n 5 ./small_test.txt.out
@@ -70,22 +71,39 @@ to binary result (0 and 1) by using ``--sign`` option ::
     0
     0
 
-Users may generate many model files, so you can set the name of the model checkpoint file 
-by using ``-m`` option ::
+Users may want to generate different model files, so you can set the name of the model 
+checkpoint file by using ``-m`` option. By default, the name of the model file equals to
+``training_data`` + ``.model`` ::
 
-  ./xlearn_train ./small_train.txt -m model_1.bin
-  ./xlearn_train ./small_train.txt -s 1 -m model_2.bin   
+  ./xlearn_train ./small_train.txt -m new_model
 
-Also, users can dump the model in txt format by using ``-t`` option. For example: ::
+Also, users can save the model in txt format by using ``-t`` option. For example: ::
 
   ./xlearn_train ./small_train.txt -t model.txt
 
-Here, we get a file called ``model.txt`` that stores the trainned model in txt format.
-For now, only bias and linear term can be wirtten to the txt file.
+After that, we get a new file called ``model.txt``, which stores the trained model in txt format.
+For now, xLearn only supports to save the bias and linear term in txt file. ::
 
-User can also set ``-o`` option to specify the output file. For example: ::
+  head -n 5 ./model.txt
+
+  -0.688182
+  0.458082
+  0
+  0
+  0
+
+Users can also set ``-o`` option to specify the output file. For example: ::
 
   ./xlearn_predict ./small_test.txt ./small_train.txt.model -o output.txt  
+  head -n 5 ./output.txt
+
+  -2.01192
+  -0.0657416
+  -0.456185
+  -0.170979
+  -1.28849
+
+By default, the name of the output file equals to ``test_data`` + ``.out`` .
 
 Choose Machine Learning Model
 ----------------------------------------

@@ -43,7 +43,7 @@ or if you have ``MacPorts``, run ::
 
      sudo port install cmake
 
-You won't want to have both Homebrew and !MacPorts installed.
+You won't want to have both Homebrew and MacPorts installed.
 
  .. toctree::
    :hidden:

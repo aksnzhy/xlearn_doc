@@ -181,16 +181,17 @@
 <h1>xLearn Command Line Guide<a class="headerlink" href="#xlearn-command-line-guide" title="Permalink to this headline">¶</a></h1>
 <p>Once you built xLearn from source code successfully, you will get two executable files
 <code class="docutils literal"><span class="pre">xlearn_train</span></code> and <code class="docutils literal"><span class="pre">xlearn_predict</span></code> in your <code class="docutils literal"><span class="pre">build</span></code> directory. Now you can use these
-two executable files to perform training and prediction task.</p>
+two executable files to perform training and prediction tasks.</p>
 <div class="section" id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Make sure that you are in the <code class="docutils literal"><span class="pre">build</span></code> directory of xLearn, and you will find the demo data
-<code class="docutils literal"><span class="pre">small_test.txt</span></code> and <code class="docutils literal"><span class="pre">small_train.txt</span></code> in this directory. Now you can type the following
-command to train a model</p>
+<p>Make sure that you are in the <code class="docutils literal"><span class="pre">build</span></code> directory of xLearn, and you can find the demo data
+<code class="docutils literal"><span class="pre">small_test.txt</span></code> and <code class="docutils literal"><span class="pre">small_train.txt</span></code> in this directory. Now type the following
+command to train a model:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>Here, we show a portion of the xLearn’s output</p>
+<p>Here, we show a portion of the xLearn’s output. Note that the loss value shown in your machine
+could be different.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
     <span class="mi">1</span>            <span class="mf">0.567514</span>                <span class="mf">0.00</span>
     <span class="mi">2</span>            <span class="mf">0.516861</span>                <span class="mf">0.00</span>
@@ -204,15 +205,15 @@ command to train a model</p>
    <span class="mi">10</span>            <span class="mf">0.396313</span>                <span class="mf">0.00</span>
 </pre></div>
 </div>
-<p>On default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.</p>
-<p>We can see that a new file called <code class="docutils literal"><span class="pre">small_train.txt.model</span></code> has been generated in current directory.
-This file stores the trainned model checkpoint, and we can use this model file to make prediction in
+<p>By default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.</p>
+<p>We can see that a new file called <code class="docutils literal"><span class="pre">small_train.txt.model</span></code> has been generated in the current directory.
+This file stores the trained model checkpoint, and we can use this model file to make prediction in
 the future</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span>
 </pre></div>
 </div>
-<p>Then we can get a new file called <code class="docutils literal"><span class="pre">small_test.txt.out</span></code> in current directory. This is output
-prediction result. Let’s see the first five lines of output by using the following command</p>
+<p>After that, we can get a new file called <code class="docutils literal"><span class="pre">small_test.txt.out</span></code> in the current directory. This is output
+prediction. Here we show the first five lines of this output by using the following command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">out</span>
 
 <span class="o">-</span><span class="mf">1.9872</span>
@@ -222,10 +223,10 @@ prediction result. Let’s see the first five lines of output by using the follo
 <span class="o">-</span><span class="mf">1.28986</span>
 </pre></div>
 </div>
-<p>These five lines of data is the prediction score calculated for every example in test set. The
+<p>These lines of data are the prediction score calculated for examples in the test set. The
 negative data represents the negative example and positive data represents the positive example.
-You can convert the score to (0-1) by using <code class="docutils literal"><span class="pre">--sigmoid</span></code> option, or you can convert your result
-to binary result (0 and 1) by using <code class="docutils literal"><span class="pre">--sign</span></code> option</p>
+In xLearn, you can convert the score to (0-1) by using <code class="docutils literal"><span class="pre">--sigmoid</span></code> option, or you can convert
+your result to binary result (0 and 1) by using <code class="docutils literal"><span class="pre">--sign</span></code> option</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span> <span class="o">--</span><span class="n">sigmoid</span>
 <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">out</span>
 
@@ -245,22 +246,39 @@ to binary result (0 and 1) by using <code class="docutils literal"><span class="
 <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Users may generate many model files, so you can set the name of the model checkpoint file
-by using <code class="docutils literal"><span class="pre">-m</span></code> option</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_1</span><span class="o">.</span><span class="n">bin</span>
-<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="n">model_2</span><span class="o">.</span><span class="n">bin</span>
+<p>Users may want to generate different model files, so you can set the name of the model
+checkpoint file by using <code class="docutils literal"><span class="pre">-m</span></code> option. By default, the name of the model file equals to
+<code class="docutils literal"><span class="pre">training_data</span></code> + <code class="docutils literal"><span class="pre">.model</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">m</span> <span class="n">new_model</span>
 </pre></div>
 </div>
-<p>Also, users can dump the model in txt format by using <code class="docutils literal"><span class="pre">-t</span></code> option. For example:</p>
+<p>Also, users can save the model in txt format by using <code class="docutils literal"><span class="pre">-t</span></code> option. For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">t</span> <span class="n">model</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>Here, we get a file called <code class="docutils literal"><span class="pre">model.txt</span></code> that stores the trainned model in txt format.
-For now, only bias and linear term can be wirtten to the txt file.</p>
-<p>User can also set <code class="docutils literal"><span class="pre">-o</span></code> option to specify the output file. For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+<p>After that, we get a new file called <code class="docutils literal"><span class="pre">model.txt</span></code>, which stores the trained model in txt format.
+For now, xLearn only supports to save the bias and linear term in txt file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">model</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="o">-</span><span class="mf">0.688182</span>
+<span class="mf">0.458082</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
 </pre></div>
 </div>
+<p>Users can also set <code class="docutils literal"><span class="pre">-o</span></code> option to specify the output file. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_predict</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">model</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="o">-</span><span class="mf">2.01192</span>
+<span class="o">-</span><span class="mf">0.0657416</span>
+<span class="o">-</span><span class="mf">0.456185</span>
+<span class="o">-</span><span class="mf">0.170979</span>
+<span class="o">-</span><span class="mf">1.28849</span>
+</pre></div>
+</div>
+<p>By default, the name of the output file equals to <code class="docutils literal"><span class="pre">test_data</span></code> + <code class="docutils literal"><span class="pre">.out</span></code> .</p>
 </div>
 <div class="section" id="choose-machine-learning-model">
 <h2>Choose Machine Learning Model<a class="headerlink" href="#choose-machine-learning-model" title="Permalink to this headline">¶</a></h2>
