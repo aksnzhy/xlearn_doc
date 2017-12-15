@@ -73,12 +73,12 @@ simple binary classification task. You can check out the demo data
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
  .. __: install.html
- .. __: install.html
  .. __: command_line.html
  .. __: python_api.html
  .. __: r_api.html
  .. __: demo.html
  .. __: tutorial.html
+ .. __: install.html
 
  .. toctree::
    :hidden:
