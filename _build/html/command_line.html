@@ -295,10 +295,24 @@ Users can choose different machine learning algorithms by using <code class="doc
        <span class="mi">5</span> <span class="o">--</span> <span class="n">field</span><span class="o">-</span><span class="n">aware</span> <span class="n">factorization</span> <span class="n">machines</span> <span class="p">(</span><span class="n">FFM</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For LR and FM, the input data can be <code class="docutils literal"><span class="pre">CSV</span></code> or <code class="docutils literal"><span class="pre">libsvm</span></code> data format, while for FFM, the
-input data should be the <code class="docutils literal"><span class="pre">libffm</span></code> format. You can give a <code class="docutils literal"><span class="pre">libffm</span></code> file to LR and FM. At that
-time, xLearn will treat this data as <code class="docutils literal"><span class="pre">libsvm</span></code> format. The following command shows how to use different
-machine learning model to solve the binary classification problem:</p>
+<p>For LR and FM, the input data format can be <code class="docutils literal"><span class="pre">CSV</span></code> or <code class="docutils literal"><span class="pre">libsvm</span></code>. For FFM, the
+input data should be the <code class="docutils literal"><span class="pre">libffm</span></code> format.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">libsvm</span> <span class="nb">format</span><span class="p">:</span>
+
+   <span class="n">label</span> <span class="n">index_1</span><span class="p">:</span><span class="n">value_1</span> <span class="n">index_2</span><span class="p">:</span><span class="n">value_2</span> <span class="o">...</span> <span class="n">index_n</span><span class="p">:</span><span class="n">value_n</span>
+
+<span class="n">CSV</span> <span class="nb">format</span><span class="p">:</span>
+
+   <span class="n">value_1</span> <span class="n">value_2</span> <span class="o">..</span> <span class="n">value_n</span> <span class="n">label</span>
+
+<span class="n">libffm</span> <span class="nb">format</span><span class="p">:</span>
+
+   <span class="n">label</span> <span class="n">field_1</span><span class="p">:</span><span class="n">index_1</span><span class="p">:</span><span class="n">value_1</span> <span class="n">field_2</span><span class="p">:</span><span class="n">index_2</span><span class="p">:</span><span class="n">value_2</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Users can also give a <code class="docutils literal"><span class="pre">libffm</span></code> file to LR and FM. At that time, xLearn will treat this data
+as <code class="docutils literal"><span class="pre">libsvm</span></code> format. The following command shows how to use different
+machine learning algorithms to solve the binary classification problem:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">0</span>  <span class="c1"># Linear model</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span>  <span class="c1"># Factorization machine (FM)</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span>  <span class="c1"># Field-awre factorization machine (FFM)</span>
@@ -307,8 +321,8 @@ machine learning model to solve the binary classification problem:</p>
 </div>
 <div class="section" id="set-validation-dataset">
 <h2>Set Validation Dataset<a class="headerlink" href="#set-validation-dataset" title="Permalink to this headline">¶</a></h2>
-<p>A validation dataset is a set of examples used to tune the hyperparameters of a machine learning model.
-In xLearn, users can use <code class="docutils literal"><span class="pre">-v</span></code> option to set the validation data set. For example:</p>
+<p>A validation dataset is used to tune the hyperparameters of a machine learning model.
+In xLearn, users can use <code class="docutils literal"><span class="pre">-v</span></code> option to set the validation dataset. For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -325,10 +339,10 @@ In xLearn, users can use <code class="docutils literal"><span class="pre">-v</sp
     <span class="mi">9</span>            <span class="mf">0.404554</span>            <span class="mf">0.546218</span>                <span class="mf">0.00</span>
 </pre></div>
 </div>
-<p>Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes
-down first, and then goes up. This is because our model has already overfitted current training data set. On
-default, xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
-metric by using <code class="docutils literal"><span class="pre">-x</span></code> option. For classification problem, the metric can be : <code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code>
+<p>Here we can see that the training loss continuously goes down. But the validation loss (test loss) goes down
+first, and then goes up. This is because our model has already overfitted current training dataset. By default,
+xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
+metrics by using <code class="docutils literal"><span class="pre">-x</span></code> option. For classification problems, the metric can be : <code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code>
 (precision), <code class="docutils literal"><span class="pre">f1</span></code> (f1 score), <code class="docutils literal"><span class="pre">auc</span></code> (AUC score). For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">acc</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">prec</span>
@@ -336,7 +350,7 @@ metric by using <code class="docutils literal"><span class="pre">-x</span></code
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">x</span> <span class="n">auc</span>
 </pre></div>
 </div>
-<p>For regression problem, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse). For example:</p>
+<p>For regression problems, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse). For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">demo</span><span class="o">/</span><span class="n">house_price</span><span class="o">/</span>
 <span class="o">../../</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">house_price_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">3</span> <span class="o">-</span><span class="n">x</span> <span class="n">rmse</span> <span class="o">--</span><span class="n">cv</span>
 <span class="o">../../</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">house_price_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">3</span> <span class="o">-</span><span class="n">x</span> <span class="n">rmsd</span> <span class="o">--</span><span class="n">cv</span>

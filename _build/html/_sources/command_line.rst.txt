@@ -121,10 +121,24 @@ Users can choose different machine learning algorithms by using ``-s`` option: :
          4 -- factorization machines (FM)
          5 -- field-aware factorization machines (FFM)
 
-For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while for FFM, the 
-input data should be the ``libffm`` format. You can give a ``libffm`` file to LR and FM. At that 
-time, xLearn will treat this data as ``libsvm`` format. The following command shows how to use different
-machine learning model to solve the binary classification problem:  ::
+For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the 
+input data should be the ``libffm`` format. ::
+
+  libsvm format:
+
+     label index_1:value_1 index_2:value_2 ... index_n:value_n
+
+  CSV format:
+
+     value_1 value_2 .. value_n label
+
+  libffm format:
+
+     label field_1:index_1:value_1 field_2:index_2:value_2 ...
+
+Users can also give a ``libffm`` file to LR and FM. At that time, xLearn will treat this data 
+as ``libsvm`` format. The following command shows how to use different
+machine learning algorithms to solve the binary classification problem:  ::
 
 ./xlearn_train ./small_train.txt -s 0  # Linear model
 ./xlearn_train ./small_train.txt -s 1  # Factorization machine (FM)
@@ -133,8 +147,8 @@ machine learning model to solve the binary classification problem:  ::
 Set Validation Dataset
 ----------------------------------------
 
-A validation dataset is a set of examples used to tune the hyperparameters of a machine learning model. 
-In xLearn, users can use ``-v`` option to set the validation data set. For example: ::
+A validation dataset is used to tune the hyperparameters of a machine learning model. 
+In xLearn, users can use ``-v`` option to set the validation dataset. For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt    
 
@@ -151,10 +165,10 @@ A portion of xLearn's output: ::
         8            0.416492            0.541107                0.00
         9            0.404554            0.546218                0.00
 
-Here we can see that, the training loss continuously goes down. While, the validation loss (test loss) goes 
-down first, and then goes up. This is because our model has already overfitted current training data set. On 
-default, xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
-metric by using ``-x`` option. For classification problem, the metric can be : ``acc`` (accuracy), ``prec`` 
+Here we can see that the training loss continuously goes down. But the validation loss (test loss) goes down 
+first, and then goes up. This is because our model has already overfitted current training dataset. By default, 
+xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
+metrics by using ``-x`` option. For classification problems, the metric can be : ``acc`` (accuracy), ``prec`` 
 (precision), ``f1`` (f1 score), ``auc`` (AUC score). For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x acc
@@ -162,7 +176,7 @@ metric by using ``-x`` option. For classification problem, the metric can be : `
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x f1
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x auc
 
-For regression problem, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). For example: ::
+For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). For example: ::
 
     cd demo/house_price/
     ../../xlearn_train ./house_price_train.txt -s 3 -x rmse --cv
