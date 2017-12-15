@@ -22,7 +22,7 @@ in python shell to check whether the xLearn has been installed successfully:
 >>> import xlearn as xl
 >>> xl.hello()
 
-If you want to build the lastest code from github, or you want to use the xLearn command line 
+If you want to build the latest code from github, or you want to use the xLearn command line 
 instead of the python API, you can see how to build xLearn from source code as follow.
 
 

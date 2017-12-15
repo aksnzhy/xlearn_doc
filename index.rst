@@ -10,11 +10,11 @@ xLearn is a high-performance, easy-to-use, and scalable machine learning package
 which can be used to solve large-scale machine learning problems, especially for the problems 
 on large-scale sparse data, which is very common in scenes like CTR prediction and recommender 
 system. If you are the user of liblinear, libfm, or libffm, now xLearn is your another better 
-choice. This is because xLearn handles all of these models in an uniform platform and provides 
+choice. This is because xLearn handles all of these models in a uniform platform and provides 
 better performance and scalability compared to its competitors.
 
 This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small 
-demo dataset (Criteo CTR prediction) for a binary classfication task.
+demo dataset (Criteo CTR prediction) for a binary classification task.
 
 Link to the Other Helpful Resources
 ----------------------------------------
@@ -29,7 +29,7 @@ Quick Install
 ----------------------------------
 
 The easiest way to install xLearn is to use ``pip``. The following command will download the 
-xLearn source code and build it locally. We will update the xLearn source code on pip weekly. ::
+xLearn source code and build it locally. ::
 
     sudo pip install xlearn
 
@@ -46,7 +46,7 @@ in `Installation Guide`__.
 Python Demo
 ----------------------------------
 
-Here is a simple python demo no how to use xLearn.
+Here is a simple python demo no how to use xLearn:
 
 .. code-block:: python
 
