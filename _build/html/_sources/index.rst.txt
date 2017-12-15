@@ -60,7 +60,7 @@ in `Installation Guide`__.
 Python Demo
 ----------------------------------
 
-Here is a simple python demo no how to use xLearn:
+Here is a simple Python demo no how to use xLearn:
 
 .. code-block:: python
 
@@ -81,7 +81,7 @@ Here is a simple python demo no how to use xLearn:
    ffm_model.setSigmoid()
    ffm_model.predict("./model.out", "./output.txt")  
 
-This example shows how to use field-aware factorizations machine (ffm) to solve a 
+This example shows how to use *field-aware factorizations machine (ffm)* to solve a 
 simple binary classification task. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
