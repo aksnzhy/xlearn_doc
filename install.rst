@@ -11,20 +11,32 @@ install GCC and CMake.
 Install xLearn from pip
 ---------------------------
 
-The easiest way to install xLearn is to use ``pip``. The following command will download the xLearn 
-source code from pip and build it locally. We will update the xLearn source code on pip weekly. ::
+The easiest way to install xLearn Python package is to use ``pip``. The following command will 
+download the xLearn source code from pip and install Python package locally.  ::
 
     sudo pip install xlearn
 
-The installation process will take a while to complete. And then you can type the following script 
-in python shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete. And then you can type the following 
+script in your python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
 
-If you want to build the latest code from github, or you want to use the xLearn command line 
-instead of the python API, you can see how to build xLearn from source code as follow.
+You will see: ::
 
+  -------------------------------------------------------------------------
+           _
+          | |
+     __  _| |     ___  __ _ _ __ _ __
+     \ \/ / |    / _ \/ _` | '__| '_ \
+      >  <| |___|  __/ (_| | |  | | | |
+     /_/\_\_____/\___|\__,_|_|  |_| |_|
+
+        xLearn   -- 0.10 Version --
+  -------------------------------------------------------------------------
+
+If you want to build the latest code from Github, or you want to use the xLearn command line 
+instead of the Python API, you can see how to build xLearn from source code as follow.
 
 Install xLearn from Source Code
 ----------------------------------

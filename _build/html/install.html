@@ -36,7 +36,6 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="xLearn 0.1.0 documentation" href="index.html"/>
-        <link rel="up" title="Get Started with xLearn !" href="start.html"/>
         <link rel="next" title="Install GCC or Clang" href="install_cmake.html"/>
         <link rel="prev" title="Get Started with xLearn !" href="start.html"/> 
 
@@ -92,27 +91,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="start.html">Get Started with xLearn !</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="start.html#link-to-the-other-helpful-resources">Link to the Other Helpful Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="start.html#quick-install">Quick Install</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="start.html#python-demo">Python Demo</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from Source Code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#test">Test</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="command_line.html">xLearn Command Line Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="python_api.html">xLearn Python Package Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="r_api.html">xLearn R Package Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="xlearn_api.html">xLearn API List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="large_scale.html">Large-Scale Machine Learning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="demo.html">xLearn Demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html">xLearn Tutorials</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Get Started with xLearn !</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-pip">Install xLearn from pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-xlearn-from-source-code">Install xLearn from Source Code</a></li>
@@ -174,8 +153,6 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="start.html">Get Started with xLearn !</a> &raquo;</li>
-        
       <li>Installation Guide</li>
     
     
@@ -205,19 +182,32 @@ need to support <code class="docutils literal"><span class="pre">C++11</span></c
 install GCC and CMake.</p>
 <div class="section" id="install-xlearn-from-pip">
 <h2>Install xLearn from pip<a class="headerlink" href="#install-xlearn-from-pip" title="Permalink to this headline">¶</a></h2>
-<p>The easiest way to install xLearn is to use <code class="docutils literal"><span class="pre">pip</span></code>. The following command will download the xLearn
-source code from pip and build it locally. We will update the xLearn source code on pip weekly.</p>
+<p>The easiest way to install xLearn Python package is to use <code class="docutils literal"><span class="pre">pip</span></code>. The following command will
+download the xLearn source code from pip and install Python package locally.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">xlearn</span>
 </pre></div>
 </div>
-<p>The installation process will take a while to complete. And then you can type the following script
-in python shell to check whether the xLearn has been installed successfully:</p>
+<p>The installation process will take a while to complete. And then you can type the following
+script in your python shell to check whether the xLearn has been installed successfully:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xl</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to build the latest code from github, or you want to use the xLearn command line
-instead of the python API, you can see how to build xLearn from source code as follow.</p>
+<p>You will see:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>-------------------------------------------------------------------------
+         _
+        | |
+   __  _| |     ___  __ _ _ __ _ __
+   \ \/ / |    / _ \/ _` | &#39;__| &#39;_ \
+    &gt;  &lt;| |___|  __/ (_| | |  | | | |
+   /_/\_\_____/\___|\__,_|_|  |_| |_|
+
+      xLearn   -- 0.10 Version --
+-------------------------------------------------------------------------
+</pre></div>
+</div>
+<p>If you want to build the latest code from Github, or you want to use the xLearn command line
+instead of the Python API, you can see how to build xLearn from source code as follow.</p>
 </div>
 <div class="section" id="install-xlearn-from-source-code">
 <h2>Install xLearn from Source Code<a class="headerlink" href="#install-xlearn-from-source-code" title="Permalink to this headline">¶</a></h2>
