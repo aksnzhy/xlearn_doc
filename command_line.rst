@@ -73,7 +73,7 @@ your result to binary result (0 and 1) by using ``--sign`` option ::
 
 Users may want to generate different model files, so you can set the name of the model 
 checkpoint file by using ``-m`` option. By default, the name of the model file equals to
-``training_data`` + ``.model`` ::
+``training_data_name`` + ``.model`` ::
 
   ./xlearn_train ./small_train.txt -m new_model
 
@@ -103,7 +103,7 @@ Users can also set ``-o`` option to specify the output file. For example: ::
   -0.170979
   -1.28849
 
-By default, the name of the output file equals to ``test_data`` + ``.out`` .
+By default, the name of the output file equals to ``test_data_name`` + ``.out`` .
 
 Choose Machine Learning Model
 ----------------------------------------
