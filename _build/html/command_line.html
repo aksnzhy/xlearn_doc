@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross-Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-optimization-method">Choose Optimization Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hyperparameter-tuning">Hyperparameter Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-epoch-number-and-early-stopping">Set Epoch Number and Early Stopping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lock-free-training">Lock-Free Training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#instance-wise-normalization">Instance-Wise Normalization</a></li>
@@ -390,34 +390,34 @@ For example:</p>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">p</span> <span class="n">ftrl</span>
 </pre></div>
 </div>
-<p>Compared to traditional <code class="docutils literal"><span class="pre">sgd</span></code> method, <code class="docutils literal"><span class="pre">adagrad</span></code> adapts the learning rate to the parameters, performing
-larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
-for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.</p>
-<p><code class="docutils literal"><span class="pre">FTRL</span></code> (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse
-problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard.</p>
+<p>Compared to traditional sgd method, adagrad adapts the learning rate to the parameters, performing larger
+updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited for
+dealing with sparse data. In addition,  sgd is more sensitive to the learning rate compared with adagrad.</p>
+<p>FTRL (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale
+sparse problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard.</p>
 </div>
-<div class="section" id="hyper-parameter-tuning">
-<h2>Hyper-parameter Tuning<a class="headerlink" href="#hyper-parameter-tuning" title="Permalink to this headline">¶</a></h2>
-<p>In machine learning, a <code class="docutils literal"><span class="pre">hyperparameter</span></code> is a parameter whose value is set before the learning process begins.
-By contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing
-a set of optimal hyperparameters for a learning algorithm.</p>
-<p>First, <code class="docutils literal"><span class="pre">learning</span> <span class="pre">rate</span></code> is one of the most important hyperparameter used in machine learning. On default, this
-value is <code class="docutils literal"><span class="pre">0.2</span></code>. For example, we can tune this value by using <code class="docutils literal"><span class="pre">-r</span></code> option:</p>
+<div class="section" id="hyperparameter-tuning">
+<h2>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h2>
+<p>In machine learning, a <em>hyperparameter</em> is a parameter whose value is set before the learning process begins.
+By contrast, the value of other parameters is derived via training. Hyperparameter tuning is the problem of
+choosing a set of optimal hyperparameters for a learning algorithm.</p>
+<p>First, the <code class="docutils literal"><span class="pre">learning</span> <span class="pre">rate</span></code> is one of the most important hyperparameters used in machine learning.
+By default, this value is set to <code class="docutils literal"><span class="pre">0.2</span></code>, and we can tune this value by using <code class="docutils literal"><span class="pre">-r</span></code> option:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.1</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.5</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.01</span>
 </pre></div>
 </div>
-<p>We can also use the <code class="docutils literal"><span class="pre">-b</span></code> option to perform regularization. On default, xLearn uses <code class="docutils literal"><span class="pre">L2</span></code> regularization, and
-the regular lambda has been set to <code class="docutils literal"><span class="pre">0.00002</span></code>.</p>
+<p>We can also use the <code class="docutils literal"><span class="pre">-b</span></code> option to perform regularization. By default, xLearn uses <code class="docutils literal"><span class="pre">L2</span></code> regularization, and
+the <em>regular_lambda</em> has been set to <code class="docutils literal"><span class="pre">0.00002</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.1</span> <span class="o">-</span><span class="n">b</span> <span class="mf">0.001</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.1</span> <span class="o">-</span><span class="n">b</span> <span class="mf">0.002</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="mf">0.1</span> <span class="o">-</span><span class="n">b</span> <span class="mf">0.01</span>
 </pre></div>
 </div>
-<p>For FTRL method, we also need to tune anoter four hyperparameters, including <code class="docutils literal"><span class="pre">-alpha</span></code>, <code class="docutils literal"><span class="pre">-beta</span></code>, <code class="docutils literal"><span class="pre">-lambda_1</span></code>, and
-<code class="docutils literal"><span class="pre">-lambda_2</span></code>. For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">ftrl</span> <span class="o">-</span><span class="n">alpha</span> <span class="mf">0.002</span> <span class="o">-</span><span class="n">beta</span> <span class="mf">0.8</span> <span class="o">-</span><span class="n">lambda_1</span> <span class="mf">0.001</span> <span class="o">-</span><span class="n">lambda_2</span> <span class="mf">1.0</span>
+<p>For the FTRL method, we also need to tune another four hyperparameters, including <code class="docutils literal"><span class="pre">-alpha</span></code>, <code class="docutils literal"><span class="pre">-beta</span></code>,
+<code class="docutils literal"><span class="pre">-lambda_1</span></code>, and <code class="docutils literal"><span class="pre">-lambda_2</span></code>. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">p</span> <span class="n">ftrl</span> <span class="o">-</span><span class="n">alpha</span> <span class="mf">0.002</span> <span class="o">-</span><span class="n">beta</span> <span class="mf">0.8</span> <span class="o">-</span><span class="n">lambda_1</span> <span class="mf">0.001</span> <span class="o">-</span><span class="n">lambda_2</span> <span class="mf">1.0</span>
 </pre></div>
 </div>
 <p>For fm and ffm, users need to set the size of latent factor by using <code class="docutils literal"><span class="pre">-k</span></code> option. On default, xLearn uses <code class="docutils literal"><span class="pre">4</span></code> for

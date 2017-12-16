@@ -216,40 +216,40 @@ For example: ::
     ./xlearn_train ./small_train.txt -p adagrad
     ./xlearn_train ./small_train.txt -p ftrl
 
-Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing
-larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited
-for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.
+Compared to traditional sgd method, adagrad adapts the learning rate to the parameters, performing larger 
+updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited for 
+dealing with sparse data. In addition,  sgd is more sensitive to the learning rate compared with adagrad.
 
-``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse 
-problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard. 
+FTRL (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale 
+sparse problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard. 
 
-Hyper-parameter Tuning
+Hyperparameter Tuning
 ----------------------------------------
 
-In machine learning, a ``hyperparameter`` is a parameter whose value is set before the learning process begins. 
-By contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing
-a set of optimal hyperparameters for a learning algorithm. 
+In machine learning, a *hyperparameter* is a parameter whose value is set before the learning process begins. 
+By contrast, the value of other parameters is derived via training. Hyperparameter tuning is the problem of 
+choosing a set of optimal hyperparameters for a learning algorithm.
 
-First, ``learning rate`` is one of the most important hyperparameter used in machine learning. On default, this 
-value is ``0.2``. For example, we can tune this value by using ``-r`` option: ::
+First, the ``learning rate`` is one of the most important hyperparameters used in machine learning. 
+By default, this value is set to ``0.2``, and we can tune this value by using ``-r`` option: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.5
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.01
 
 
-We can also use the ``-b`` option to perform regularization. On default, xLearn uses ``L2`` regularization, and 
-the regular lambda has been set to ``0.00002``. ::
+We can also use the ``-b`` option to perform regularization. By default, xLearn uses ``L2`` regularization, and 
+the *regular_lambda* has been set to ``0.00002``. ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.001
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.002
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.01
 
 
-For FTRL method, we also need to tune anoter four hyperparameters, including ``-alpha``, ``-beta``, ``-lambda_1``, and
-``-lambda_2``. For example: ::
+For the FTRL method, we also need to tune another four hyperparameters, including ``-alpha``, ``-beta``, 
+``-lambda_1``, and ``-lambda_2``. For example: ::
 
-    ./xlearn_train ./small_train.txt -o ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
+    ./xlearn_train ./small_train.txt -p ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
 
 For fm and ffm, users need to set the size of latent factor by using ``-k`` option. On default, xLearn uses ``4`` for 
 this value. ::
