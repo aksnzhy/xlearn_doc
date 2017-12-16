@@ -553,15 +553,17 @@ by using <code class="docutils literal"><span class="pre">disableNorm()</span></
 <div class="section" id="quiet-training">
 <h2>Quiet Training<a class="headerlink" href="#quiet-training" title="Permalink to this headline">¶</a></h2>
 <p>When using <code class="docutils literal"><span class="pre">setQuiet</span></code> API, xLearn will not calculate any evaluation information during the training, and it just train the model quietly</p>
-<blockquote>
-<div><p>import xlearn as xl</p>
-<p># Training task
-ffm_model = xl.create_ffm()
-ffm_model.setTrain(“./small_train.txt”)
-ffm_model.setQuiet()
-param = {‘task’:’binary’, ‘lr’:0.2, ‘lambda’:0.002}</p>
-<p>ffm_model.fit(param, “./model.out”)</p>
-</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setQuiet</span><span class="p">()</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>In this way, xLearn can accelerate its training speed.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
