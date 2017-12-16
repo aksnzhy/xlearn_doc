@@ -143,8 +143,8 @@ API List: ::
 
 Parameter List: ::
 
-      task   : 'binary', 'reg'
-      metric : 'acc', 'prec', 'recall', f1', 'mae', 'mape', 'rmse', 'rmsd'
+    task   : 'binary', 'reg'
+    metric : 'acc', 'prec', 'recall', f1', 'mae', 'mape', 'rmse', 'rmsd'
 
 
 xLearn R API
