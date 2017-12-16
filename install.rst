@@ -74,6 +74,11 @@ You can also test the Python package by using the following command: ::
   cd python-package/test
   python test_python.py
 
+Install R Package
+----------------------------------
+
+The R package installation guide is coming soon.
+
 .. __: install_cmake.html
 .. __: https://github.com/aksnzhy/xlearn
 
