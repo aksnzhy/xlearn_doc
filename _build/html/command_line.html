@@ -463,9 +463,9 @@ at that epoch (you may get different a stopping number on your machine)</p>
 </div>
 <div class="section" id="lock-free-training">
 <h2>Lock-Free Training<a class="headerlink" href="#lock-free-training" title="Permalink to this headline">¶</a></h2>
-<p>On default, xLearn performs <code class="docutils literal"><span class="pre">Hogwild!</span></code> lock-free training, which takes advantages of multiple core to accelerate
-training task. But lock-free training is <em>non-deterministic</em>. For example, if we run the following command many times,
-we will get different loss value at the last epoch.</p>
+<p>By default, xLearn performs <em>Hogwild! lock-free</em> training, which takes advantages of multiple cores to accelerate
+training task. But lock-free training is <em>non-deterministic</em>. For example, if we run the following command multiple
+times, we may get different loss value at each epoch.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span>
 
 <span class="n">The</span> <span class="mi">1</span><span class="n">st</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396352</span>
@@ -478,7 +478,7 @@ we will get different loss value at the last epoch.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">dis</span><span class="o">-</span><span class="n">lock</span><span class="o">-</span><span class="n">free</span>
 </pre></div>
 </div>
-<p>In thie time, our result are <em>determinnistic</em>, and we will get the same loss at the last epoch if we run xLearn many times.</p>
+<p>In thie time, our result are <em>determinnistic</em>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="mi">1</span><span class="n">st</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>
 <span class="n">The</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>
 <span class="n">The</span> <span class="mi">3</span><span class="n">nd</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.396372</span>

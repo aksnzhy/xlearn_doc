@@ -296,9 +296,9 @@ At this time, xLearn performed 10 epoch for training.
 Lock-Free Training
 ----------------------------------------
 
-On default, xLearn performs ``Hogwild!`` lock-free training, which takes advantages of multiple core to accelerate
-training task. But lock-free training is *non-deterministic*. For example, if we run the following command many times,
-we will get different loss value at the last epoch. ::
+By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores to accelerate
+training task. But lock-free training is *non-deterministic*. For example, if we run the following command multiple 
+times, we may get different loss value at each epoch. ::
 
    ./xlearn_train ./small_train.txt 
 
@@ -311,7 +311,7 @@ Users can disable lock-free training by using ``--dis-lock-free`` ::
 
   ./xlearn_train ./small_train.txt --dis-lock-free
 
-In thie time, our result are *determinnistic*, and we will get the same loss at the last epoch if we run xLearn many times. ::
+In thie time, our result are *determinnistic*. ::
 
    The 1st time: 0.396372
    The 2nd time: 0.396372
