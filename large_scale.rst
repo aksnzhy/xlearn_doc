@@ -10,11 +10,10 @@ by using *out-of-core* training. In addition, xLearn can scale beyond billions o
 across many machines to support distributed training by using the *parameter server* framework.
 
 Out-of-Core Training
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+--------------------------------
 
 
 Distributed Training
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 The distributed training guide is coming soon.
