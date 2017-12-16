@@ -348,14 +348,16 @@ param = {‘task’:’binary’, ‘lr’:0.2, ‘lambda’:0.002}</p>
 goes down first, and then goes up. This is because our model has already overfitted current training
 dataset. By default, xLearn will calculate the validation loss in each epoch, while users can also
 set different evaluation metrics by using <code class="docutils literal"><span class="pre">metric</span></code> parameter. For classification problems, the metric can be :
-<code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code> (precision), <code class="docutils literal"><span class="pre">f1</span></code> (f1 score), and <code class="docutils literal"><span class="pre">auc</span></code> (AUC score). For example:</p>
+<code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code> (precision), <code class="docutils literal"><span class="pre">f1</span></code> (f1 score), and <code class="docutils literal"><span class="pre">auc</span></code> (AUC score).
+For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `acc`}
 param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `prec`}
 param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `f1`}
 param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `auc`}
 </pre></div>
 </div>
-<p>For regression problems, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse). For example:</p>
+<p>For regression problems, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse).
+For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `rmse`}
 param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `mae`}
 param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `mape`}

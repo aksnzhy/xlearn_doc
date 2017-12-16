@@ -177,14 +177,16 @@ Here we can see that the training loss continuously goes down. But the validatio
 goes down first, and then goes up. This is because our model has already overfitted current training 
 dataset. By default, xLearn will calculate the validation loss in each epoch, while users can also 
 set different evaluation metrics by using ``metric`` parameter. For classification problems, the metric can be : 
-``acc`` (accuracy), ``prec`` (precision), ``f1`` (f1 score), and ``auc`` (AUC score). For example: ::
+``acc`` (accuracy), ``prec`` (precision), ``f1`` (f1 score), and ``auc`` (AUC score). 
+For example: ::
 
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `acc`}
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `prec`}
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `f1`}
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `auc`}           
 
-For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). For example: ::
+For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). 
+For example: ::
 
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `rmse`}
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `mae`}    
