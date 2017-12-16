@@ -24,7 +24,7 @@ If you install xLearn Python package successfully, you will see ::
 Quick Start
 ----------------------------------------
 
-Here is a simple python demo no how to use xLearn. You can check out the demo data 
+Here is a simple Python demo to demonstrate how to use xLearn. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
 .. code-block:: python
@@ -39,12 +39,9 @@ Here is a simple python demo no how to use xLearn. You can check out the demo da
             
    ffm_model.fit(param, "./model.out")  
 
-   # Prediction task
-   ffm_model.setTest("./small_test.txt")  
-   ffm_model.predict("./model.out", "./output.txt")  
-
-Here, we show a portion of the xLearn's output ::
-
+A portion of the xLearn's output ::
+  
+  Start to train ...
   Epoch      Train log_loss       Test log_loss     Time cost (sec)
       1            0.593750            0.535847                0.00
       2            0.539226            0.543829                0.00
@@ -56,36 +53,36 @@ Here, we show a portion of the xLearn's output ::
       8            0.466330            0.533253                0.00
       9            0.456660            0.535635                0.00
   Early-stopping at epoch 7
+  Start to save model ...
 
-In this example, we use FFM to train our model within 9 epoch for a binary classification
-task. If you want train a regression model. You can reset the ``task`` parameter to ``reg``. ::
+In this example, xLearn uses *feild-ware factorization machines* (ffm) to train our model for 
+solving a binary classification task. If you want train a model for regression task. 
+You can reset the ``task`` parameter to ``reg``. ::
 
     param = {'task':'reg', 'lr':0.2, 'lambda':0.002} 
 
-We can see that a new file called ``model.out`` has been generated in current directory. 
-This file stores the trainned model checkpoint, and we can use this model file to make 
-prediction in the future
+We can see that a new file called ``model.out`` has been generated in the current directory. 
+This file stores the trained model checkpoint, and we can use this model file to make prediction 
+in the future: ::
 
-After we perform the python code ::
-
+    ffm_model.setTest("./small_test.txt")
     ffm_model.predict("./model.out", "./output.txt")      
 
-we can get a new file called ``output.txt`` in current directory. This is output prediction
-result. Let's see the first five lines of output by using the following command ::
+After we run this Python code, we can get a new file called ``output.txt`` in current directory. 
+This is output prediction. Here we show the first five lines of this output by using the following command ::
 
     head -n 5 ./output.txt
 
-    -1.5927
-    -0.560985
-    -0.773492
-    -0.551364
-    -1.22954
+    -1.66107
+    -0.616408
+    -0.815918
+    -0.608931
+    -1.30794
 
-These five lines of data is the prediction score calculated for every example in test set. The
-negative data represents the negative example and the positive data prepresents the positive example.
-You can convert the score to ``(0-1)`` by using ``setSigmoid()`` ::
+These lines of data are the prediction score calculated for examples in the test set. The negative data 
+represents the negative example and positive data represents the positive example. In xLearn, you can convert 
+the score to (0-1) by using ``setSigmoid()`` option: ::
 
-   # Prediction task
    ffm_model.setTest("./small_test.txt")  
    ffm_model.setSigmoid()
    ffm_model.predict("./model.out", "./output.txt")      
@@ -94,11 +91,11 @@ and then we can get the result ::
 
    head -n 5 ./output.txt
 
-   0.162849
-   0.352197
-   0.308373
-   0.356715
-   0.217436
+   0.158613
+   0.354297
+   0.310193
+   0.357449
+   0.220061
 
 We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` API ::
 
@@ -107,7 +104,7 @@ We can also convert the score to binary result ``(0 and 1)`` by using ``setSign(
    ffm_model.setSign()
    ffm_model.predict("./model.out", "./output.txt")
 
-Output ::
+and then we can get the result ::
 
    head -n 5 ./output.txt
 

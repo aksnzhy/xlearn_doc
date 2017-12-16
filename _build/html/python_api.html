@@ -201,7 +201,7 @@ shell and type the following Python code to check your installation:</p>
 </div>
 <div class="section" id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Here is a simple python demo no how to use xLearn. You can check out the demo data
+<p>Here is a simple Python demo to demonstrate how to use xLearn. You can check out the demo data
 (<code class="docutils literal"><span class="pre">small_train.txt</span></code> and <code class="docutils literal"><span class="pre">small_test.txt</span></code>) from the path <code class="docutils literal"><span class="pre">demo/classification/criteo_ctr</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
 
@@ -212,14 +212,11 @@ shell and type the following Python code to check your installation:</p>
 <span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
 
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
-
-<span class="c1"># Prediction task</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here, we show a portion of the xLearn’s output</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+<p>A portion of the xLearn’s output</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Start</span> <span class="n">to</span> <span class="n">train</span> <span class="o">...</span>
+<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
     <span class="mi">1</span>            <span class="mf">0.593750</span>            <span class="mf">0.535847</span>                <span class="mf">0.00</span>
     <span class="mi">2</span>            <span class="mf">0.539226</span>            <span class="mf">0.543829</span>                <span class="mf">0.00</span>
     <span class="mi">3</span>            <span class="mf">0.520034</span>            <span class="mf">0.531732</span>                <span class="mf">0.00</span>
@@ -230,36 +227,37 @@ shell and type the following Python code to check your installation:</p>
     <span class="mi">8</span>            <span class="mf">0.466330</span>            <span class="mf">0.533253</span>                <span class="mf">0.00</span>
     <span class="mi">9</span>            <span class="mf">0.456660</span>            <span class="mf">0.535635</span>                <span class="mf">0.00</span>
 <span class="n">Early</span><span class="o">-</span><span class="n">stopping</span> <span class="n">at</span> <span class="n">epoch</span> <span class="mi">7</span>
+<span class="n">Start</span> <span class="n">to</span> <span class="n">save</span> <span class="n">model</span> <span class="o">...</span>
 </pre></div>
 </div>
-<p>In this example, we use FFM to train our model within 9 epoch for a binary classification
-task. If you want train a regression model. You can reset the <code class="docutils literal"><span class="pre">task</span></code> parameter to <code class="docutils literal"><span class="pre">reg</span></code>.</p>
+<p>In this example, xLearn uses <em>feild-ware factorization machines</em> (ffm) to train our model for
+solving a binary classification task. If you want train a model for regression task.
+You can reset the <code class="docutils literal"><span class="pre">task</span></code> parameter to <code class="docutils literal"><span class="pre">reg</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>We can see that a new file called <code class="docutils literal"><span class="pre">model.out</span></code> has been generated in current directory.
-This file stores the trainned model checkpoint, and we can use this model file to make
-prediction in the future</p>
-<p>After we perform the python code</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+<p>We can see that a new file called <code class="docutils literal"><span class="pre">model.out</span></code> has been generated in the current directory.
+This file stores the trained model checkpoint, and we can use this model file to make prediction
+in the future:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>we can get a new file called <code class="docutils literal"><span class="pre">output.txt</span></code> in current directory. This is output prediction
-result. Let’s see the first five lines of output by using the following command</p>
+<p>After we run this Python code, we can get a new file called <code class="docutils literal"><span class="pre">output.txt</span></code> in current directory.
+This is output prediction. Here we show the first five lines of this output by using the following command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">output</span><span class="o">.</span><span class="n">txt</span>
 
-<span class="o">-</span><span class="mf">1.5927</span>
-<span class="o">-</span><span class="mf">0.560985</span>
-<span class="o">-</span><span class="mf">0.773492</span>
-<span class="o">-</span><span class="mf">0.551364</span>
-<span class="o">-</span><span class="mf">1.22954</span>
+<span class="o">-</span><span class="mf">1.66107</span>
+<span class="o">-</span><span class="mf">0.616408</span>
+<span class="o">-</span><span class="mf">0.815918</span>
+<span class="o">-</span><span class="mf">0.608931</span>
+<span class="o">-</span><span class="mf">1.30794</span>
 </pre></div>
 </div>
-<p>These five lines of data is the prediction score calculated for every example in test set. The
-negative data represents the negative example and the positive data prepresents the positive example.
-You can convert the score to <code class="docutils literal"><span class="pre">(0-1)</span></code> by using <code class="docutils literal"><span class="pre">setSigmoid()</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Prediction task</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<p>These lines of data are the prediction score calculated for examples in the test set. The negative data
+represents the negative example and positive data represents the positive example. In xLearn, you can convert
+the score to (0-1) by using <code class="docutils literal"><span class="pre">setSigmoid()</span></code> option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
@@ -267,11 +265,11 @@ You can convert the score to <code class="docutils literal"><span class="pre">(0
 <p>and then we can get the result</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">output</span><span class="o">.</span><span class="n">txt</span>
 
-<span class="mf">0.162849</span>
-<span class="mf">0.352197</span>
-<span class="mf">0.308373</span>
-<span class="mf">0.356715</span>
-<span class="mf">0.217436</span>
+<span class="mf">0.158613</span>
+<span class="mf">0.354297</span>
+<span class="mf">0.310193</span>
+<span class="mf">0.357449</span>
+<span class="mf">0.220061</span>
 </pre></div>
 </div>
 <p>We can also convert the score to binary result <code class="docutils literal"><span class="pre">(0</span> <span class="pre">and</span> <span class="pre">1)</span></code> by using <code class="docutils literal"><span class="pre">setSign()</span></code> API</p>
@@ -281,7 +279,7 @@ You can convert the score to <code class="docutils literal"><span class="pre">(0
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Output</p>
+<p>and then we can get the result</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">./</span><span class="n">output</span><span class="o">.</span><span class="n">txt</span>
 
 <span class="mi">0</span>
