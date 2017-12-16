@@ -180,17 +180,17 @@ set different evaluation metrics by using ``metric`` parameter. For classificati
 ``acc`` (accuracy), ``prec`` (precision), ``f1`` (f1 score), and ``auc`` (AUC score). 
 For example: ::
 
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `acc`}
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `prec`}
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `f1`}
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `auc`}           
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'acc'}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'prec'}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'f1'}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'auc'}           
 
 For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). 
 For example: ::
 
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `rmse`}
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `mae`}    
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `mape`}  
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'rmse'}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'mae'}    
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': 'mape'}  
 
 Cross-Validation
 ----------------------------------------
