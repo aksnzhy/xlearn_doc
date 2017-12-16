@@ -291,7 +291,7 @@ Users can disable early-stopping by using ``--dis-es`` option ::
 
   ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 
-At this time, xLearn performed ``10`` epoch for training.
+At this time, xLearn performed 10 epoch for training.
 
 Lock-Free Training
 ----------------------------------------
