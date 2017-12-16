@@ -27,6 +27,15 @@ size for the mini-batch that balances relevancy and memory footprint could invol
 .. image:: ./images/out-of-core.png
     :width: 500   
 
+Out-of-Core Learning Using xLearn Command Line
+===================================================
+
+
+Out-of-Core Learning Using xLearn Python API
+===================================================
+
+
+
 Distributed Learning
 --------------------------------
 
