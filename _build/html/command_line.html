@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-algorithm">Choose Machine Learning Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross-Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-optimization-method">Choose Optimization Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-epoch-number-and-early-stopping">Set Epoch Number and Early Stopping</a></li>
@@ -358,11 +358,12 @@ metrics by using <code class="docutils literal"><span class="pre">-x</span></cod
 </div>
 </div>
 <div class="section" id="cross-validation">
-<h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<h2>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
 <p>Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing
-how the results of a statistical analysis will generalize to an independent data set. In xLearn, users
-can set the <code class="docutils literal"><span class="pre">--cv</span></code> option to use this technique. For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">cv</span>
+how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users
+can use the <code class="docutils literal"><span class="pre">--cv</span></code> option to use this technique. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build</span>
+<span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">cv</span>
 </pre></div>
 </div>
 <p>On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using
@@ -370,8 +371,8 @@ can set the <code class="docutils literal"><span class="pre">--cv</span></code> 
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">f</span> <span class="mi">3</span> <span class="o">--</span><span class="n">cv</span>
 </pre></div>
 </div>
-<p>Here, we set the number of folds to <code class="docutils literal"><span class="pre">3</span></code>. The xLearn will calcluate the avergae validation loss at the end
-of it’s output message.</p>
+<p>Here we set the number of folds to 3. The xLearn will calculate the average validation loss at
+the end of its output message.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">------------</span><span class="p">]</span> <span class="n">Average</span> <span class="n">log_loss</span><span class="p">:</span> <span class="mf">0.549417</span>
 <span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Finish</span> <span class="n">Cross</span><span class="o">-</span><span class="n">Validation</span>
 <span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Clear</span> <span class="n">the</span> <span class="n">xLearn</span> <span class="n">environment</span> <span class="o">...</span>

@@ -182,13 +182,14 @@ For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse
     ../../xlearn_train ./house_price_train.txt -s 3 -x rmse --cv
     ../../xlearn_train ./house_price_train.txt -s 3 -x rmsd --cv
 
-Cross Validation
+Cross-Validation
 ----------------------------------------
 
 Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing 
-how the results of a statistical analysis will generalize to an independent data set. In xLearn, users 
-can set the ``--cv`` option to use this technique. For example: ::
+how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users 
+can use the ``--cv`` option to use this technique. For example: ::
 
+    cd build
     ./xlearn_train ./small_train.txt --cv
 
 On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using 
@@ -196,8 +197,8 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
     
     ./xlearn_train ./small_train.txt -f 3 --cv
 
-Here, we set the number of folds to ``3``. The xLearn will calcluate the avergae validation loss at the end 
-of it's output message. ::
+Here we set the number of folds to 3. The xLearn will calculate the average validation loss at 
+the end of its output message. ::
 
     [------------] Average log_loss: 0.549417
     [ ACTION     ] Finish Cross-Validation
