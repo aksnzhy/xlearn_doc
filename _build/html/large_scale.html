@@ -98,8 +98,8 @@
 <li class="toctree-l1"><a class="reference internal" href="r_api.html">xLearn R Package Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xlearn_api.html">xLearn API List</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Large-Scale Machine Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#out-of-core-training">Out-of-Core Training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#distributed-training">Distributed Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#out-of-core-learning">Out-of-Core Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distributed-learning">Distributed Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">xLearn Demo</a></li>
@@ -171,16 +171,23 @@
 <h1>Large-Scale Machine Learning<a class="headerlink" href="#large-scale-machine-learning" title="Permalink to this headline">¶</a></h1>
 <p>This page shows how to use xLearn to solve large-scale machine learning problems.
 In recent years, challenges arise with the fast-growing data. For “big-data”, we focus
-on datasets with potentially trillions of training examples, which cannot fit in the
+on datasets with potentially trillions of training examples, which cannot fit into the
 memory of a single machine. Motivated by this, we design xLearn to solve large-scale
 machine learning problems. First, xLearn can handle very large data (TB) on a single PC
-by using <em>out-of-core</em> training. In addition, xLearn can scale beyond billions of example
-across many machines to support distributed training by using the <em>parameter server</em> framework.</p>
-<div class="section" id="out-of-core-training">
-<h2>Out-of-Core Training<a class="headerlink" href="#out-of-core-training" title="Permalink to this headline">¶</a></h2>
+by using <em>out-of-core</em> learning. In addition, xLearn can scale beyond billions of example
+across many machines to support distributed learning by using the <em>parameter server</em> framework.</p>
+<div class="section" id="out-of-core-learning">
+<h2>Out-of-Core Learning<a class="headerlink" href="#out-of-core-learning" title="Permalink to this headline">¶</a></h2>
+<p><em>Out-of-core</em> leanring refers to the machine learning algorithms working with data cannot fit into
+the memory of a single machine, but that can easily fit into some data storage such as local hard disk
+or web repository. Your available RAM, the core memory on your single machine, may indeed range from a few
+gigabytes (sometimes 2 GB, more commonly 4 GB, but we assume that you have 2 GB at maximum) up to 256 GB on
+large server machines. Large servers are like the ones you can get on cloud computing services such as Amazon
+Elastic Compute Cloud (EC2), whereas your storage capabilities can easily exceed terabytes of capacity using
+just an external drive (most likely about 1 TB but it can reach up to 4 TB).</p>
 </div>
-<div class="section" id="distributed-training">
-<h2>Distributed Training<a class="headerlink" href="#distributed-training" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="distributed-learning">
+<h2>Distributed Learning<a class="headerlink" href="#distributed-learning" title="Permalink to this headline">¶</a></h2>
 <p>The distributed training guide is coming soon.</p>
 </div>
 </div>
