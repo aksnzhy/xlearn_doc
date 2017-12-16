@@ -251,23 +251,23 @@ For the FTRL method, we also need to tune another four hyperparameters, includin
 
     ./xlearn_train ./small_train.txt -p ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
 
-For fm and ffm, users need to set the size of latent factor by using ``-k`` option. On default, xLearn uses ``4`` for 
-this value. ::
+For FM and FFM, users also need to set the size of *latent factor* by using ``-k`` option. By default, xLearn 
+uses ``4`` for this value. ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 2
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 4
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 5
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 8
 
-xLearn uses SSE instruction to accerlate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
+xLearn uses *SSE* instruction to accelerate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
 
-For FM and FFM, users can also set the hyperparameter ``-u`` for model initialization. On defualt, this value is 0.66. ::
+For FM and FFM, users can also set the hyperparameter ``-u`` for model initialization. By default, this value is set to 0.66. ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.80
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.10
 
-Set Epoch Number and Early Stopping
+Set Epoch Number and Early-Stopping
 ----------------------------------------
 
 Users can set the epoch number for training by using ``-e`` option. ::
