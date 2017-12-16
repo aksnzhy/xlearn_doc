@@ -270,104 +270,86 @@ including ``alpha``, ``beta``, ``lambda_1``, and ``lambda_2``. For example: ::
 
     param = {'alpha':0.002, 'beta':0.8, 'lambda_1':0.001, 'lambda_2': 1.0}    
 
-For FM and FFM. users need to set the size of latent factor by using ``k`` parameters. On default, xLearn uses ``4`` for 
-this value. ::
+For FM and FFM, users also need to set the size of latent factor by using ``k`` parameter. By default, 
+xLearn uses ``4`` for this value. ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':2}    
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':4}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':5}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':8}
 
-    ...
+xLearn uses *SSE* instruction to accelerate vector operation, and hence the time cost 
+for ``k=2`` and ``k=4`` are the same.     
 
-xLearn uses SSE instruction to accerlate vector operation, and hence the time cost for 
-``k=2`` and ``k=4`` are the same.         
-
-For FM and FFM,  users can also set the hyperparameter ``init`` for model initialization. 
-On defualt, this value is ``0.66``. ::
+For FM and FFM, users can also set the parameter ``init`` for model initialization. 
+By default, this value is set to ``0.66``.
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.5}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.8}
-
-    ...    
-
-Set Epoch Number and Early Stopping
+  
+Set Epoch Number and Early-Stopping
 ----------------------------------------
 
-Users can set the epoch number for training by using ``epoch`` parameter. ::
+For machine learning, one epoch consists of one full training cycle on the training set. 
+In xLearn, users can set the number of epoch for training by using ``epoch`` option. ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':3}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':5}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':10}
 
-    ...
-
-While, if the validation file has been set, xLearn will perform early-stopping by default. 
-For example: ::
+If you set the validation data, xLearn will perform early-stopping by default. For example: ::
 
    import xlearn as xl
 
    # Training task
    ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':15} 
+   ffm_model.setTrain("./small_train.txt")
+   ffm_model.setValidate("./small_test.txt")
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':10} 
             
    ffm_model.fit(param, "./model.out") 
 
-Output ::
+Here, we set epoch number to ``10``, but xLearn stopped at epoch ``7`` because we get the best model 
+at that epoch (you may get different a stopping number on your machine) ::
 
-    Start to train ...
-    Epoch      Train log_loss       Test log_loss     Time cost (sec)
-        1            0.596511            0.541254                0.00
-        2            0.536490            0.547355                0.00
-        3            0.520169            0.531791                0.00
-        4            0.506654            0.535538                0.00
-        5            0.493861            0.533926                0.00
-        6            0.481926            0.535290                0.00
-        7            0.468731            0.527707                0.00
-        8            0.465345            0.533434                0.00
-        9            0.456871            0.534466                0.00
     Early-stopping at epoch 7
     Start to save model ...
 
-In this example, xLearn stops at the 7th epoch. Users can disable early stopping by using 
-``disableEarlyStop()`` API. ::
+Users can disable early-stopping by using ``disableEarlyStop()`` API: ::
 
    import xlearn as xl
 
    # Training task
    ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
-   ffm_model.disableEarlyStop()
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+   ffm_model.setTrain("./small_train.txt")
+   ffm_model.setValidate("./small_test.txt")
+   ffm_model.disableEarlyStop();
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'epoch':10} 
             
    ffm_model.fit(param, "./model.out") 
 
-In this time, xLearn performs 15 epoch without early-stopping.
+At this time, xLearn performed 10 epoch for training.
 
 Lock-Free Training
 ----------------------------------------
 
-On default, xLearn performs ``Hogwild!`` lock-free training, which takes advantages of multiple core to accelerate 
-training task. But lock-free training is non-deterministic. For example, if we run the following command many 
-times, we will get different loss value at the last epoch. ::
+By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores 
+to accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the 
+following Python code multiple times, we may get different loss value at each epoch.
 
    import xlearn as xl
 
    # Training task
    ffm_model = xl.create_ffm()
    ffm_model.setTrain("./small_train.txt")  
-   ffm_model.disableEarlyStop()
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
             
    ffm_model.fit(param, "./model.out") 
 
-Run tree times and show the final loss ::
 
-   The 1st time: 0.396352
-   The 2nd time: 0.396119
-   The 3nd time: 0.396187
-   ...
+   The 1st time: 0.449056
+   The 2nd time: 0.449302
+   The 3nd time: 0.449185
 
 Users can disable lock-free training by using ``disableLockFree()`` API. ::
 
@@ -376,28 +358,25 @@ Users can disable lock-free training by using ``disableLockFree()`` API. ::
    # Training task
    ffm_model = xl.create_ffm()
    ffm_model.setTrain("./small_train.txt")  
-   ffm_model.disableEarlyStop()
    ffm_model.disableLockFree()
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
             
    ffm_model.fit(param, "./model.out") 
 
-In this time, our result are *deterministic*, and we will get the same loss at the last epoch
-if we run xLearn many times. ::
+In this time, our result are *deterministic*. ::
 
-   The 1st time: 0.419957
-   The 2nd time: 0.419957
-   The 3nd time: 0.419957
-   ...   
+   The 1st time: 0.449172
+   The 2nd time: 0.449172
+   The 3nd time: 0.449172
 
-The disadvantage of using ``disableEarlyStop()`` is that it is much slower than lock-free training.
+The disadvantage of ``disableLockFree()`` is that it is much slower than lock-free training.
 
-Instance-Wise Normalization
+Instance-wise Normalization
 ----------------------------------------
 
-For FM and FFM, xLearn uses *instance-wise normalization* by default. In some scenes like CTR prediction, 
-this feature is very useful. But sometimes it hurts convergence. So users can disable instance-wise 
-normalization by using ``disableNorm()`` API. ::
+For FM and FFM, xLearn uses instance-wise normalizarion by default. In some scenes like CTR prediction, 
+this technique is very useful. But sometimes it hurts model performance. Users can disable *instance-wise normalization* 
+by using ``disableNorm()`` API ::
 
    import xlearn as xl
 
@@ -409,13 +388,12 @@ normalization by using ``disableNorm()`` API. ::
             
    ffm_model.fit(param, "./model.out") 
 
-We usually use ``diableNorm()`` API in regression tasks.
+Note that we usually use ``disableNorm`` in regression tasks.
 
 Quiet Training
 ----------------------------------------
 
-When using ``setQuiet()`` API, xLearn will not calculate any evaluation information during the training,
-and it will just train the model quietly. ::
+When using ``setQuiet`` API, xLearn will not calculate any evaluation information during the training, and it just train the model quietly
 
    import xlearn as xl
 
