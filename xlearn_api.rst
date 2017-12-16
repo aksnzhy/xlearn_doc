@@ -143,9 +143,9 @@ API List: ::
 
 Parameter List: ::
 
-    task     : {'binary', 'reg'}
+    task     : {'binary', 'reg'}  # machine learning task
     metric   : {'acc', 'prec', 'recall', 
-                'f1', 'mae', 'mape', 'rmse', 'rmsd'}
+                'f1', 'mae', 'mape', 'rmse', 'rmsd'} # Evaludation metric
     lr       : float value  # learning rate
     lambda   : float value  # regular lambda
     k        : int value    # latent factor
@@ -156,7 +156,7 @@ Parameter List: ::
     lambda_2 : float value  # parameter for ftrl
     epoch    : int vlaue    # number of epoch
     fold     : int value    # number of fold for cross-validation
-    opt      : {'sgd', 'agagrad', 'ftrl'}
+    opt      : {'sgd', 'agagrad', 'ftrl'} # optimization method
 
 xLearn R API
 ------------------------------
