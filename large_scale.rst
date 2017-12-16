@@ -30,6 +30,41 @@ size for the mini-batch that balances relevancy and memory footprint could invol
 Out-of-Core Learning Using xLearn Command Line
 ===================================================
 
+Is's very easy to perform *out-of-core* learning in xLearn command line, where users can just use the ``--disk`` 
+option, and xLearn will help you do all the other things. For example: ::
+
+    ./xlearn_train ./big_data.txt -s 2 --disk
+
+   Epoch      Train log_loss     Time cost (sec)
+       1            0.483997                4.41
+       2            0.466553                4.56
+       3            0.458234                4.88
+       4            0.451463                4.77
+       5            0.445169                4.79
+       6            0.438834                4.71
+       7            0.432173                4.84
+       8            0.424904                4.91
+       9            0.416855                5.03
+      10            0.407846                4.53
+
+In this example, xLearn can finish the training of each epoch in nearly 4.5 second. 
+If you delete the ``--disk`` option, xLearn can train faster. ::
+
+    ./xlearn_train ./big_data.txt -s 2
+
+    Epoch      Train log_loss     Time cost (sec)
+        1            0.484022                1.65
+        2            0.466452                1.64
+        3            0.458112                1.64
+        4            0.451371                1.76
+        5            0.445040                1.83
+        6            0.438680                1.92
+        7            0.432007                1.99
+        8            0.424695                1.95
+        9            0.416579                1.96
+       10            0.407518                2.11
+
+In this time, the training of each epoch will only spend nearly 1.8 seconds.
 
 Out-of-Core Learning Using xLearn Python API
 ===================================================

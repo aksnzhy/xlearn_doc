@@ -195,6 +195,41 @@ size for the mini-batch that balances relevancy and memory footprint could invol
 <a class="reference internal image-reference" href="_images/out-of-core.png"><img alt="_images/out-of-core.png" src="_images/out-of-core.png" style="width: 500px;" /></a>
 <div class="section" id="out-of-core-learning-using-xlearn-command-line">
 <h3>Out-of-Core Learning Using xLearn Command Line<a class="headerlink" href="#out-of-core-learning-using-xlearn-command-line" title="Permalink to this headline">¶</a></h3>
+<p>Is’s very easy to perform <em>out-of-core</em> learning in xLearn command line, where users can just use the <code class="docutils literal"><span class="pre">--disk</span></code>
+option, and xLearn will help you do all the other things. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">big_data</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">--</span><span class="n">disk</span>
+
+<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.483997</span>                <span class="mf">4.41</span>
+    <span class="mi">2</span>            <span class="mf">0.466553</span>                <span class="mf">4.56</span>
+    <span class="mi">3</span>            <span class="mf">0.458234</span>                <span class="mf">4.88</span>
+    <span class="mi">4</span>            <span class="mf">0.451463</span>                <span class="mf">4.77</span>
+    <span class="mi">5</span>            <span class="mf">0.445169</span>                <span class="mf">4.79</span>
+    <span class="mi">6</span>            <span class="mf">0.438834</span>                <span class="mf">4.71</span>
+    <span class="mi">7</span>            <span class="mf">0.432173</span>                <span class="mf">4.84</span>
+    <span class="mi">8</span>            <span class="mf">0.424904</span>                <span class="mf">4.91</span>
+    <span class="mi">9</span>            <span class="mf">0.416855</span>                <span class="mf">5.03</span>
+   <span class="mi">10</span>            <span class="mf">0.407846</span>                <span class="mf">4.53</span>
+</pre></div>
+</div>
+<p>In this example, xLearn can finish the training of each epoch in nearly 4.5 second.
+If you delete the <code class="docutils literal"><span class="pre">--disk</span></code> option, xLearn can train faster.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">big_data</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span>
+
+<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.484022</span>                <span class="mf">1.65</span>
+    <span class="mi">2</span>            <span class="mf">0.466452</span>                <span class="mf">1.64</span>
+    <span class="mi">3</span>            <span class="mf">0.458112</span>                <span class="mf">1.64</span>
+    <span class="mi">4</span>            <span class="mf">0.451371</span>                <span class="mf">1.76</span>
+    <span class="mi">5</span>            <span class="mf">0.445040</span>                <span class="mf">1.83</span>
+    <span class="mi">6</span>            <span class="mf">0.438680</span>                <span class="mf">1.92</span>
+    <span class="mi">7</span>            <span class="mf">0.432007</span>                <span class="mf">1.99</span>
+    <span class="mi">8</span>            <span class="mf">0.424695</span>                <span class="mf">1.95</span>
+    <span class="mi">9</span>            <span class="mf">0.416579</span>                <span class="mf">1.96</span>
+   <span class="mi">10</span>            <span class="mf">0.407518</span>                <span class="mf">2.11</span>
+</pre></div>
+</div>
+<p>In this time, the training of each epoch will only spend nearly 1.8 seconds.</p>
 </div>
 <div class="section" id="out-of-core-learning-using-xlearn-python-api">
 <h3>Out-of-Core Learning Using xLearn Python API<a class="headerlink" href="#out-of-core-learning-using-xlearn-python-api" title="Permalink to this headline">¶</a></h3>
