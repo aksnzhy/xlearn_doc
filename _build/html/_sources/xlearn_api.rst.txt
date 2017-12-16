@@ -141,7 +141,7 @@ API List: ::
 
     model.disableEarlyStop()  # Disable early-stopping.
 
-    parameter list:
+Parameter List: ::
 
       task   : 'binary', 'reg'
       metric : 'acc', 'prec', 'recall', f1', 'mae', 'mape', 'rmse', 'rmsd'
