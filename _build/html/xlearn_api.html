@@ -309,13 +309,26 @@
 </pre></div>
 </div>
 <p>Parameter List:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">task</span>   <span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;reg&#39;</span>
-<span class="n">metric</span> <span class="p">:</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="n">f1</span><span class="s1">&#39;, &#39;</span><span class="n">mae</span><span class="s1">&#39;, &#39;</span><span class="n">mape</span><span class="s1">&#39;, &#39;</span><span class="n">rmse</span><span class="s1">&#39;, &#39;</span><span class="n">rmsd</span><span class="s1">&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">task</span>     <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;reg&#39;</span><span class="p">}</span>
+<span class="n">metric</span>   <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;mae&#39;</span><span class="p">,</span> <span class="s1">&#39;mape&#39;</span><span class="p">,</span> <span class="s1">&#39;rmse&#39;</span><span class="p">,</span> <span class="s1">&#39;rmsd&#39;</span><span class="p">}</span>
+<span class="n">lr</span>       <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># learning rate</span>
+<span class="k">lambda</span>   <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># regular lambda</span>
+<span class="n">k</span>        <span class="p">:</span> <span class="nb">int</span> <span class="n">value</span>    <span class="c1"># latent factor</span>
+<span class="n">init</span>     <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># model initialize</span>
+<span class="n">alpha</span>    <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># parameter for ftrl</span>
+<span class="n">beta</span>     <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># parameter for ftrl</span>
+<span class="n">lambda_1</span> <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># parameter for ftrl</span>
+<span class="n">lambda_2</span> <span class="p">:</span> <span class="nb">float</span> <span class="n">value</span>  <span class="c1"># parameter for ftrl</span>
+<span class="n">epoch</span>    <span class="p">:</span> <span class="nb">int</span> <span class="n">vlaue</span>    <span class="c1"># number of epoch</span>
+<span class="n">fold</span>     <span class="p">:</span> <span class="nb">int</span> <span class="n">value</span>    <span class="c1"># number of fold for cross-validation</span>
+<span class="n">opt</span>      <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="s1">&#39;agagrad&#39;</span><span class="p">,</span> <span class="s1">&#39;ftrl&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="xlearn-r-api">
 <h2>xLearn R API<a class="headerlink" href="#xlearn-r-api" title="Permalink to this headline">¶</a></h2>
+<p>xLearn R API page is coming soon.</p>
 </div>
 </div>
 

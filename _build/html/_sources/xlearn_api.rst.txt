@@ -143,9 +143,22 @@ API List: ::
 
 Parameter List: ::
 
-    task   : 'binary', 'reg'
-    metric : 'acc', 'prec', 'recall', f1', 'mae', 'mape', 'rmse', 'rmsd'
-
+    task     : {'binary', 'reg'}
+    metric   : {'acc', 'prec', 'recall', 
+                'f1', 'mae', 'mape', 'rmse', 'rmsd'}
+    lr       : float value  # learning rate
+    lambda   : float value  # regular lambda
+    k        : int value    # latent factor
+    init     : float value  # model initialize
+    alpha    : float value  # parameter for ftrl
+    beta     : float value  # parameter for ftrl
+    lambda_1 : float value  # parameter for ftrl
+    lambda_2 : float value  # parameter for ftrl
+    epoch    : int vlaue    # number of epoch
+    fold     : int value    # number of fold for cross-validation
+    opt      : {'sgd', 'agagrad', 'ftrl'}
 
 xLearn R API
 ------------------------------
+
+xLearn R API page is coming soon.
