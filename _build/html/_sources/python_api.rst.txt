@@ -207,7 +207,7 @@ can use the ``cv()`` API to use this technique. For example: ::
     ffm_model.cv(param)
 
 On default, xLearn uses 5-folds cross validation, and users can set the number of fold by 
-using the ``fold`` parameter:
+using the ``fold`` parameter: ::
 
     import xlearn as xl
 
