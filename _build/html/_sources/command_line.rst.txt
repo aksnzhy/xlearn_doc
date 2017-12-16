@@ -270,27 +270,28 @@ For FM and FFM, users can also set the hyperparameter ``-u`` for model initializ
 Set Epoch Number and Early-Stopping
 ----------------------------------------
 
-Users can set the epoch number for training by using ``-e`` option. ::
+For machine learning, one epoch consists of one full training cycle on the training set. 
+In xLearn, users can set the number of epoch for training by using ``-e`` option. ::
 
     ./xlearn_train ./small_train.txt -e 3
     ./xlearn_train ./small_train.txt -e 5
     ./xlearn_train ./small_train.txt -e 10   
 
-While, if you set the validation data, xLearn will perform early-stopping by default. For example: ::
+If you set the validation data, xLearn will perform early-stopping by default. For example: ::
   
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
 
-Here, we set epoch number to ``10``, but xLearn stopped at epoch 7, because we get the best model at that epoch 
-(you may get different a number on your machine) ::
+Here, we set epoch number to ``10``, but xLearn stopped at epoch 7 because we get the best model 
+at that epoch (you may get different a stopping number on your machine) ::
 
   [ ACTION     ] Early-stopping at epoch 7
   [ ACTION     ] Start to save model ...
 
-Users can disable early stopping by using ``--dis-es`` option ::
+Users can disable early-stopping by using ``--dis-es`` option ::
 
-    ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
+  ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 
-At this time, xLearn will perform ``10`` epoch for training.
+At this time, xLearn performed ``10`` epoch for training.
 
 Lock-Free Training
 ----------------------------------------

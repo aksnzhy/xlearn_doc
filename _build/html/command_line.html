@@ -438,27 +438,28 @@ uses <code class="docutils literal"><span class="pre">4</span></code> for this v
 </div>
 <div class="section" id="set-epoch-number-and-early-stopping">
 <h2>Set Epoch Number and Early-Stopping<a class="headerlink" href="#set-epoch-number-and-early-stopping" title="Permalink to this headline">¶</a></h2>
-<p>Users can set the epoch number for training by using <code class="docutils literal"><span class="pre">-e</span></code> option.</p>
+<p>For machine learning, one epoch consists of one full training cycle on the training set.
+In xLearn, users can set the number of epoch for training by using <code class="docutils literal"><span class="pre">-e</span></code> option.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">3</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">5</span>
 <span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>While, if you set the validation data, xLearn will perform early-stopping by default. For example:</p>
+<p>If you set the validation data, xLearn will perform early-stopping by default. For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Here, we set epoch number to <code class="docutils literal"><span class="pre">10</span></code>, but xLearn stopped at epoch 7, because we get the best model at that epoch
-(you may get different a number on your machine)</p>
+<p>Here, we set epoch number to <code class="docutils literal"><span class="pre">10</span></code>, but xLearn stopped at epoch 7 because we get the best model
+at that epoch (you may get different a stopping number on your machine)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Early</span><span class="o">-</span><span class="n">stopping</span> <span class="n">at</span> <span class="n">epoch</span> <span class="mi">7</span>
 <span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Start</span> <span class="n">to</span> <span class="n">save</span> <span class="n">model</span> <span class="o">...</span>
 </pre></div>
 </div>
-<p>Users can disable early stopping by using <code class="docutils literal"><span class="pre">--dis-es</span></code> option</p>
+<p>Users can disable early-stopping by using <code class="docutils literal"><span class="pre">--dis-es</span></code> option</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">e</span> <span class="mi">10</span> <span class="o">--</span><span class="n">dis</span><span class="o">-</span><span class="n">es</span>
 </pre></div>
 </div>
-<p>At this time, xLearn will perform <code class="docutils literal"><span class="pre">10</span></code> epoch for training.</p>
+<p>At this time, xLearn performed <code class="docutils literal"><span class="pre">10</span></code> epoch for training.</p>
 </div>
 <div class="section" id="lock-free-training">
 <h2>Lock-Free Training<a class="headerlink" href="#lock-free-training" title="Permalink to this headline">¶</a></h2>
