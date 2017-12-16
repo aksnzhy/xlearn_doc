@@ -335,7 +335,7 @@ Lock-Free Training
 
 By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores 
 to accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the 
-following Python code multiple times, we may get different loss value at each epoch.
+following Python code multiple times, we may get different loss value at each epoch. ::
 
    import xlearn as xl
 
