@@ -393,7 +393,7 @@ Note that we usually use ``disableNorm`` in regression tasks.
 Quiet Training
 ----------------------------------------
 
-When using ``setQuiet`` API, xLearn will not calculate any evaluation information during the training, and it just train the model quietly ::
+When using ``setQuiet()`` API, xLearn will not calculate any evaluation information during the training, and it just train the model quietly ::
 
    import xlearn as xl
 
