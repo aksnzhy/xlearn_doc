@@ -102,7 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#hyperparameter-tuning">Hyperparameter Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-epoch-number-and-early-stopping">Set Epoch Number and Early-Stopping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lock-free-training">Lock-Free Training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instance-wise-normalization">Instance-Wise Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-wise-normalization">Instance-wise Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quiet-training">Quiet Training</a><ul class="simple">
 </ul>
 </li>
@@ -487,13 +487,13 @@ times, we may get different loss value at each epoch.</p>
 <p>The disadvantage of <code class="docutils literal"><span class="pre">--dis-lock-free</span></code> is that it is much slower than lock-free training.</p>
 </div>
 <div class="section" id="instance-wise-normalization">
-<h2>Instance-Wise Normalization<a class="headerlink" href="#instance-wise-normalization" title="Permalink to this headline">¶</a></h2>
-<p>For FM and FFM, xLearn uses <em>instance-wise normalizarion</em> by default. In some scenes like CTR prediction, this feature is very
-useful. But sometimes it hurts convergence. So users can disable instance-wise normalization by using <code class="docutils literal"><span class="pre">--no-norm</span></code> option</p>
+<h2>Instance-wise Normalization<a class="headerlink" href="#instance-wise-normalization" title="Permalink to this headline">¶</a></h2>
+<p>For FM and FFM, xLearn uses <em>instance-wise normalizarion</em> by default. In some scenes like CTR prediction, this technique is very
+useful. But sometimes it hurts model performance. Users can disable instance-wise normalization by using <code class="docutils literal"><span class="pre">--no-norm</span></code> option</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xlearn_train</span> <span class="o">./</span><span class="n">small_train</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">small_test</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">norm</span>
 </pre></div>
 </div>
-<p>We usually use <code class="docutils literal"><span class="pre">--no-norm</span></code> in regression tasks.</p>
+<p>Note that we usually use <code class="docutils literal"><span class="pre">--no-norm</span></code> in regression tasks.</p>
 </div>
 <div class="section" id="quiet-training">
 <h2>Quiet Training<a class="headerlink" href="#quiet-training" title="Permalink to this headline">¶</a></h2>

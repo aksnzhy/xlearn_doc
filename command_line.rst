@@ -319,15 +319,15 @@ In thie time, our result are *determinnistic*. ::
 
 The disadvantage of ``--dis-lock-free`` is that it is much slower than lock-free training. 
 
-Instance-Wise Normalization
+Instance-wise Normalization
 ----------------------------------------
 
-For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, this feature is very
-useful. But sometimes it hurts convergence. So users can disable instance-wise normalization by using ``--no-norm`` option ::
+For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, this technique is very
+useful. But sometimes it hurts model performance. Users can disable instance-wise normalization by using ``--no-norm`` option ::
 
   ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt --no-norm
 
-We usually use ``--no-norm`` in regression tasks.
+Note that we usually use ``--no-norm`` in regression tasks.
 
 Quiet Training
 ----------------------------------------
