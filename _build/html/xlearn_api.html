@@ -98,6 +98,8 @@
 <li class="toctree-l1"><a class="reference internal" href="r_api.html">xLearn R Package Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn API List</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#xlearn-command-line-usage">xLearn Command Line Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlearn-python-api">xLearn Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlearn-r-api">xLearn R API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="large_scale.html">Large-Scale Machine Learning</a></li>
@@ -168,10 +170,10 @@
             
   <div class="section" id="xlearn-api-list">
 <h1>xLearn API List<a class="headerlink" href="#xlearn-api-list" title="Permalink to this headline">¶</a></h1>
-<p>This page gives the xLearn API List for command line, Python package, and R pakcage.</p>
+<p>This page gives the xLearn API List for the command line, Python package, and R package.</p>
 <div class="section" id="xlearn-command-line-usage">
 <h2>xLearn Command Line Usage<a class="headerlink" href="#xlearn-command-line-usage" title="Permalink to this headline">¶</a></h2>
-<p>For training:</p>
+<p>For Training:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xlearn_train</span> <span class="o">&lt;</span><span class="n">train_file_path</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -252,7 +254,7 @@
 <span class="o">-</span><span class="n">lambda_2</span>            <span class="p">:</span>  <span class="n">Used</span> <span class="n">by</span> <span class="n">ftrl</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>For prediction:</p>
+<p>For Prediction:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xlearn_predict</span> <span class="o">&lt;</span><span class="n">test_file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">model_file</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -263,6 +265,57 @@
 <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="n">log_file_path</span><span class="o">&gt;</span>   <span class="p">:</span>  <span class="n">Path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">log</span> <span class="n">file</span><span class="o">.</span> <span class="n">Using</span> <span class="s1">&#39;/tmp/xlearn_log&#39;</span> <span class="n">by</span> <span class="n">default</span><span class="o">.</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="xlearn-python-api">
+<h2>xLearn Python API<a class="headerlink" href="#xlearn-python-api" title="Permalink to this headline">¶</a></h2>
+<p>API List:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>      <span class="c1"># Import xlearn package</span>
+
+<span class="n">xl</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>               <span class="c1"># Say hello to user</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">create_linear</span><span class="p">()</span>  <span class="c1">#  Create linear model.</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">create_fm</span><span class="p">()</span>      <span class="c1">#  Create factorization machines.</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">create_ffm</span><span class="p">()</span>     <span class="c1">#  Create field-aware factorizarion machines.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>             <span class="c1">#  Show model information.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;model_path&quot;</span><span class="p">)</span>   <span class="c1">#  Train model.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>    <span class="c1"># Perform cross-validation.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;model_path&quot;</span><span class="p">,</span> <span class="s2">&quot;output_path&quot;</span><span class="p">)</span>  <span class="c1"># Perform prediction.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;data_path&quot;</span><span class="p">)</span>      <span class="c1">#  Set training data for xLearn.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;data_path&quot;</span><span class="p">)</span>   <span class="c1">#  Set validation data for xLearn.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;data_path&quot;</span><span class="p">)</span>       <span class="c1">#  Set test data for xLearn.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setQuiet</span><span class="p">()</span>    <span class="c1">#  Set xlearn to train model quietly.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setOnDisk</span><span class="p">()</span>   <span class="c1">#  Set xlearn to use on-disk training.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setSign</span><span class="p">()</span>     <span class="c1"># Convert prediction to 0 and 1.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>  <span class="c1"># Convert prediction to (0, 1).</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">disableNorm</span><span class="p">()</span> <span class="c1"># Disable instance-wise normalization.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">disableLockFree</span><span class="p">()</span>   <span class="c1"># Disable lock-free training.</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">disableEarlyStop</span><span class="p">()</span>  <span class="c1"># Disable early-stopping.</span>
+
+<span class="n">parameter</span> <span class="nb">list</span><span class="p">:</span>
+
+  <span class="n">task</span>   <span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;reg&#39;</span>
+  <span class="n">metric</span> <span class="p">:</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="n">f1</span><span class="s1">&#39;, &#39;</span><span class="n">mae</span><span class="s1">&#39;, &#39;</span><span class="n">mape</span><span class="s1">&#39;, &#39;</span><span class="n">rmse</span><span class="s1">&#39;, &#39;</span><span class="n">rmsd</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xlearn-r-api">
+<h2>xLearn R API<a class="headerlink" href="#xlearn-r-api" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

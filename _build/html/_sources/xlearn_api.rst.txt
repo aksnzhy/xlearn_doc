@@ -1,12 +1,12 @@
 xLearn API List
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This page gives the xLearn API List for command line, Python package, and R pakcage.
+This page gives the xLearn API List for the command line, Python package, and R package.
 
 xLearn Command Line Usage
 ------------------------------
 
-For training: ::
+For Training: ::
 
     xlearn_train <train_file_path> [OPTIONS]
 
@@ -87,7 +87,7 @@ Options: ::
                                        
   -lambda_2            :  Used by ftrl.
 
-For prediction: ::
+For Prediction: ::
 
     xlearn_predict <test_file> <model_file> [OPTIONS]
 
@@ -97,3 +97,55 @@ Options: ::
                           to 'test_file' + '.out'
                                                       
   -l <log_file_path>   :  Path of the log file. Using '/tmp/xlearn_log' by default.  
+
+xLearn Python API
+------------------------------
+
+API List: ::
+
+    import xlearn as xl      # Import xlearn package
+
+    xl.hello()               # Say hello to user
+
+    model = create_linear()  #  Create linear model.
+
+    model = create_fm()      #  Create factorization machines.
+
+    model = create_ffm()     #  Create field-aware factorizarion machines.
+
+    model.show()             #  Show model information.
+
+    model.fit(param, "model_path")   #  Train model.
+
+    model.cv(param)    # Perform cross-validation.
+
+    model.predict("model_path", "output_path")  # Perform prediction. 
+
+    model.setTrain("data_path")      #  Set training data for xLearn.
+
+    model.setValidate("data_path")   #  Set validation data for xLearn.
+
+    model.setTest("data_path")       #  Set test data for xLearn.
+
+    model.setQuiet()    #  Set xlearn to train model quietly.
+
+    model.setOnDisk()   #  Set xlearn to use on-disk training.
+
+    model.setSign()     # Convert prediction to 0 and 1.
+
+    model.setSigmoid()  # Convert prediction to (0, 1).
+
+    model.disableNorm() # Disable instance-wise normalization.
+
+    model.disableLockFree()   # Disable lock-free training.
+
+    model.disableEarlyStop()  # Disable early-stopping.
+
+    parameter list:
+
+      task   : 'binary', 'reg'
+      metric : 'acc', 'prec', 'recall', f1', 'mae', 'mape', 'rmse', 'rmsd'
+
+
+xLearn R API
+------------------------------
