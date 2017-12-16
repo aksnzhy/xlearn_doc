@@ -148,7 +148,7 @@ Set Validation Dataset
 ----------------------------------------
 
 A validation dataset is used to tune the hyperparameters of a machine learning model. In xLearn, users can 
-use ``setValdiate()`` API to set the validation dataset. For example:
+use ``setValdiate()`` API to set the validation dataset. For example: ::
 
    import xlearn as xl
 

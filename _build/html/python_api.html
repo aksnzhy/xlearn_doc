@@ -322,15 +322,17 @@ be the <code class="docutils literal"><span class="pre">libffm</span></code> for
 <h2>Set Validation Dataset<a class="headerlink" href="#set-validation-dataset" title="Permalink to this headline">¶</a></h2>
 <p>A validation dataset is used to tune the hyperparameters of a machine learning model. In xLearn, users can
 use <code class="docutils literal"><span class="pre">setValdiate()</span></code> API to set the validation dataset. For example:</p>
-<blockquote>
-<div><p>import xlearn as xl</p>
-<p># Training task
-ffm_model = xl.create_ffm()
-ffm_model.setTrain(“./small_train.txt”)
-ffm_model.setValidate(“./small_test.txt”)
-param = {‘task’:’binary’, ‘lr’:0.2, ‘lambda’:0.002}</p>
-<p>ffm_model.fit(param, “./model.out”)</p>
-</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>A portion of xLearn’s output:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
     <span class="mi">1</span>            <span class="mf">0.598814</span>            <span class="mf">0.536327</span>                <span class="mf">0.00</span>
