@@ -1,14 +1,14 @@
 xLearn Python Package Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-xLearn supports very easy-to-use python API for users. Once you install the 
-xLearn python package successfully, you can try it! Type ``python`` in your
-shell and perform the following python code to check your installation: ::
+xLearn supports very easy-to-use Python API for users. Once you install the 
+xLearn Python package successfully, you can try it. Type ``python`` in your
+shell and type the following Python code to check your installation: ::
 
     import xlearn as xl
     xl.hello()
 
-Output ::
+If you install xLearn Python package successfully, you will see ::
 
   -------------------------------------------------------------------------
            _
