@@ -229,52 +229,44 @@ end of its output message. ::
 Choose Optimization Method
 ----------------------------------------
 
-In xLearn, users can choose different optimization methods by using ``opt`` parameter. For now, 
-users can choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` 
-method. For example: ::
-
-   ...
+In xLearn, users can choose different optimization methods by using ``opt`` parameter. 
+For now, users can choose ``sgd``, ``adagrad``, and ``ftrl`` method. By default, xLearn uses the ``adagrad`` method. 
+For example: ::
 
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'sgd'} 
-   # param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'adagrad'} 
-   # param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'ftrl'} 
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'adagrad'} 
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'opt':'ftrl'} 
 
-   ffm_model.fit(param, "./model.out") 
+Compared to traditional sgd method, adagrad adapts the learning rate to the parameters, performing larger updates 
+for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited for dealing with 
+sparse data. In addition, sgd is more sensitive to the learning rate compared with adagrad.
 
-Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing 
-larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited 
-for dealing with sparse data. In addtion, sgd is more sensetive to the learning rate compared with adagrad.
-
-``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in large-scale sparse 
+FTRL (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale sparse 
 problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard.
 
-Hyper-parameter Tuning
+Hyperparameter Tuning
 ----------------------------------------
 
-In machine learning, a ``hyperparameter`` is a parameter whose value is set before the learning process begins. By 
-contrast, the value of other parameters are derived via training. Hyperparameter tuning is the problem of choosing 
+In machine learning, a *hyperparameter* is a parameter whose value is set before the learning process begins. 
+By contrast, the value of other parameters is derived via training. Hyperparameter tuning is the problem of choosing 
 a set of optimal hyperparameters for a learning algorithm.
 
-First, ``learning rate`` is one of the most important hyperparameter used in machine learning. On default, this value 
-is ``0.2``. For example, we can tune this value by using ``lr`` parameter: ::
+First, the ``learning rate`` is one of the most important hyperparameters used in machine learning. By default, 
+this value is set to 0.2, and we can tune this value by using ``lr`` parameter: ::
 
     param = {'task':'binary', 'lr':0.2} 
     param = {'task':'binary', 'lr':0.5}
     param = {'task':'binary', 'lr':0.01}
 
-    ...  
-
-We can also set the ``lambda`` parameter to perform regularization. On default, xLearn uses ``L2`` regularization, and the
-regular lambda has been set to ``0.00002``. ::
+We can also use the ``lambda`` parameter to perform regularization. By default, xLearn uses L2 regularization, and 
+the *regular_lambda* has been set to ``0.00002``. ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.02} 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
 
-    ...
-
-For FTRL method, we also need to tune another four hyperparameters, including ``alpha``, ``beta``, ``lambda_1``, 
-and ``lambda_2``. For example: ::
+For the FTRL method, we also need to tune another four hyperparameters, 
+including ``alpha``, ``beta``, ``lambda_1``, and ``lambda_2``. For example: ::
 
     param = {'alpha':0.002, 'beta':0.8, 'lambda_1':0.001, 'lambda_2': 1.0}    
 

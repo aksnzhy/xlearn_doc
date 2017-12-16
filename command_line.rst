@@ -209,7 +209,7 @@ Choose Optimization Method
 ----------------------------------------
  
 In xLearn, users can choose different optimization methods by using ``-p`` option. For now, users can 
-choose ``sgd``, ``adagrad``, and ``ftrl`` method. On default, xLearn uses the ``adagrad`` method. 
+choose ``sgd``, ``adagrad``, and ``ftrl`` method. By default, xLearn uses the ``adagrad`` method. 
 For example: ::
 
     ./xlearn_train ./small_train.txt -p sgd
