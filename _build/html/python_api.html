@@ -96,9 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="command_line.html">xLearn Command Line Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Python Package Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-model">Choose Machine Learning Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-dataset">Set Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-machine-learning-algorithm">Choose Machine Learning Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-validation-dataset">Set Validation Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-validation">Cross-Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choose-optimization-method">Choose Optimization Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hyper-parameter-tuning">Hyper-parameter Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-epoch-number-and-early-stopping">Set Epoch Number and Early Stopping</a></li>
@@ -290,11 +290,10 @@ the score to (0-1) by using <code class="docutils literal"><span class="pre">set
 </pre></div>
 </div>
 </div>
-<div class="section" id="choose-machine-learning-model">
-<h2>Choose Machine Learning Model<a class="headerlink" href="#choose-machine-learning-model" title="Permalink to this headline">¶</a></h2>
-<p>For now, xLearn can support three different machine learning models, including
-LR, FM, and FFM. Users can create different models by using <code class="docutils literal"><span class="pre">create_xxx()</span></code> API.
-For example:</p>
+<div class="section" id="choose-machine-learning-algorithm">
+<h2>Choose Machine Learning Algorithm<a class="headerlink" href="#choose-machine-learning-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>For now, xLearn can support three different machine learning algorithms, including LR, FM and FFM.
+Users can choose different machine learning algorithms by using <code class="docutils literal"><span class="pre">create_xxx()</span></code> API:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
 
 <span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
@@ -302,45 +301,72 @@ For example:</p>
 <span class="n">lr_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_lr</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>For LR and FM, the input data can be <code class="docutils literal"><span class="pre">CSV</span></code> or <code class="docutils literal"><span class="pre">libsvm</span></code> data format, while for FFM, the
-input data should be the <code class="docutils literal"><span class="pre">libffm</span></code> format. You can give a <code class="docutils literal"><span class="pre">libffm</span></code> file to LR and FM. At
-that time, xLearn will treat this data as <code class="docutils literal"><span class="pre">libsvm</span></code> format.</p>
+<p>For LR and FM, the input data format can be <code class="docutils literal"><span class="pre">CSV</span></code> or <code class="docutils literal"><span class="pre">libsvm</span></code>. For FFM, the input data should
+be the <code class="docutils literal"><span class="pre">libffm</span></code> format.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">libsvm</span> <span class="nb">format</span><span class="p">:</span>
+
+  <span class="n">label</span> <span class="n">index_1</span><span class="p">:</span><span class="n">value_1</span> <span class="n">index_2</span><span class="p">:</span><span class="n">value_2</span> <span class="o">...</span> <span class="n">index_n</span><span class="p">:</span><span class="n">value_n</span>
+
+<span class="n">CSV</span> <span class="nb">format</span><span class="p">:</span>
+
+  <span class="n">value_1</span> <span class="n">value_2</span> <span class="o">..</span> <span class="n">value_n</span> <span class="n">label</span>
+
+<span class="n">libffm</span> <span class="nb">format</span><span class="p">:</span>
+
+  <span class="n">label</span> <span class="n">field_1</span><span class="p">:</span><span class="n">index_1</span><span class="p">:</span><span class="n">value_1</span> <span class="n">field_2</span><span class="p">:</span><span class="n">index_2</span><span class="p">:</span><span class="n">value_2</span> <span class="o">...</span>
+</pre></div>
 </div>
-<div class="section" id="set-dataset">
-<h2>Set Dataset<a class="headerlink" href="#set-dataset" title="Permalink to this headline">¶</a></h2>
-<p>Users can set dataset by using <code class="docutils literal"><span class="pre">setTrain()</span></code>, <code class="docutils literal"><span class="pre">setTest()</span></code>, and <code class="docutils literal"><span class="pre">setValidate()</span></code> dataset.
-The <code class="docutils literal"><span class="pre">setTrain()</span></code> and <code class="docutils literal"><span class="pre">setValidate()</span></code> are used for training task, while the <code class="docutils literal"><span class="pre">setTest()</span></code>
-is used for prediction task. If users don’t set the validation file, xLearn will not calculate
-any evaluation metric. For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
-
-<span class="c1"># Training task</span>
-<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
-<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">}</span>
-
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
-
-
-<span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
-    <span class="mi">1</span>            <span class="mf">0.593791</span>                <span class="mf">0.00</span>
-    <span class="mi">2</span>            <span class="mf">0.540819</span>                <span class="mf">0.00</span>
-    <span class="mi">3</span>            <span class="mf">0.518385</span>                <span class="mf">0.00</span>
-    <span class="mi">4</span>            <span class="mf">0.504790</span>                <span class="mf">0.00</span>
-    <span class="mi">5</span>            <span class="mf">0.492556</span>                <span class="mf">0.00</span>
-    <span class="mi">6</span>            <span class="mf">0.481522</span>                <span class="mf">0.00</span>
-    <span class="mi">7</span>            <span class="mf">0.473634</span>                <span class="mf">0.00</span>
-    <span class="mi">8</span>            <span class="mf">0.464028</span>                <span class="mf">0.00</span>
-    <span class="mi">9</span>            <span class="mf">0.456445</span>                <span class="mf">0.00</span>
-   <span class="mi">10</span>            <span class="mf">0.448745</span>                <span class="mf">0.00</span>
+<p>Users can also give a libffm file to LR and FM. At that time, xLearn will treat this data as libsvm format.</p>
+</div>
+<div class="section" id="set-validation-dataset">
+<h2>Set Validation Dataset<a class="headerlink" href="#set-validation-dataset" title="Permalink to this headline">¶</a></h2>
+<p>A validation dataset is used to tune the hyperparameters of a machine learning model. In xLearn, users can
+use <code class="docutils literal"><span class="pre">setValdiate()</span></code> API to set the validation dataset. For example:</p>
+<blockquote>
+<div><p>import xlearn as xl</p>
+<p># Training task
+ffm_model = xl.create_ffm()
+ffm_model.setTrain(“./small_train.txt”)
+ffm_model.setValidate(“./small_test.txt”)
+param = {‘task’:’binary’, ‘lr’:0.2, ‘lambda’:0.002}</p>
+<p>ffm_model.fit(param, “./model.out”)</p>
+</div></blockquote>
+<p>A portion of xLearn’s output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Epoch</span>      <span class="n">Train</span> <span class="n">log_loss</span>       <span class="n">Test</span> <span class="n">log_loss</span>     <span class="n">Time</span> <span class="n">cost</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="mi">1</span>            <span class="mf">0.598814</span>            <span class="mf">0.536327</span>                <span class="mf">0.00</span>
+    <span class="mi">2</span>            <span class="mf">0.539872</span>            <span class="mf">0.542924</span>                <span class="mf">0.00</span>
+    <span class="mi">3</span>            <span class="mf">0.521035</span>            <span class="mf">0.531595</span>                <span class="mf">0.00</span>
+    <span class="mi">4</span>            <span class="mf">0.505414</span>            <span class="mf">0.536246</span>                <span class="mf">0.00</span>
+    <span class="mi">5</span>            <span class="mf">0.492150</span>            <span class="mf">0.532070</span>                <span class="mf">0.00</span>
+    <span class="mi">6</span>            <span class="mf">0.482229</span>            <span class="mf">0.536482</span>                <span class="mf">0.00</span>
+    <span class="mi">7</span>            <span class="mf">0.470457</span>            <span class="mf">0.528871</span>                <span class="mf">0.00</span>
+    <span class="mi">8</span>            <span class="mf">0.464445</span>            <span class="mf">0.534550</span>                <span class="mf">0.00</span>
+    <span class="mi">9</span>            <span class="mf">0.456061</span>            <span class="mf">0.537320</span>                <span class="mf">0.00</span>
+</pre></div>
+</div>
+<p>Here we can see that the training loss continuously goes down. But the validation loss (test loss)
+goes down first, and then goes up. This is because our model has already overfitted current training
+dataset. By default, xLearn will calculate the validation loss in each epoch, while users can also
+set different evaluation metrics by using <code class="docutils literal"><span class="pre">metric</span></code> parameter. For classification problems, the metric can be :
+<code class="docutils literal"><span class="pre">acc</span></code> (accuracy), <code class="docutils literal"><span class="pre">prec</span></code> (precision), <code class="docutils literal"><span class="pre">f1</span></code> (f1 score), and <code class="docutils literal"><span class="pre">auc</span></code> (AUC score). For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `acc`}
+param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `prec`}
+param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `f1`}
+param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `auc`}
+</pre></div>
+</div>
+<p>For regression problems, the metric can be <code class="docutils literal"><span class="pre">mae</span></code>, <code class="docutils literal"><span class="pre">mape</span></code>, and <code class="docutils literal"><span class="pre">rmsd</span></code> (rmse). For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `rmse`}
+param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `mae`}
+param = {&#39;task&#39;:&#39;binary&#39;, &#39;lr&#39;:0.2, &#39;lambda&#39;:0.002, &#39;metric&#39;: `mape`}
 </pre></div>
 </div>
 </div>
 <div class="section" id="cross-validation">
-<h2>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
-<p>Cross-validation, sometimes called rotation estimation, is a model validation technique
-for assessing how the results of a statistical analysis will generalize to an independent
-data set. In xLearn, users can use <code class="docutils literal"><span class="pre">cv()</span></code> API to perform cross-validation. For example:</p>
+<h2>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing
+how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users
+can use the <code class="docutils literal"><span class="pre">cv()</span></code> API to use this technique. For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
 
 <span class="c1"># Training task</span>
@@ -351,19 +377,24 @@ data set. In xLearn, users can use <code class="docutils literal"><span class="p
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>On default, xLearn uses 5-folds cross validation, and users can set number of fold
-by using the <code class="docutils literal"><span class="pre">fold</span></code> parameter in <code class="docutils literal"><span class="pre">param</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
-
-<span class="c1"># Training task</span>
-<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
-<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;fold&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
-
-<span class="n">ffm_model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+<p>On default, xLearn uses 5-folds cross validation, and users can set the number of fold by
+using the <code class="docutils literal"><span class="pre">fold</span></code> parameter:</p>
+<blockquote>
+<div><p>import xlearn as xl</p>
+<p># Training task
+ffm_model = xl.create_ffm()
+ffm_model.setTrain(“./small_train.txt”)
+param = {‘task’:’binary’, ‘lr’:0.2, ‘lambda’:0.002, ‘fold’:3}</p>
+<p>ffm_model.cv(param)</p>
+</div></blockquote>
+<p>Here we set the number of folds to 3. The xLearn will calculate the average validation loss at the
+end of its output message.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">------------</span><span class="p">]</span> <span class="n">Average</span> <span class="n">log_loss</span><span class="p">:</span> <span class="mf">0.547632</span>
+<span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Finish</span> <span class="n">Cross</span><span class="o">-</span><span class="n">Validation</span>
+<span class="p">[</span> <span class="n">ACTION</span>     <span class="p">]</span> <span class="n">Clear</span> <span class="n">the</span> <span class="n">xLearn</span> <span class="n">environment</span> <span class="o">...</span>
+<span class="p">[</span><span class="o">------------</span><span class="p">]</span> <span class="n">Total</span> <span class="n">time</span> <span class="n">cost</span><span class="p">:</span> <span class="mf">0.05</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this example, xLearn performs cross-validation in 3 folds.</p>
 </div>
 <div class="section" id="choose-optimization-method">
 <h2>Choose Optimization Method<a class="headerlink" href="#choose-optimization-method" title="Permalink to this headline">¶</a></h2>

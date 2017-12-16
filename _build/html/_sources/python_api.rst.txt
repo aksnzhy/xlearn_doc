@@ -114,12 +114,11 @@ and then we can get the result ::
    0
    0
 
-Choose Machine Learning Model
+Choose Machine Learning Algorithm
 ----------------------------------------
 
-For now, xLearn can support three different machine learning models, including
-LR, FM, and FFM. Users can create different models by using ``create_xxx()`` API.
-For example: ::
+For now, xLearn can support three different machine learning algorithms, including LR, FM and FFM. 
+Users can choose different machine learning algorithms by using ``create_xxx()`` API: ::
    
     import xlearn as xl
 
@@ -128,46 +127,75 @@ For example: ::
     lr_model = xl.create_lr()
 
 
-For LR and FM, the input data can be ``CSV`` or ``libsvm`` data format, while for FFM, the 
-input data should be the ``libffm`` format. You can give a ``libffm`` file to LR and FM. At 
-that time, xLearn will treat this data as ``libsvm`` format. 
+For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the input data should 
+be the ``libffm`` format. ::
 
-Set Dataset
+  libsvm format:
+
+    label index_1:value_1 index_2:value_2 ... index_n:value_n
+
+  CSV format:
+
+    value_1 value_2 .. value_n label
+
+  libffm format:
+
+    label field_1:index_1:value_1 field_2:index_2:value_2 ...
+
+Users can also give a libffm file to LR and FM. At that time, xLearn will treat this data as libsvm format. 
+
+Set Validation Dataset
 ----------------------------------------
 
-Users can set dataset by using ``setTrain()``, ``setTest()``, and ``setValidate()`` dataset.
-The ``setTrain()`` and ``setValidate()`` are used for training task, while the ``setTest()`` 
-is used for prediction task. If users don't set the validation file, xLearn will not calculate
-any evaluation metric. For example: ::
+A validation dataset is used to tune the hyperparameters of a machine learning model. In xLearn, users can 
+use ``setValdiate()`` API to set the validation dataset. For example:
 
    import xlearn as xl
 
    # Training task
    ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.setTrain("./small_train.txt")
+   ffm_model.setValidate("./small_test.txt")  
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
             
    ffm_model.fit(param, "./model.out") 
 
+A portion of xLearn's output: ::
 
-   Epoch      Train log_loss     Time cost (sec)
-       1            0.593791                0.00
-       2            0.540819                0.00
-       3            0.518385                0.00
-       4            0.504790                0.00
-       5            0.492556                0.00
-       6            0.481522                0.00
-       7            0.473634                0.00
-       8            0.464028                0.00
-       9            0.456445                0.00
-      10            0.448745                0.00
+   Epoch      Train log_loss       Test log_loss     Time cost (sec)
+       1            0.598814            0.536327                0.00
+       2            0.539872            0.542924                0.00
+       3            0.521035            0.531595                0.00
+       4            0.505414            0.536246                0.00
+       5            0.492150            0.532070                0.00
+       6            0.482229            0.536482                0.00
+       7            0.470457            0.528871                0.00
+       8            0.464445            0.534550                0.00
+       9            0.456061            0.537320                0.00
 
-Cross Validation
+Here we can see that the training loss continuously goes down. But the validation loss (test loss) 
+goes down first, and then goes up. This is because our model has already overfitted current training 
+dataset. By default, xLearn will calculate the validation loss in each epoch, while users can also 
+set different evaluation metrics by using ``metric`` parameter. For classification problems, the metric can be : 
+``acc`` (accuracy), ``prec`` (precision), ``f1`` (f1 score), and ``auc`` (AUC score). For example: ::
+
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `acc`}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `prec`}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `f1`}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `auc`}           
+
+For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse). For example: ::
+
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `rmse`}
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `mae`}    
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'metric': `mape`}  
+
+Cross-Validation
 ----------------------------------------
 
-Cross-validation, sometimes called rotation estimation, is a model validation technique 
-for assessing how the results of a statistical analysis will generalize to an independent 
-data set. In xLearn, users can use ``cv()`` API to perform cross-validation. For example: ::
+Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing 
+how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users 
+can use the ``cv()`` API to use this technique. For example: ::
 
     import xlearn as xl
 
@@ -176,11 +204,10 @@ data set. In xLearn, users can use ``cv()`` API to perform cross-validation. For
     ffm_model.setTrain("./small_train.txt")  
     param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
             
-    ffm_model.cv(param) 
+    ffm_model.cv(param)
 
-
-On default, xLearn uses 5-folds cross validation, and users can set number of fold 
-by using the ``fold`` parameter in ``param`` ::
+On default, xLearn uses 5-folds cross validation, and users can set the number of fold by 
+using the ``fold`` parameter:
 
     import xlearn as xl
 
@@ -191,7 +218,13 @@ by using the ``fold`` parameter in ``param`` ::
             
     ffm_model.cv(param)     
 
-In this example, xLearn performs cross-validation in 3 folds.
+Here we set the number of folds to 3. The xLearn will calculate the average validation loss at the 
+end of its output message. ::
+
+   [------------] Average log_loss: 0.547632
+   [ ACTION     ] Finish Cross-Validation
+   [ ACTION     ] Clear the xLearn environment ...
+   [------------] Total time cost: 0.05 (sec)
 
 Choose Optimization Method
 ----------------------------------------
