@@ -185,6 +185,9 @@ gigabytes (sometimes 2 GB, more commonly 4 GB, but we assume that you have 2 GB 
 large server machines. Large servers are like the ones you can get on cloud computing services such as Amazon
 Elastic Compute Cloud (EC2), whereas your storage capabilities can easily exceed terabytes of capacity using
 just an external drive (most likely about 1 TB but it can reach up to 4 TB).</p>
+<p>Actually, the ability to learn incrementally from a mini-batch of instances is key to <em>out-if-core</em> learning as
+it gurantees that at any given time there will be only a small amount of data in the main memory. Choose a good
+size for the mini-batch that balances relevancy and memory footprint could involve some tuning.</p>
 </div>
 <div class="section" id="distributed-learning">
 <h2>Distributed Learning<a class="headerlink" href="#distributed-learning" title="Permalink to this headline">¶</a></h2>
