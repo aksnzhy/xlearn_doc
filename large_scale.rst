@@ -69,7 +69,30 @@ In this time, the training of each epoch will only spend nearly 1.8 seconds.
 Out-of-Core Learning Using xLearn Python API
 ===================================================
 
+In Python, users can use ``setOnDisk`` API to perform *out-of-core* learning. For example: ::
 
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setOnDisk()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.setValidate("./small_test.txt") 
+   param = {'task':'binary', 'lr':0.2, 
+            'lambda':0.002, 'metric':'auc'} 
+
+   ffm_model.fit(param, "./model.out")  
+
+   # Prediction task
+   ffm_model.setTest("./small_test.txt")  
+   # Convert output to 0~1
+   ffm_model.setSigmoid()
+   ffm_model.predict("./model.out", "./output.txt")  
+
+Out-of-Core Learning Using xLearn R API
+===================================================
+
+The R guide is coming soon.
 
 Distributed Learning
 --------------------------------
