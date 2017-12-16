@@ -8,3 +8,13 @@ memory of a single machine. Motivated by this, we design xLearn to solve large-s
 machine learning problems. First, xLearn can handle very large data (TB) on a single PC 
 by using *out-of-core* training. In addition, xLearn can scale beyond billions of example
 across many machines to support distributed training by using the *parameter server* framework.
+
+Out-of-Core Training
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+Distributed Training
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The distributed training guide is coming soon.
