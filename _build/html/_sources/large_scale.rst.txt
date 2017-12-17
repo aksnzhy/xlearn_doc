@@ -97,6 +97,11 @@ The R guide is coming soon.
 Distributed Learning
 --------------------------------
 
+As we mentioned before, for some large-scale machine challenges like computational advertising, we
+focus on the problem with potentially trillions of training examples and billions of model parameters,
+both of which cannot fit into the memory of a single machine, which brings the *scalability challenge*
+for users and system designer.
+
 .. image:: ./images/ps.png
     :width: 500   
 
