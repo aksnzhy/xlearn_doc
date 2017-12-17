@@ -378,7 +378,7 @@ Instance-wise Normalization
 
 For FM and FFM, xLearn uses instance-wise normalizarion by default. In some scenes like CTR prediction, 
 this technique is very useful. But sometimes it hurts model performance. Users can disable *instance-wise normalization* 
-by using ``disableNorm()`` API ::
+by using ``disableNorm()`` API. ::
 
    import xlearn as xl
 
