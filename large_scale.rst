@@ -100,9 +100,27 @@ Distributed Learning
 As we mentioned before, for some large-scale machine challenges like computational advertising, we
 focus on the problem with potentially trillions of training examples and billions of model parameters,
 both of which cannot fit into the memory of a single machine, which brings the *scalability challenge*
-for users and system designer.
+for users and system designer. For this challenge, parallelizing the training process across machines has 
+become a prerequisite.
+
+The *Parameter Server* (PS) framework has emerged as an efficient approach to solve the “big model” machine learning 
+challenge recently. Under this framework, both the training data and workloads are spread across worker nodes, while 
+the server nodes maintain the globally shared model pa- rameters. The following figure demonstrates the architecture 
+of the PS framework. 
 
 .. image:: ./images/ps.png
     :width: 500   
 
-The distributed training guide is coming soon.
+As we can see, the *Parameter Server* provides two concise APIs for users. 
+
+*Push* sends a vector of (key, value) paris
+to the server nodes. To be more specific – in the distributed gradient descent, the worker nodes might send the locally 
+computed gradients to servers. Due to the data sparsity, only a part the gradients is non-zero. Often it is desirable to 
+present the gradient as a list of (key, value) pairs, where the feature index is the key and the according gradient item 
+is value.
+
+*Pull* requests the values associated with a list of keys, which will get the newest parameters from the server nodes. This 
+is particularly useful whenever the main memory of a single worker cannot hold a full model. Instead, workers prefetch the 
+model entries relevant for solving the model only when needed.
+
+The distributed training guide for xLearn is coming soon.

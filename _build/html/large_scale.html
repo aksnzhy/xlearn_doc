@@ -265,9 +265,23 @@ If you delete the <code class="docutils literal"><span class="pre">--disk</span>
 <p>As we mentioned before, for some large-scale machine challenges like computational advertising, we
 focus on the problem with potentially trillions of training examples and billions of model parameters,
 both of which cannot fit into the memory of a single machine, which brings the <em>scalability challenge</em>
-for users and system designer.</p>
+for users and system designer. For this challenge, parallelizing the training process across machines has
+become a prerequisite.</p>
+<p>The <em>Parameter Server</em> (PS) framework has emerged as an efficient approach to solve the “big model” machine learning
+challenge recently. Under this framework, both the training data and workloads are spread across worker nodes, while
+the server nodes maintain the globally shared model pa- rameters. The following figure demonstrates the architecture
+of the PS framework.</p>
 <a class="reference internal image-reference" href="_images/ps.png"><img alt="_images/ps.png" src="_images/ps.png" style="width: 500px;" /></a>
-<p>The distributed training guide is coming soon.</p>
+<p>As we can see, the <em>Parameter Server</em> provides two concise APIs for users.</p>
+<p><em>Push</em> sends a vector of (key, value) paris
+to the server nodes. To be more specific – in the distributed gradient descent, the worker nodes might send the locally
+computed gradients to servers. Due to the data sparsity, only a part the gradients is non-zero. Often it is desirable to
+present the gradient as a list of (key, value) pairs, where the feature index is the key and the according gradient item
+is value.</p>
+<p><em>Pull</em> requests the values associated with a list of keys, which will get the newest parameters from the server nodes. This
+is particularly useful whenever the main memory of a single worker cannot hold a full model. Instead, workers prefetch the
+model entries relevant for solving the model only when needed.</p>
+<p>The distributed training guide for xLearn is coming soon.</p>
 </div>
 </div>
 
