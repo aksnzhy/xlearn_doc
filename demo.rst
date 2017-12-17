@@ -21,7 +21,7 @@ House Price Prediction
 
 You can find the data used in this demo in the path ``/demo/regression/house_price/``.
 
-More demo in xLearn is coming soon.
+More Demo in xLearn is coming soon.
 
  .. toctree::
    :hidden:
