@@ -97,4 +97,7 @@ The R guide is coming soon.
 Distributed Learning
 --------------------------------
 
+.. image:: ./images/ps.png
+    :width: 500   
+
 The distributed training guide is coming soon.

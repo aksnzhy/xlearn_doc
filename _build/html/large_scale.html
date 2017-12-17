@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#out-of-core-learning">Out-of-Core Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#out-of-core-learning-using-xlearn-command-line">Out-of-Core Learning Using xLearn Command Line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#out-of-core-learning-using-xlearn-python-api">Out-of-Core Learning Using xLearn Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#out-of-core-learning-using-xlearn-r-api">Out-of-Core Learning Using xLearn R API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#distributed-learning">Distributed Learning</a></li>
@@ -233,10 +234,35 @@ If you delete the <code class="docutils literal"><span class="pre">--disk</span>
 </div>
 <div class="section" id="out-of-core-learning-using-xlearn-python-api">
 <h3>Out-of-Core Learning Using xLearn Python API<a class="headerlink" href="#out-of-core-learning-using-xlearn-python-api" title="Permalink to this headline">¶</a></h3>
+<p>In Python, users can use <code class="docutils literal"><span class="pre">setOnDisk</span></code> API to perform <em>out-of-core</em> learning. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="k">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setOnDisk</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./small_train.txt&quot;</span><span class="p">)</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+         <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;auc&#39;</span><span class="p">}</span>
+
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;./model.out&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prediction task</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./small_test.txt&quot;</span><span class="p">)</span>
+<span class="c1"># Convert output to 0~1</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="out-of-core-learning-using-xlearn-r-api">
+<h3>Out-of-Core Learning Using xLearn R API<a class="headerlink" href="#out-of-core-learning-using-xlearn-r-api" title="Permalink to this headline">¶</a></h3>
+<p>The R guide is coming soon.</p>
 </div>
 </div>
 <div class="section" id="distributed-learning">
 <h2>Distributed Learning<a class="headerlink" href="#distributed-learning" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/ps.png"><img alt="_images/ps.png" src="_images/ps.png" style="width: 500px;" /></a>
 <p>The distributed training guide is coming soon.</p>
 </div>
 </div>
