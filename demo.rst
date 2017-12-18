@@ -13,13 +13,6 @@ and the page he is visiting, what is the probability that he will click on a giv
 
 You can find the data used in this demo in the path ``/demo/classification/criteo_ctr/``.
 
-Python Demo
-============================
-
-This is the Python demo: ::
-
-
-
 Mushroom Classification
 ---------------------------
 
@@ -33,11 +26,6 @@ for Poisonous Oak and Ivy.
 
 You can find a small portion of data used in this demo in the path ``/demo/classification/mushroom/``.
 
-Python Demo
-============================
-
-This is the Python demo: ::
-
 Predict Survival in Titanic
 -----------------------------
 
@@ -47,11 +35,6 @@ survived the tragedy. (`Link`__)
 
 You can find the data used in this demo in the path ``/demo/classification/titanic/``.
 
-Python Demo
-============================
-
-This is the Python demo: ::
-
 House Price Prediction
 -----------------------------
 
@@ -60,12 +43,6 @@ It's an incredible alternative for data scientists looking for a modernized and 
 Housing dataset. (`Link`__)
 
 You can find the data used in this demo in the path ``/demo/regression/house_price/``.
-
-Python Demo
-============================
-
-This is the Python demo: ::
-
 
 More Demo in xLearn is coming soon.
 
