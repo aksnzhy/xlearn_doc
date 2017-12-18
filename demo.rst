@@ -1,7 +1,7 @@
 xLearn Demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Copyright of the dataset belongs to the original copyright holder
+Copyright of the dataset belongs to the original copyright holder.
 
 Criteo CTR Prediction
 ---------------------------
