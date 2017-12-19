@@ -15,8 +15,7 @@ and the page he is visiting, what is the probability that he will click on a giv
 
 You can find the data used in this demo in the path ``/demo/classification/criteo_ctr/``.
 
-Python Demo
-========================
+The follow code is the Python demo:
 
 .. code-block:: python
 

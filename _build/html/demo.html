@@ -99,10 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="xlearn_api.html">xLearn API List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="large_scale.html">Large-Scale Machine Learning</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xLearn Demo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#criteo-ctr-prediction">Criteo CTR Prediction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#python-demo">Python Demo</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#criteo-ctr-prediction">Criteo CTR Prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mushroom-classification">Mushroom Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#predict-survival-in-titanic">Predict Survival in Titanic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#house-price-prediction">House Price Prediction</a><ul class="simple">
@@ -185,8 +182,7 @@ However, its data and methods are usually kept under lock and key. In this resea
 sharing a week’s worth of data for you to develop models predicting ad click-through rate (CTR). Given a user
 and the page he is visiting, what is the probability that he will click on a given ad?</p>
 <p>You can find the data used in this demo in the path <code class="docutils literal"><span class="pre">/demo/classification/criteo_ctr/</span></code>.</p>
-<div class="section" id="python-demo">
-<h3>Python Demo<a class="headerlink" href="#python-demo" title="Permalink to this headline">¶</a></h3>
+<p>The follow code is the Python demo:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
 
 <span class="c1"># Training task</span>
@@ -204,7 +200,6 @@ and the page he is visiting, what is the probability that he will click on a giv
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
 <span class="n">ffm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="mushroom-classification">
