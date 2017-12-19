@@ -15,6 +15,28 @@ and the page he is visiting, what is the probability that he will click on a giv
 
 You can find the data used in this demo in the path ``/demo/classification/criteo_ctr/``.
 
+Python Demo
+========================
+
+.. code-block:: python
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   ffm_model.setValidate("./small_test.txt") 
+   param = {'task':'binary', 'lr':0.2, 
+            'lambda':0.002, 'metric':'auc'} 
+
+   ffm_model.fit(param, "./model.out")  
+
+   # Prediction task
+   ffm_model.setTest("./small_test.txt")  
+   # Convert output to 0~1
+   ffm_model.setSigmoid()
+   ffm_model.predict("./model.out", "./output.txt")  
+
 Mushroom Classification
 ---------------------------
 
