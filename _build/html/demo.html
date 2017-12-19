@@ -211,6 +211,26 @@ or of unknown edibility and not recommended. This latter class was combined with
 states that there is no simple rule for determining the edibility of a mushroom; no rule like <em>leaflets three, let it be</em>
 for Poisonous Oak and Ivy.</p>
 <p>You can find a small portion of data used in this demo in the path <code class="docutils literal"><span class="pre">/demo/classification/mushroom/</span></code>.</p>
+<p>The follow code is the Python demo:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">linear_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_linear</span><span class="p">()</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./agaricus_train.txt&quot;</span><span class="p">)</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">setValidate</span><span class="p">(</span><span class="s2">&quot;./agaricus_test.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+         <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;acc&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;opt&#39;</span><span class="p">:</span><span class="s1">&#39;sgd&#39;</span><span class="p">}</span>
+
+<span class="n">linear_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s1">&#39;./model.out&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prediction task</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">setTest</span><span class="p">(</span><span class="s2">&quot;./agaricus_test.txt&quot;</span><span class="p">)</span>
+<span class="c1"># Convert output to 0-1</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">setSigmoid</span><span class="p">()</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./model.out&quot;</span><span class="p">,</span> <span class="s2">&quot;./output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="predict-survival-in-titanic">
 <h2>Predict Survival in Titanic<a class="headerlink" href="#predict-survival-in-titanic" title="Permalink to this headline">¶</a></h2>
