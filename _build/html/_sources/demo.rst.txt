@@ -104,6 +104,21 @@ Housing dataset. (`Link`__)
 
 You can find the data used in this demo in the path ``/demo/regression/house_price/``.
 
+The follow code is the Python demo:
+
+.. code-block:: python
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./house_price_train.txt")
+   param = {'task':'reg', 'lr':0.2, 
+            'lambda':0.002, 'metric':'rmse'}
+
+   # Cross-validation
+   ffm_model.cv(param)
+
 More Demo in xLearn is coming soon.
 
 .. __: https://www.kaggle.com/c/criteo-display-ad-challenge

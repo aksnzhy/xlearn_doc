@@ -258,6 +258,19 @@ survived the tragedy. (<a class="reference external" href="https://www.kaggle.co
 It’s an incredible alternative for data scientists looking for a modernized and expanded version of the often cited Boston
 Housing dataset. (<a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">Link</a>)</p>
 <p>You can find the data used in this demo in the path <code class="docutils literal"><span class="pre">/demo/regression/house_price/</span></code>.</p>
+<p>The follow code is the Python demo:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlearn</span> <span class="kn">as</span> <span class="nn">xl</span>
+
+<span class="c1"># Training task</span>
+<span class="n">ffm_model</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">create_ffm</span><span class="p">()</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">setTrain</span><span class="p">(</span><span class="s2">&quot;./house_price_train.txt&quot;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+         <span class="s1">&#39;lambda&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;rmse&#39;</span><span class="p">}</span>
+
+<span class="c1"># Cross-validation</span>
+<span class="n">ffm_model</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>More Demo in xLearn is coming soon.</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
