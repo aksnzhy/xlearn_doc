@@ -1,7 +1,7 @@
 xLearn Tutorials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`From linear model to FM and FFM`__ (Chinese version)
+(1) `From linear model to FM and FFM`__ (Chinese version)
 
 Tutorials on specific tasks is coming soon.
 
