@@ -353,6 +353,19 @@ following Python code multiple times, we may get different loss value at each ep
    The 2nd time: 0.449302
    The 3nd time: 0.449185
 
+Users can set the number of thread for xLearn by using ``nthread`` parameter: ::
+
+   import xlearn as xl
+
+   # Training task
+   ffm_model = xl.create_ffm()
+   ffm_model.setTrain("./small_train.txt")  
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'nthread':2} 
+            
+   ffm_model.fit(param, "./model.out") 
+
+If you don't set this parameter, xLearn uses all of the CPU cores by default.
+
 Users can disable lock-free training by using ``disableLockFree()`` API. ::
 
    import xlearn as xl
