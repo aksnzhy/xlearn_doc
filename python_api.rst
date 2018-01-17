@@ -32,11 +32,17 @@ Here is a simple Python demo to demonstrate how to use xLearn. You can check out
    import xlearn as xl
 
    # Training task
-   ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
-   ffm_model.setValidate("./small_test.txt") 
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002} 
+   ffm_model = xl.create_ffm()  # Use field-aware factorization machine
+   ffm_model.setTrain("./small_train.txt")   # Training data
+   ffm_model.setValidate("./small_test.txt")  # Validation data
+
+   # param:
+   #  0. binary classification
+   #  1. learning rate
+   #  2. regular lambda
+   param = {'task':'binary', 'lr':0.2, 'lambda':0.002}
             
+   # Train model
    ffm_model.fit(param, "./model.out")  
 
 A portion of the xLearn's output ::
@@ -352,19 +358,6 @@ following Python code multiple times, we may get different loss value at each ep
    The 1st time: 0.449056
    The 2nd time: 0.449302
    The 3nd time: 0.449185
-
-Users can set the number of thread for xLearn by using ``nthread`` parameter: ::
-
-   import xlearn as xl
-
-   # Training task
-   ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
-   param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'nthread':2} 
-            
-   ffm_model.fit(param, "./model.out") 
-
-If you don't set this parameter, xLearn uses all of the CPU cores by default.
 
 Users can disable lock-free training by using ``disableLockFree()`` API. ::
 
