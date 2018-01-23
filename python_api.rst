@@ -120,6 +120,21 @@ and then we can get the result ::
    0
    0
 
+Also, users can save the model in txt format by using ``setTXTModel()`` API. For example: ::
+
+    ffm_model.setTXTModel("./model.txt")
+
+After that, we get a new file called ``model.txt``, which stores the trained model in txt format.
+For now, xLearn only supports to save the bias and linear term in txt file. ::
+
+  head -n 5 ./model.txt
+
+  -0.688182
+  0.458082
+  0
+  0
+  0
+
 Choose Machine Learning Algorithm
 ----------------------------------------
 
