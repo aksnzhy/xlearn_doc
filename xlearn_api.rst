@@ -36,8 +36,7 @@ Options: ::
                           If we set this value to 'none', the xLearn will not dump the model checkpoint after training.
 
   -t <txt_model_file>  :  Path of the txt model checkpoint file. On default, we do not set this option
-                          and xLearn will not dump the txt model. For now, only the bias and linear term
-                          will be dump to the txt model file.
+                          and xLearn will not dump the txt model.
                                                                             
   -l <log_file>        :  Path of the log file. Using '/tmp/xlearn_log.*' by default.
                                                                                       
@@ -151,20 +150,33 @@ API List: ::
 
 Parameter List: ::
 
-    task     : {'binary', 'reg'}  # machine learning task
-    metric   : {'acc', 'prec', 'recall', 
-                'f1', 'mae', 'mape', 'rmse', 'rmsd'} # Evaludation metric
+    task     : {'binary',  # Binary classification
+                'reg'}     # Regression
+
+    metric   : {'acc', 'prec', 'recall', 'f1', 'auc',   # for classification
+                'mae', 'mape', 'rmse', 'rmsd'}  # for regression
+
     lr       : float value  # learning rate
+
     lambda   : float value  # regular lambda
-    k        : int value    # latent factor
+
+    k        : int value    # latent factor for fm and ffm
+
     init     : float value  # model initialize
-    alpha    : float value  # parameter for ftrl
-    beta     : float value  # parameter for ftrl
-    lambda_1 : float value  # parameter for ftrl
-    lambda_2 : float value  # parameter for ftrl
+
+    alpha    : float value  # hyper parameter for ftrl
+
+    beta     : float value  # hyper parameter for ftrl
+
+    lambda_1 : float value  # hyper parameter for ftrl
+
+    lambda_2 : float value  # hyper parameter for ftrl
+
     epoch    : int vlaue    # number of epoch
+
     fold     : int value    # number of fold for cross-validation
-    opt      : {'sgd', 'agagrad', 'ftrl'} # optimization method
+
+    opt      : {'sgd', 'agagrad', 'ftrl'}  # optimization method
 
 xLearn R API
 ------------------------------
