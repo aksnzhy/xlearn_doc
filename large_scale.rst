@@ -20,7 +20,7 @@ large server machines. Large servers are like the ones you can get on cloud comp
 Elastic Compute Cloud (EC2), whereas your storage capabilities can easily exceed terabytes of capacity using 
 just an external drive (most likely about 1 TB but it can reach up to 4 TB).
 
-Actually, the ability to learn incrementally from a mini-batch of instances is key to *out-if-core* learning as
+Actually, the ability to learn incrementally from a mini-batch of instances is key to *out-of-core* learning as
 it gurantees that at any given time there will be only a small amount of data in the main memory. Choose a good
 size for the mini-batch that balances relevancy and memory footprint could involve some tuning.
 
