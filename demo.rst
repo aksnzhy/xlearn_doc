@@ -19,22 +19,32 @@ The follow code is the Python demo:
 
 .. code-block:: python
 
-   import xlearn as xl
+    import xlearn as xl
 
-   # Training task
-   ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./small_train.txt")  
-   ffm_model.setValidate("./small_test.txt") 
-   param = {'task':'binary', 'lr':0.2, 
-            'lambda':0.002, 'metric':'auc'} 
+    # Training task
+    ffm_model = xl.create_ffm() # Use field-aware factorization machine
+    ffm_model.setTrain("./small_train.txt")  # Training data
+    ffm_model.setValidate("./small_test.txt")  # Validation data
 
-   ffm_model.fit(param, "./model.out")  
+    # param:
+    #  0. binary classification
+    #  1. learning rate: 0.2
+    #  2. regular lambda: 0.002
+    #  3. evaluation metric: accuracy
+    param = {'task':'binary', 'lr':0.2, 
+             'lambda':0.002, 'metric':'acc'}
 
-   # Prediction task
-   ffm_model.setTest("./small_test.txt")  
-   # Convert output to 0~1
-   ffm_model.setSigmoid()
-   ffm_model.predict("./model.out", "./output.txt")  
+    # Start to train
+    # The trained model will be stored in model.out
+    ffm_model.fit(param, './model.out')
+
+    # Prediction task
+    ffm_model.setTest("./small_test.txt")  # Test data
+    ffm_model.setSigmoid()  # Convert output to 0-1
+
+    # Start to predict
+    # The output result will be stored in output.txt
+    ffm_model.predict("./model.out", "./output.txt")
 
 Mushroom Classification
 ---------------------------
@@ -53,23 +63,34 @@ The follow code is the Python demo:
 
 .. code-block:: python
 
-   import xlearn as xl
+    import xlearn as xl
 
-   # Training task
-   linear_model = xl.create_linear()
-   linear_model.setTrain("./agaricus_train.txt")
-   linear_model.setValidate("./agaricus_test.txt")
-   param = {'task':'binary', 'lr':0.2, 
-            'lambda':0.002, 'metric':'acc', 
-            'opt':'sgd'}
+    # Training task
+    linear_model = xl.create_linear()  # Use linear model
+    linear_model.setTrain("./agaricus_train.txt")  # Training data
+    linear_model.setValidate("./agaricus_test.txt")  # Validation data
 
-   linear_model.fit(param, './model.out')
+    # param:
+    #  0. binary classification
+    #  1. learning rate: 0.2
+    #  2. lambda: 0.002
+    #  3. evaluation metric: accuarcy
+    #  4. use sgd optimization method
+    param = {'task':'binary', 'lr':0.2, 
+             'lambda':0.002, 'metric':'acc', 
+             'opt':'sgd'}
 
-   # Prediction task
-   linear_model.setTest("./agaricus_test.txt")
-   # Convert output to 0-1
-   linear_model.setSigmoid()
-   linear_model.predict("./model.out", "./output.txt")
+    # Start to train
+    # The trained model will be stored in model.out
+    linear_model.fit(param, './model.out')
+
+    # Prediction task
+    linear_model.setTest("./agaricus_test.txt")  # Test data
+    linear_model.setSigmoid()  # Convert output to 0-1
+
+    # Start to predict
+    # The output result will be stored in output.txt
+    linear_model.predict("./model.out", "./output.txt")
 
 Predict Survival in Titanic
 -----------------------------
@@ -84,16 +105,22 @@ The follow code is the Python demo:
 
 .. code-block:: python
 
-   import xlearn as xl
+    import xlearn as xl
 
-   # Training task
-   fm_model = xl.create_fm()
-   fm_model.setTrain("./titanic_train.txt")
-   param = {'task':'binary', 'lr':0.2, 
-            'lambda':0.002, 'metric':'acc'}
+    # Training task
+    fm_model = xl.create_fm()  # Use factorization machine
+    fm_model.setTrain("./titanic_train.txt")  # Training data
 
-   # Cross-validation
-   fm_model.cv(param)
+    # param:
+    #  0. Binary classification task
+    #  1. learning rate: 0.2
+    #  2. lambda: 0.002
+    #  3. metric: accuracy
+    param = {'task':'binary', 'lr':0.2, 
+             'lambda':0.002, 'metric':'acc'}
+
+    # Use cross-validation
+    fm_model.cv(param)
 
 House Price Prediction
 -----------------------------
@@ -109,16 +136,22 @@ The follow code is the Python demo:
 
 .. code-block:: python
 
-   import xlearn as xl
+    import xlearn as xl
 
-   # Training task
-   ffm_model = xl.create_ffm()
-   ffm_model.setTrain("./house_price_train.txt")
-   param = {'task':'reg', 'lr':0.2, 
-            'lambda':0.002, 'metric':'rmse'}
+    # Training task
+    ffm_model = xl.create_fm()  # Use factorization machine
+    ffm_model.setTrain("./house_price_train.txt")  # Training data
 
-   # Cross-validation
-   ffm_model.cv(param)
+    # param:
+    #  0. Binary task
+    #  1. learning rate: 0.2
+    #  2. regular lambda: 0.002
+    #  4. evaluation metric: rmse
+    param = {'task':'reg', 'lr':0.2, 
+             'lambda':0.002, 'metric':'rmse'}
+
+    # Use cross-validation
+    ffm_model.cv(param)
 
 More Demo in xLearn is coming soon.
 
