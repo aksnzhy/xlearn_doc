@@ -66,6 +66,8 @@ If you delete the ``--disk`` option, xLearn can train faster. ::
 
 In this time, the training of each epoch will only spend nearly 1.8 seconds.
 
+We can set the block size for on-disk training by using ``-block`` options.
+
 Out-of-Core Learning Using xLearn Python API
 ===================================================
 
@@ -101,6 +103,8 @@ In Python, users can use ``setOnDisk`` API to perform *out-of-core* learning. Fo
     # Start to predict
     # The output result will be stored in output.txt
     ffm_model.predict("./model.out", "./output.txt")
+
+We can set the block size for on-disk training by using ``block_size`` parameter.
 
 Out-of-Core Learning Using xLearn R API
 ===================================================
