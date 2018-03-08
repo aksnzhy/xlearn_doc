@@ -50,7 +50,7 @@ You will see: ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.20 Version --
+        xLearn   -- 0.30 Version --
   -------------------------------------------------------------------------
 
 If you meet any installation problem, or you want to build the lastest code from github, or you want to 
