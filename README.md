@@ -1,10 +1,5 @@
-.. xlearn_doc documentation master file, created by
-   sphinx-quickstart on Sun Dec  3 18:43:51 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Get Started with xLearn !
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 xLearn is a high-performance, easy-to-use, and scalable machine learning package, 
 which can be used to solve large-scale machine learning problems, especially for the problems 
