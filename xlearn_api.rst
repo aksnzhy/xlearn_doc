@@ -70,6 +70,8 @@ Options: ::
   -nthread <thread_number> :  Number of thread for multiple thread lock-free learning (Hogwild!).
 
   -block <block_size>  :  Block size for on-disk training.
+
+  -sw <stop_window>    :  Size of stop window for early-stopping. Using 2 by default. 
                                                                                      
   --disk               :  Open on-disk training for large-scale machine learning problems.
                                                                    
@@ -177,6 +179,8 @@ Parameter List: ::
     fold     : int value    # number of fold for cross-validation
 
     opt      : {'sgd', 'agagrad', 'ftrl'}  # optimization method
+
+    stop_window : Size of stop window for early-stopping.
 
     block_size : int value  # block size for on-disk training
 
