@@ -61,7 +61,7 @@ A portion of the xLearn's output ::
   Early-stopping at epoch 7
   Start to save model ...
 
-In this example, xLearn uses *feild-ware factorization machines* (ffm) to train our model for 
+In this example, xLearn uses *field-aware factorization machines* (ffm) to train our model for 
 solving a binary classification task. If you want train a model for regression task. 
 You can reset the ``task`` parameter to ``reg``. ::
 
