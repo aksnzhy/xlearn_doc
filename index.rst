@@ -54,12 +54,12 @@ If you meet any installation problem, or you want to build the latest code from 
 the xLearn command line instead of the python API, you can see how to build xLearn from source code 
 in `Installation Guide`__.
 
-.. __: ./install/index.rst
+.. __: ./install/index.html
 
 Python Demo
 ----------------------------------
 
-Here is a simple Python demo no how to use xLearn:
+Here is a simple Python demo no how to use xLearn for a binary classification problem:
 
 .. code-block:: python
 
