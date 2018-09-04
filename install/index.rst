@@ -7,7 +7,7 @@ it from source code. No matter what way you choose, make sure that your OS has a
 (with the support of ``C++ 11``) and ``CMake``. 
 
 Install GCC or Clang
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have already installed your compiler before, you can skip this step.
 
@@ -28,7 +28,7 @@ If you have already installed your compiler before, you can skip this step.
 
 
 Install CMake
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have already installed CMake before, you can skip this step.
 
@@ -56,7 +56,7 @@ You won't want to have both Homebrew and MacPorts installed.
 .. __: ./install_cmake.html
 
 Install xLearn from pip
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest way to install xLearn Python package is to use ``pip``. The following command will 
 download the xLearn source code from pip and install Python package locally.  ::
@@ -87,7 +87,7 @@ instead of the Python API, you can see how to build xLearn from source code as f
 recommend that you can build xLearn from source code.
 
 Install xLearn from Source Code
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Building xLearn from source code consists two steps.
 
@@ -110,7 +110,7 @@ and then build xLearn using the folloing commands: ::
 You may be asked to input your password during installation.
 
 Test Your Building
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now you can test your installation by using the following command: ::
 
@@ -123,7 +123,7 @@ You can also test the Python package by using the following command: ::
   python test_python.py
 
 Install R Package
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The R package installation guide is coming soon.
 
