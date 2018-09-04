@@ -1,9 +1,9 @@
 xLearn Python Package Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-xLearn supports very easy-to-use Python API for users. Once you install the 
+xLearn supports easy-to-use Python API for users. Once you install the 
 xLearn Python package successfully, you can try it. Type ``python`` in your
-shell and type the following Python code to check your installation: ::
+shell and use the following Python code to check your installation: ::
 
     import xlearn as xl
     xl.hello()
@@ -18,26 +18,26 @@ If you install xLearn Python package successfully, you will see ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.30 Version --
+        xLearn   -- 0.31 Version --
   -------------------------------------------------------------------------
 
 Quick Start
 ----------------------------------------
 
-Here is a simple Python demo to demonstrate how to use xLearn. You can checkout the demo data 
-(``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
+Here is a simple Python demo to show that how to use xLearn python API. You can checkout the 
+demo data (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
 .. code-block:: python
 
    import xlearn as xl
 
    # Training task
-   ffm_model = xl.create_ffm()  # Use field-aware factorization machine
-   ffm_model.setTrain("./small_train.txt")   # Training data
-   ffm_model.setValidate("./small_test.txt")  # Validation data
+   ffm_model = xl.create_ffm()                # Use field-aware factorization machine (ffm)
+   ffm_model.setTrain("./small_train.txt")    # Path of training data
+   ffm_model.setValidate("./small_test.txt")  # Path of validation data
 
    # param:
-   #  0. binary classification
+   #  0. task: binary classification
    #  1. learning rate : 0.2
    #  2. regular lambda : 0.002
    param = {'task':'binary', 'lr':0.2, 'lambda':0.002}
@@ -47,28 +47,29 @@ Here is a simple Python demo to demonstrate how to use xLearn. You can checkout 
 
 A portion of the xLearn's output ::
   
-  Start to train ...
-  Epoch      Train log_loss       Test log_loss     Time cost (sec)
-      1            0.593750            0.535847                0.00
-      2            0.539226            0.543829                0.00
-      3            0.520034            0.531732                0.00
-      4            0.505186            0.537418                0.00
-      5            0.494089            0.533448                0.00
-      6            0.483678            0.534629                0.00
-      7            0.470848            0.528086                0.00
-      8            0.466330            0.533253                0.00
-      9            0.456660            0.535635                0.00
-  Early-stopping at epoch 7
-  Start to save model ...
+   ...
+ [ ACTION     ] Start to train ...
+ [------------] Epoch      Train log_loss       Test log_loss     Time cost (sec)
+ [   10%      ]     1            0.591094            0.548009                0.00
+ [   20%      ]     2            0.541492            0.547333                0.00
+ [   30%      ]     3            0.520602            0.537691                0.00
+ [   40%      ]     4            0.506884            0.535744                0.00
+ [   50%      ]     5            0.495052            0.536405                0.00
+ [   60%      ]     6            0.482746            0.533652                0.00
+ [   70%      ]     7            0.471260            0.527679                0.00
+ [   80%      ]     8            0.465194            0.532153                0.00
+ [   90%      ]     9            0.456053            0.538892                0.00
+ [ ACTION     ] Early-stopping at epoch 7
+ [ ACTION     ] Start to save model ...
 
-In this example, xLearn uses *feild-ware factorization machines* (ffm) to train our model for 
-solving a binary classification task. If you want train a model for regression task. 
-You can reset the ``task`` parameter to ``reg``. ::
+In this example, xLearn uses *feild-ware factorization machines* (ffm) for solving a binary 
+classification task. If you want train a model for regression task, you can reset the ``task`` 
+parameter to ``reg``. ::
 
     param = {'task':'reg', 'lr':0.2, 'lambda':0.002} 
 
 We can see that a new file called ``model.out`` has been generated in the current directory. 
-This file stores the trained model checkpoint, and we can use this model file to make prediction 
+This file stores the trained model checkpoint, and we can use this model file to make a prediction 
 in the future: ::
 
     ffm_model.setTest("./small_test.txt")
@@ -85,9 +86,9 @@ This is output prediction. Here we show the first five lines of this output by u
     -0.608931
     -1.30794
 
-These lines of data are the prediction score calculated for examples in the test set. The negative data 
+These lines of data are the prediction score calculated for each example in the test set. The negative data 
 represents the negative example and positive data represents the positive example. In xLearn, you can convert 
-the score to (0-1) by using ``setSigmoid()`` option: ::
+the score to (0-1) by using ``setSigmoid()`` method: ::
 
    ffm_model.setTest("./small_test.txt")  
    ffm_model.setSigmoid()
@@ -103,7 +104,7 @@ and then we can get the result ::
    0.357449
    0.220061
 
-We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` API ::
+We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` method ::
 
    # Prediction task
    ffm_model.setTest("./small_test.txt")  
@@ -120,9 +121,12 @@ and then we can get the result ::
    0
    0
 
-Also, users can save the model in txt format by using ``setTXTModel()`` API. For example: ::
+Also, users can save the model in ``TXT`` format by using ``setTXTModel()`` method. For example: ::
 
+    ffm_model.setSign()
     ffm_model.setTXTModel("./model.txt")
+    ffm_model.setTest("./small_test.txt")  
+    ffm_model.predict("./model.out", "./output.txt")
 
 After that, we get a new file called ``model.txt``, which stores the trained model in txt format.::
 

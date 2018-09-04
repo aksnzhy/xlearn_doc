@@ -125,7 +125,7 @@ challenge recently. Under this framework, both the training data and workloads a
 the server nodes maintain the globally shared model pa- rameters. The following figure demonstrates the architecture 
 of the PS framework. 
 
-.. image:: ./images/ps.png
+.. image:: ../images/ps.png
     :width: 500   
 
 As we can see, the *Parameter Server* provides two concise APIs for users. 
