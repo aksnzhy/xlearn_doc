@@ -1,5 +1,5 @@
 Installation Guide
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 For now, xLearn can support both Linux and Mac OS X. We will support it on the Windows platform in the near 
 future. This page gives instructions on how to build and install the xLearn package using pip and how to build 
