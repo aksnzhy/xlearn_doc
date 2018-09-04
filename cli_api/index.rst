@@ -207,7 +207,7 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
     
     ./xlearn_train ./small_train.txt -f 3 --cv
 
-Here we set the number of folds to 3. The xLearn will calculate the average validation loss at 
+Here we set the number of folds to ``3``. The xLearn will calculate the average validation loss at 
 the end of its output message. ::
 
      ...
@@ -219,35 +219,34 @@ the end of its output message. ::
 Choose Optimization Method
 ----------------------------------------
  
-In xLearn, users can choose different optimization methods by using ``-p`` option. For now, users can 
-choose ``sgd``, ``adagrad``, and ``ftrl`` method. By default, xLearn uses the ``adagrad`` method. 
+In xLearn, users can choose different optimization methods by using ``-p`` option. For now, xLearn 
+can support ``sgd``, ``adagrad``, and ``ftrl`` method. By default, xLearn uses the ``adagrad`` method. 
 For example: ::
 
     ./xlearn_train ./small_train.txt -p sgd
     ./xlearn_train ./small_train.txt -p adagrad
     ./xlearn_train ./small_train.txt -p ftrl
 
-Compared to traditional sgd method, adagrad adapts the learning rate to the parameters, performing larger 
-updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited for 
-dealing with sparse data. In addition,  sgd is more sensitive to the learning rate compared with adagrad.
+Compared to traditional ``sgd`` method, ``adagrad`` adapts the learning rate to the parameters, performing 
+larger updates for infrequent and smaller updates for frequent parameters. For this reason, it is well-suited for 
+dealing with sparse data. In addition, ``sgd`` is more sensitive to the learning rate compared with ``adagrad``.
 
-FTRL (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale 
-sparse problem. To use FTRL, users need to tune more hyperparameters compared with sgd and adagard. 
+``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale 
+sparse problem. To use FTRL, users need to tune more hyper-parameters compared with ``sgd`` and ``adagard``. 
 
-Hyperparameter Tuning
+Hyper-parameter Tuning
 ----------------------------------------
 
-In machine learning, a *hyperparameter* is a parameter whose value is set before the learning process begins. 
-By contrast, the value of other parameters is derived via training. Hyperparameter tuning is the problem of 
-choosing a set of optimal hyperparameters for a learning algorithm.
+In machine learning, a *hyper-parameter* is a parameter whose value is set before the learning process begins. 
+By contrast, the value of other parameters is derived via training. Hyper-parameter tuning is the problem of 
+choosing a set of optimal hyper-parameters for a learning algorithm.
 
-First, the ``learning rate`` is one of the most important hyperparameters used in machine learning. 
-By default, this value is set to ``0.2``, and we can tune this value by using ``-r`` option: ::
+First, the ``learning rate`` is one of the most important hyper-parameters used in machine learning. 
+By default, this value is set to ``0.2`` in xLearn, and we can tune this value by using ``-r`` option: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.5
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.01
-
 
 We can also use the ``-b`` option to perform regularization. By default, xLearn uses ``L2`` regularization, and 
 the *regular_lambda* has been set to ``0.00002``. ::
@@ -257,7 +256,7 @@ the *regular_lambda* has been set to ``0.00002``. ::
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.01
 
 
-For the FTRL method, we also need to tune another four hyperparameters, including ``-alpha``, ``-beta``, 
+For the ``FTRL`` method, we also need to tune another four hyper-parameters, including ``-alpha``, ``-beta``, 
 ``-lambda_1``, and ``-lambda_2``. For example: ::
 
     ./xlearn_train ./small_train.txt -p ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
@@ -272,7 +271,7 @@ uses ``4`` for this value. ::
 
 xLearn uses *SSE* instruction to accelerate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
 
-For FM and FFM, users can also set the hyperparameter ``-u`` for model initialization. By default, this value is set to 0.66. ::
+For FM and FFM, users can also set the hyper-parameter ``-u`` for model initialization. By default, this value is set to 0.66. ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.80
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
@@ -281,7 +280,7 @@ For FM and FFM, users can also set the hyperparameter ``-u`` for model initializ
 Set Epoch Number and Early-Stopping
 ----------------------------------------
 
-For machine learning, one epoch consists of one full training cycle on the training set. 
+For machine learning tasks, one epoch consists of one full training cycle on the training set. 
 In xLearn, users can set the number of epoch for training by using ``-e`` option. ::
 
     ./xlearn_train ./small_train.txt -e 3
@@ -292,28 +291,29 @@ If you set the validation data, xLearn will perform early-stopping by default. F
   
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
 
-Here, we set epoch number to ``10``, but xLearn stopped at epoch 7 because we get the best model 
-at that epoch (you may get different a stopping number on your machine) ::
+Here, we set epoch number to ``10``, but xLearn stopped at epoch ``7`` because we get the best model 
+at that epoch (you may get different a stopping number on your local machine) ::
 
+   ...
   [ ACTION     ] Early-stopping at epoch 7
   [ ACTION     ] Start to save model ...
 
-User can set window size for early stopping by using ``-sw`` option. ::
+Users can set the ``window size`` for early stopping by using ``-sw`` option. ::
 
-    ./xlearn_train ./small_train.txt -e 10 -sw 3
+    ./xlearn_train ./small_train.txt -e 10 -v ./small_test.txt -sw 3
 
 Users can disable early-stopping by using ``--dis-es`` option ::
 
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 
-At this time, xLearn performed 10 epoch for training.
+At this time, xLearn performed completed 10 epoch for training.
 
 Lock-Free Training
 ----------------------------------------
 
-By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores to accelerate
-training task. But lock-free training is *non-deterministic*. For example, if we run the following command multiple 
-times, we may get different loss value at each epoch. ::
+By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores of modern CPU to 
+accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the following command 
+multiple times, we may get different loss value at each epoch. ::
 
    ./xlearn_train ./small_train.txt 
 
@@ -338,7 +338,7 @@ In thie time, our result are *determinnistic*. ::
    The 2nd time: 0.396372
    The 3nd time: 0.396372
 
-The disadvantage of ``--dis-lock-free`` is that it is much slower than lock-free training. 
+The disadvantage of ``--dis-lock-free`` is that it is *much slower* than lock-free training. 
 
 Instance-wise Normalization
 ----------------------------------------
@@ -354,11 +354,11 @@ Quiet Training
 ----------------------------------------
 
 When using ``--quiet`` option, xLearn will not calculate any evaluation information during the training, and 
-it just train the model quietly ::
+it will just train the model quietly ::
 
   ./xlearn_train ./small_train.txt --quiet
 
-In this way, xLearn can accelerate its training speed.
+In this way, xLearn can accelerate its training speed significantly.
 
 
  .. toctree::
