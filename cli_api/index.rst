@@ -29,10 +29,10 @@ could be different. ::
         9            0.405954                0.00
        10            0.396313                0.00
 
-By default, xLearn will use the logistic regression (LR) to train our model within 10 epoch.
+By default, xLearn will use the logistic regression (LR) to train the model within 10 epoch.
 
 We can see that a new file called ``small_train.txt.model`` has been generated in the current directory. 
-This file stores the trained model checkpoint, and we can use this model file to make prediction in 
+This file stores the trained model checkpoint, and we can use this model file to make a prediction in 
 the future ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model
