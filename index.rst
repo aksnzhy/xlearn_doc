@@ -97,23 +97,23 @@ Link to the Other Helpful Resources
  * See `Demo Page`__ Learning to use xLearn by Examples.
  * See `Tutorial`__ on tutorials on specific tasks.
 
- .. __: install.html
- .. __: command_line.html
- .. __: python_api.html
- .. __: r_api.html
- .. __: demo.html
- .. __: tutorial.html
- .. __: install.html
+ .. __: install/index
+ .. __: cli_api/index
+ .. __: python_api/index
+ .. __: R_api/index
+ .. __: demo/index
+ .. __: tutorial/index
 
- .. toctree::
-   :hidden:
+.. toctree::
+   :glob:
+   :maxdepth: 1
 
-   start.rst
-   install.rst
-   command_line.rst
-   python_api.rst
-   r_api.rst
-   xlearn_api.rst
-   large_scale.rst
-   demo.rst
-   tutorial.rst
+   self
+   install/index
+   cli_api/index
+   python_api/index
+   R_api/index
+   all_api/index
+   large/index
+   demo/index
+   tutorial/index
