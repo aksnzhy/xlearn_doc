@@ -359,3 +359,5 @@ it will just train the model quietly ::
   ./xlearn_train ./small_train.txt --quiet
 
 In this way, xLearn can accelerate its training speed significantly.
+
+xLearn can also support Python API, and we will introduce it in the next section.
