@@ -17,7 +17,7 @@ This is a quick start tutorial showing snippets for you to quickly try out xLear
 demo dataset (Criteo CTR prediction) for a binary classification task.
 
 
-Quick Install
+A Quick Example
 ----------------------------------
 
 The easiest way to install xLearn Python package is to use ``pip``. The following command will 
