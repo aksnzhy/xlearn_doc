@@ -13,14 +13,17 @@ or libffm, now xLearn is your another better choice. This is because xLearn hand
 uniform platform and provides better performance and scalability compared to its competitors.
 
 .. image:: ./images/speed.png
-    :width: 500   
-
-This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small demo dataset 
-(Criteo CTR prediction) for a binary classification task.
+    :width: 600   
 
 
 A Quick Example
 ----------------------------------
+
+This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small demo dataset 
+(Criteo CTR prediction) for a binary classification task.
+
+Installation
+^^^^^^^^^^^^^^
 
 The easiest way to install xLearn Python package is to use ``pip``. The following command will 
 download the xLearn source code and install python package it locally. ::
