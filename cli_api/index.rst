@@ -1,21 +1,21 @@
 xLearn Command Line Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once you built xLearn from source code successfully, you will get two executable files 
-``xlearn_train`` and ``xlearn_predict`` in your ``build`` directory. Now you can use these 
+Once you built xLearn from source code successfully, you can get two executable files 
+(``xlearn_train`` and ``xlearn_predict``) in your ``build`` directory. Now you can use these 
 two executable files to perform training and prediction tasks.
 
 Quick Start
 ----------------------------------------
 
 Make sure that you are in the ``build`` directory of xLearn, and you can find the demo data 
-``small_test.txt`` and ``small_train.txt`` in this directory. Now type the following 
+``small_test.txt`` and ``small_train.txt`` in this directory. Now we can type the following 
 command to train a model: ::
 
     ./xlearn_train ./small_train.txt
 
-Here, we show a portion of the xLearn's output. Note that the loss value shown in your machine 
-could be different. ::
+Here, we show a portion of the output in this task. Note that the loss value shown in your 
+machine could be different with the following result. ::
 
     Epoch      Train log_loss     Time cost (sec)
         1            0.567514                0.00
@@ -29,7 +29,7 @@ could be different. ::
         9            0.405954                0.00
        10            0.396313                0.00
 
-By default, xLearn will use the logistic regression (LR) to train the model within 10 epoch.
+By default, xLearn uses the logistic regression (LR) to train the model for 10 epoch.
 
 We can see that a new file called ``small_train.txt.model`` has been generated in the current directory. 
 This file stores the trained model checkpoint, and we can use this model file to make a prediction in 
@@ -37,8 +37,8 @@ the future ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model
 
-After that, we can get a new file called ``small_test.txt.out`` in the current directory. This is output 
-prediction. Here we show the first five lines of this output by using the following command ::
+After that, we can get a new file called ``small_test.txt.out`` in the current directory. This is the output 
+of prediction. Here we show the first five lines of this output by using the following command ::
     
     head -n 5 ./small_test.txt.out
 
@@ -48,9 +48,9 @@ prediction. Here we show the first five lines of this output by using the follow
     -0.170811
     -1.28986
 
-These lines of data are the prediction score calculated for examples in the test set. The 
+These lines of data is the prediction score calculated for each example in the test set. The 
 negative data represents the negative example and positive data represents the positive example. 
-In xLearn, you can convert the score to (0-1) by using ``--sigmoid`` option, or you can convert 
+In xLearn, you can convert the score to (0-1) by using ``--sigmoid`` option, and also you can convert 
 your result to binary result (0 and 1) by using ``--sign`` option ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model --sigmoid
@@ -71,17 +71,17 @@ your result to binary result (0 and 1) by using ``--sign`` option ::
     0
     0
 
-Users may want to generate different model files, so you can set the name of the model 
-checkpoint file by using ``-m`` option. By default, the name of the model file equals to
-``training_data_name`` + ``.model`` ::
+Users may want to generate different model files (by using different hyper-parameters), so users can 
+set the name of the model checkpoint file by using ``-m`` option. By default, the name of the model 
+file is ``training_data_name`` + ``.model`` ::
 
   ./xlearn_train ./small_train.txt -m new_model
 
-Also, users can save the model in txt format by using ``-t`` option. For example: ::
+Also, users can save the model in ``TXT`` format by using ``-t`` option. For example: ::
 
   ./xlearn_train ./small_train.txt -t model.txt
 
-After that, we get a new file called ``model.txt``, which stores the trained model in txt format. ::
+After that, we can get a new file called ``model.txt``, which stores the trained model in ``TXT`` format. ::
 
   head -n 5 ./model.txt
 
@@ -91,7 +91,7 @@ After that, we get a new file called ``model.txt``, which stores the trained mod
   0
   0
 
-For the linear and bias term, we store each parameter in each line. For FM and FFM, we store one 
+For the linear and bias term, we store each parameter in each line. For FM and FFM, we store each 
 vector of the latent factor in each line.
 
 Users can also set ``-o`` option to specify the output file. For example: ::
@@ -105,12 +105,14 @@ Users can also set ``-o`` option to specify the output file. For example: ::
   -0.170979
   -1.28849
 
-By default, the name of the output file equals to ``test_data_name`` + ``.out`` .
+By default, the name of the output file is ``test_data_name`` + ``.out`` .
 
 Choose Machine Learning Algorithm
 ----------------------------------------
 
-For now, xLearn can support three different machine learning algorithms, including LR, FM and FFM.
+For now, xLearn can support three different machine learning algorithms, including linear model, 
+factorization machine (FM), and field-aware factorization machine (FFM).
+
 Users can choose different machine learning algorithms by using ``-s`` option: ::
 
   -s <type> : Type of machine learning model (default 0)
@@ -134,26 +136,26 @@ input data should be the ``libffm`` format. ::
 
      label value_1 value_2 .. value_n
 
-Note that, if the csv file doesn't contain the label y, the user should add a 
-placeholder to the dataset by themselves (Also in test data). Otherwise, the parser 
-will treat the first element as the label y. 
-
   libffm format:
 
      label field_1:index_1:value_1 field_2:index_2:value_2 ...
 
-Users can also give a ``libffm`` file to LR and FM. At that time, xLearn will treat this data 
-as ``libsvm`` format. The following command shows how to use different
+Note that, if the csv file doesn't contain the label ``y``, the user should add a 
+``placeholder`` to the dataset by themselves (Also in test data). Otherwise, xLearn 
+will treat the first element as the label ``y``. 
+
+Users can also give a ``libffm`` file to LR and FM task. At that time, xLearn will 
+treat this data as ``libsvm`` format. The following command shows how to use different
 machine learning algorithms to solve the binary classification problem:  ::
 
-./xlearn_train ./small_train.txt -s 0  # Linear model
+./xlearn_train ./small_train.txt -s 0  # Linear model (GLM)
 ./xlearn_train ./small_train.txt -s 1  # Factorization machine (FM)
 ./xlearn_train ./small_train.txt -s 2  # Field-awre factorization machine (FFM)
 
 Set Validation Dataset
 ----------------------------------------
 
-A validation dataset is used to tune the hyperparameters of a machine learning model. 
+A validation dataset is used to tune the hyper-parameters of a machine learning model. 
 In xLearn, users can use ``-v`` option to set the validation dataset. For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt    
@@ -172,10 +174,10 @@ A portion of xLearn's output: ::
         9            0.404554            0.546218                0.00
 
 Here we can see that the training loss continuously goes down. But the validation loss (test loss) goes down 
-first, and then goes up. This is because our model has already overfitted current training dataset. By default, 
-xLearn will calculate the validation loss in each epoch, while users can also set different evaluation
-metrics by using ``-x`` option. For classification problems, the metric can be : ``acc`` (accuracy), ``prec`` 
-(precision), ``f1`` (f1 score), ``auc`` (AUC score). For example: ::
+first, and then goes up. This is because the model has already overfitted current training dataset. By default, 
+xLearn will calculate the validation loss in each epoch, while users can also set different evaluation metrics by 
+using ``-x`` option. For classification problems, the metric can be : ``acc`` (accuracy), ``prec`` (precision), 
+``f1`` (f1 score), ``auc`` (AUC score). For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x acc
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x prec
@@ -188,6 +190,9 @@ For regression problems, the metric can be ``mae``, ``mape``, and ``rmsd`` (rmse
     ../../xlearn_train ./house_price_train.txt -s 3 -x rmse --cv
     ../../xlearn_train ./house_price_train.txt -s 3 -x rmsd --cv
 
+Note that, in the above example we use cross-validation by using ``--cv`` option, which will be 
+introduced in the next section.
+
 Cross-Validation
 ----------------------------------------
 
@@ -195,7 +200,6 @@ Cross-validation, sometimes called rotation estimation, is a model validation te
 how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users 
 can use the ``--cv`` option to use this technique. For example: ::
 
-    cd build
     ./xlearn_train ./small_train.txt --cv
 
 On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using 
@@ -206,6 +210,7 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
 Here we set the number of folds to 3. The xLearn will calculate the average validation loss at 
 the end of its output message. ::
 
+     ...
     [------------] Average log_loss: 0.549417
     [ ACTION     ] Finish Cross-Validation
     [ ACTION     ] Clear the xLearn environment ...
