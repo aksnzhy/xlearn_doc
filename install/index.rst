@@ -1,12 +1,13 @@
 Installation Guide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For now, xLearn can support Linux and Mac OS X. We will support it on Windows platform in 
-the near future. This page gives instructions on how to build and install the xLearn 
-package using pip and how to build it from source code. No matter what way you choose, make 
-sure that your OS has already installed ``GCC`` (or ``Clang``) and ``CMake``, and your compiler 
-need to support ``C++11``. If you have not installed them, please see `this page`__ on how to 
+For now, xLearn can support both Linux and Mac OS X. We will support it on the Windows platform in the near 
+future. This page gives instructions on how to build and install the xLearn package using pip and how to build 
+it from source code. No matter what way you choose, make sure that your OS has already installed ``GCC`` or ``Clang`` 
+(with the support of ``C++ 11``) and ``CMake``. If you have not installed them, please see `this page`__ on how to 
 install GCC and CMake.
+
+.. __: ./install_cmake.html
 
 Install xLearn from pip
 ---------------------------
@@ -80,7 +81,7 @@ Install R Package
 
 The R package installation guide is coming soon.
 
-.. __: install_cmake.html
+
 .. __: https://github.com/aksnzhy/xlearn
 
  .. toctree::
