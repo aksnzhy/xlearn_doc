@@ -11,17 +11,8 @@ better performance and scalability compared to its competitors.
 This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small 
 demo dataset (Criteo CTR prediction) for a binary classification task.
 
-Link to the Other Helpful Resources
-----------------------------------------
 
- * See `Installation Guide`__ on how to install xLearn.
- * See `Command Line Guide`__ on how to use xLearn command line. 
- * See `Python API Guide`__ on how to use xLearn Python API.
- * See `R API Guide`__ on how to use xLearn R API.
- * See `Demo Page`__ Learning to use xLearn by Examples.
- * See `Tutorial`__ on tutorials on specific tasks.
-
-Quick Install
+A Quick Example
 ----------------------------------
 
 The easiest way to install xLearn Python package is to use ``pip``. The following command will 
@@ -89,6 +80,16 @@ Here is a simple Python demo no how to use xLearn:
 This example shows how to use *field-aware factorizations machine (ffm)* to solve a 
 simple binary classification task. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
+
+Link to the Other Helpful Resources
+----------------------------------------
+
+ * See `Installation Guide`__ on how to install xLearn.
+ * See `Command Line Guide`__ on how to use xLearn command line. 
+ * See `Python API Guide`__ on how to use xLearn Python API.
+ * See `R API Guide`__ on how to use xLearn R API.
+ * See `Demo Page`__ Learning to use xLearn by Examples.
+ * See `Tutorial`__ on tutorials on specific tasks.
 
  .. __: install.html
  .. __: command_line.html
