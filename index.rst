@@ -54,7 +54,7 @@ If you meet any installation problem, or you want to build the latest code from 
 the xLearn command line instead of the python API, you can see how to build xLearn from source code 
 in `Installation Guide`__.
 
-.. __:: install/index
+.. __: install/index
 
 Python Demo
 ----------------------------------
