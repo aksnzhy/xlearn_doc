@@ -13,7 +13,7 @@ or libffm, now xLearn is your another better choice. This is because xLearn hand
 uniform platform and provides better performance and scalability compared to its competitors.
 
 .. image:: ./images/speed.png
-    :width: 700   
+    :width: 800   
 
 
 A Quick Example
