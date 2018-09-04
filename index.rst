@@ -90,20 +90,6 @@ simple binary classification task. You can check out the demo data
 Link to the Other Helpful Resources
 ----------------------------------------
 
- * See `Installation Guide`__ on how to install xLearn.
- * See `Command Line Guide`__ on how to use xLearn command line. 
- * See `Python API Guide`__ on how to use xLearn Python API.
- * See `R API Guide`__ on how to use xLearn R API.
- * See `Demo Page`__ Learning to use xLearn by Examples.
- * See `Tutorial`__ on tutorials on specific tasks.
-
- .. __: install/index
- .. __: cli_api/index
- .. __: python_api/index
- .. __: R_api/index
- .. __: demo/index
- .. __: tutorial/index
-
 .. toctree::
    :glob:
    :maxdepth: 1
