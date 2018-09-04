@@ -359,7 +359,3 @@ it will just train the model quietly ::
   ./xlearn_train ./small_train.txt --quiet
 
 In this way, xLearn can accelerate its training speed significantly.
-
-
- .. toctree::
-   :hidden:
