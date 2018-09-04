@@ -82,8 +82,8 @@ You will see: ::
   -------------------------------------------------------------------------
 
 If you want to build the latest code from `Github`__, or you want to use the xLearn command line 
-instead of the Python API, you can see how to build xLearn from source code as follow. **We highly
-recommend that you can build xLearn from source code.**
+instead of the Python API, you can see how to build xLearn from source code as follow. *We highly
+recommend that you can build xLearn from source code.*
 
 .. __: https://github.com/aksnzhy/xlearn
 
