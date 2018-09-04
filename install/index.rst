@@ -85,26 +85,28 @@ If you want to build the latest code from `Github`__, or you want to use the xLe
 instead of the Python API, you can see how to build xLearn from source code as follow. **We highly
 recommend that you can build xLearn from source code.**
 
+.. __: https://github.com/aksnzhy/xlearn
+
 Install xLearn from Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Building xLearn from source code consists two steps.
 
 First, you need to build the executable files (``xlearn_train`` and ``xlearn_predict``), as well as the 
-shared library (``libxlearn_api.so`` for Linux and ``libxlearn_api.dylib`` for Mac OSX) from the C++ code.
+shared library (``libxlearn_api.so`` for Linux or ``libxlearn_api.dylib`` for Mac OSX) from the C++ code.
 
 Then, you can install the Python package through ``install-python.sh``.
 
-Fortunately, we write a script ``build.sh`` to do all the cumbersome work for users.
+Fortunately, we write a script ``build.sh`` to do all the cumbersome work for users. 
 
-For users, you just need to clone the code from github ::
+You just need to clone the code from github ::
 
   git clone https://github.com/aksnzhy/xlearn.git
 
 and then build xLearn using the folloing commands: ::
 
   cd xlearn
-  ./build.sh
+  sudo ./build.sh
 
 You may be asked to input your password during installation.
 
@@ -125,11 +127,3 @@ Install R Package
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The R package installation guide is coming soon.
-
-
-.. __: https://github.com/aksnzhy/xlearn
-
- .. toctree::
-   :hidden:
-
-   install_cmake.rst
