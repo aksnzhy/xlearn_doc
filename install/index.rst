@@ -9,7 +9,7 @@ it from source code. No matter what way you choose, make sure that your OS has a
 Install GCC or Clang
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have already installed your compiler before, you can skip this step.
+If you have already installed your C++ compiler before, you can skip this step.
 
 * On Cygwin, run ``setup.exe`` and install ``gcc`` and ``binutils``.
 * On Debian/Ubuntu Linux, type the command: ::
@@ -53,7 +53,6 @@ or if you have ``MacPorts``, run ::
 
 You won't want to have both Homebrew and MacPorts installed.
 
-.. __: ./install_cmake.html
 
 Install xLearn from pip
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,8 +62,8 @@ download the xLearn source code from pip and install Python package locally.  ::
 
     sudo pip install xlearn
 
-The installation process will take a while to complete. And then you can type the following 
-script in your python shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete. After that, you can type the following script 
+in your python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
@@ -79,12 +78,12 @@ You will see: ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.30 Version --
+        xLearn   -- 0.31 Version --
   -------------------------------------------------------------------------
 
 If you want to build the latest code from `Github`__, or you want to use the xLearn command line 
-instead of the Python API, you can see how to build xLearn from source code as follow. We highly
-recommend that you can build xLearn from source code.
+instead of the Python API, you can see how to build xLearn from source code as follow. **We highly
+recommend that you can build xLearn from source code.**
 
 Install xLearn from Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
