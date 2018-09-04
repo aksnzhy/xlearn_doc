@@ -24,7 +24,7 @@ Actually, the ability to learn incrementally from a mini-batch of instances is k
 it gurantees that at any given time there will be only a small amount of data in the main memory. Choose a good
 size for the mini-batch that balances relevancy and memory footprint could involve some tuning.
 
-.. image:: ./images/out-of-core.png
+.. image:: ../images/out-of-core.png
     :width: 500   
 
 Out-of-Core Learning Using xLearn Command Line
