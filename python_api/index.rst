@@ -447,7 +447,7 @@ the training, and it just train the model quietly ::
 
 In this way, xLearn can accelerate its training speed significantly.
 
-Scikit-learn api for xLearn
+Scikit-learn API for xLearn
 ----------------------------------------
 
 xLearn can support scikit-learn-like api for users. Here is an example: ::
