@@ -57,7 +57,7 @@ in `Installation Guide`__.
 .. __: ./install/index.html
 
 Python Demo
-----------------------------------
+^^^^^^^^^^^^^^
 
 Here is a simple Python demo no how to use xLearn for a binary classification problem:
 
