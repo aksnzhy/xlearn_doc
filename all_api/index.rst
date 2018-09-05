@@ -174,7 +174,7 @@ Parameter List: ::
 
     lambda_2 : float value  # hyper parameter for ftrl
 
-    nthread : the number of CPU cores
+    nthread  : int value    # the number of CPU cores
 
     epoch    : int vlaue    # number of epoch
 
