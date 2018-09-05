@@ -108,7 +108,7 @@ Users can also set ``-o`` option to specify the output file. For example: ::
 By default, the name of the output file is ``test_data_name`` + ``.out`` .
 
 Choose Machine Learning Algorithm
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 For now, xLearn can support three different machine learning algorithms, including linear model, 
 factorization machine (FM), and field-aware factorization machine (FFM).
@@ -153,7 +153,7 @@ machine learning algorithms to solve the binary classification problem:  ::
 ./xlearn_train ./small_train.txt -s 2  # Field-awre factorization machine (FFM)
 
 Set Validation Dataset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 A validation dataset is used to tune the hyper-parameters of a machine learning model. 
 In xLearn, users can use ``-v`` option to set the validation dataset. For example: ::
@@ -194,7 +194,7 @@ Note that, in the above example we use cross-validation by using ``--cv`` option
 introduced in the next section.
 
 Cross-Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 Cross-validation, sometimes called rotation estimation, is a model validation technique for assessing 
 how the results of a statistical analysis will generalize to an independent dataset. In xLearn, users 
@@ -217,7 +217,7 @@ the end of its output message. ::
     [------------] Total time cost: 0.03 (sec)
 
 Choose Optimization Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
  
 In xLearn, users can choose different optimization methods by using ``-p`` option. For now, xLearn 
 can support ``sgd``, ``adagrad``, and ``ftrl`` method. By default, xLearn uses the ``adagrad`` method. 
@@ -235,7 +235,7 @@ dealing with sparse data. In addition, ``sgd`` is more sensitive to the learning
 sparse problem. To use FTRL, users need to tune more hyper-parameters compared with ``sgd`` and ``adagard``. 
 
 Hyper-parameter Tuning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 In machine learning, a *hyper-parameter* is a parameter whose value is set before the learning process begins. 
 By contrast, the value of other parameters is derived via training. Hyper-parameter tuning is the problem of 
@@ -278,7 +278,7 @@ For FM and FFM, users can also set the hyper-parameter ``-u`` for model initiali
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.10
 
 Set Epoch Number and Early-Stopping
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 For machine learning tasks, one epoch consists of one full training cycle on the training set. 
 In xLearn, users can set the number of epoch for training by using ``-e`` option. ::
@@ -309,7 +309,7 @@ Users can disable early-stopping by using ``--dis-es`` option ::
 At this time, xLearn performed completed 10 epoch for training.
 
 Lock-Free Training
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores of modern CPU to 
 accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the following command 
@@ -341,7 +341,7 @@ In thie time, our result are *determinnistic*. ::
 The disadvantage of ``--dis-lock-free`` is that it is *much slower* than lock-free training. 
 
 Instance-wise Normalization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, this technique is very
 useful. But sometimes it hurts model performance. Users can disable instance-wise normalization by using ``--no-norm`` option ::
@@ -351,7 +351,7 @@ useful. But sometimes it hurts model performance. Users can disable instance-wis
 Note that we usually use ``--no-norm`` in regression tasks.
 
 Quiet Training
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 When using ``--quiet`` option, xLearn will not calculate any evaluation information during the training, and 
 it will just train the model quietly ::
