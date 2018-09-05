@@ -308,10 +308,10 @@ Users can disable early-stopping by using ``--dis-es`` option ::
 
 At this time, xLearn performed completed 10 epoch for training.
 
-Lock-Free Training
+Lock-Free Learning
 ----------------------------------------
 
-By default, xLearn performs *Hogwild! lock-free* training, which takes advantages of multiple cores of modern CPU to 
+By default, xLearn performs *Hogwild! lock-free* learning, which takes advantages of multiple cores of modern CPU to 
 accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the following command 
 multiple times, we may get different loss value at each epoch. ::
 
