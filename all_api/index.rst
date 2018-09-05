@@ -93,7 +93,7 @@ Options: ::
 
 For Prediction: ::
 
-    xlearn_predict <test_file> <model_file> [OPTIONS]
+    xlearn_predict <test_file_path> <model_file_path> [OPTIONS]
 
 Options: ::
 
