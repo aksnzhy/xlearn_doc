@@ -159,6 +159,3 @@ More Demo in xLearn is coming soon.
 .. __: https://archive.ics.uci.edu/ml/datasets/Mushroom
 .. __: https://www.kaggle.com/c/titanic
 .. __: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
-
- .. toctree::
-   :hidden:

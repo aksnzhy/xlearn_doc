@@ -7,7 +7,7 @@ on datasets with potentially trillions of training examples, which cannot fit in
 memory of a single machine. Motivated by this, we design xLearn to solve large-scale 
 machine learning problems. First, xLearn can handle very large data (TB) on a single PC 
 by using *out-of-core* learning. In addition, xLearn can scale beyond billions of example
-across many machines to support distributed learning by using the *parameter server* framework.
+across many machines to support distributed training by using the *parameter server* framework.
 
 Out-of-Core Learning
 --------------------------------
@@ -47,7 +47,7 @@ option, and xLearn will help you do all the other things. For example: ::
        9            0.416855                5.03
       10            0.407846                4.53
 
-In this example, xLearn can finish the training of each epoch in nearly 4.5 second. 
+In this example, xLearn can finish the training of each epoch in nearly ``4.5`` second. 
 If you delete the ``--disk`` option, xLearn can train faster. ::
 
     ./xlearn_train ./big_data.txt -s 2
@@ -64,7 +64,7 @@ If you delete the ``--disk`` option, xLearn can train faster. ::
         9            0.416579                1.96
        10            0.407518                2.11
 
-In this time, the training of each epoch will only spend nearly 1.8 seconds.
+In this time, the training of each epoch will only spend nearly ``1.8`` seconds.
 
 We can set the block size for on-disk training by using ``-block`` options.
 
