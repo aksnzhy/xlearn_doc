@@ -10,10 +10,10 @@ xLearn is a high-performance, easy-to-use, and scalable machine learning package
 solve large-scale machine learning problems, especially for the problems on large-scale sparse data, which 
 is very common in scenes like CTR prediction and recommender system. If you are the user of liblinear, libfm, 
 or libffm, now xLearn is your another better choice. This is because xLearn handles all of these models in a 
-uniform platform and provides better performance and scalability compared to its competitors.
+uniform framework and provides better performance and scalability compared to its competitors.
 
 .. image:: ./images/speed.png
-    :width: 700  
+    :width: 650  
 
 
 A Quick Example
