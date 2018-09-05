@@ -1,5 +1,5 @@
 xLearn Command Line Guide
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===============================
 
 Once you built xLearn from source code successfully, you can get two executable files 
 (``xlearn_train`` and ``xlearn_predict``) in your ``build`` directory. Now you can use these 
