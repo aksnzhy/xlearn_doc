@@ -269,7 +269,7 @@ updates for infrequent and smaller updates for frequent parameters. For this rea
 with sparse data. In addition, ``sgd`` is more sensitive to the learning rate compared with ``adagrad``.
 
 ``FTRL`` (Follow-the-Regularized-Leader) is also a famous method that has been widely used in the large-scale sparse 
-problem. To use FTRL, users need to tune more hyperparameters compared with ``sgd`` and ``adagard``.
+problem. To use FTRL, users need to tune more hyperparameters compared with ``sgd`` and ``adagrad``.
 
 Hyper-parameter Tuning
 ----------------------------------------
