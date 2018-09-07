@@ -119,6 +119,9 @@ and then we can get the result ::
    0
    0
 
+Model Output
+----------------------------------------
+
 Also, users can save the model in ``TXT`` format by using ``setTXTModel()`` method. For example: ::
 
     ffm_model.setSign()

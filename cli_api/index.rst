@@ -71,6 +71,9 @@ your result to binary result (0 and 1) by using ``--sign`` option ::
     0
     0
 
+Model Output
+----------------------------------------
+
 Users may want to generate different model files (by using different hyper-parameters), so users can 
 set the name of the model checkpoint file by using ``-m`` option. By default, the name of the model 
 file is ``training_data_name`` + ``.model`` ::
