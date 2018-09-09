@@ -114,7 +114,7 @@ The installation process will take a while to complete. After that, you can type
   >>> import xlearn as xl
   >>> xl.hello()
 
-You will see if the installation is successful: ::
+You will see the following message if the installation is successful: ::
 
   -------------------------------------------------------------------------
            _
