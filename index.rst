@@ -9,18 +9,17 @@ Get Started with xLearn !
 xLearn is a high-performance, easy-to-use, and scalable machine learning package, which can be used to 
 solve large-scale machine learning problems, especially for the problems on large-scale sparse data, which 
 is very common in scenes like CTR prediction and recommender system. If you are the user of liblinear, libfm, 
-or libffm, now xLearn is your another better choice. This is because xLearn handles all of these models in a 
-uniform framework and provides better performance and scalability compared to its competitors.
+or libffm, now xLearn is your another better choice. This is because xLearn handles all of models and features in these platforms using an 
+uniform way, and it provides better performance, ease-of-use, and scalability.
 
 .. image:: ./images/speed.png
     :width: 650  
-
 
 A Quick Example
 ----------------------------------
 
 This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small demo dataset 
-(Criteo CTR prediction) for a binary classification task.
+(Criteo CTR prediction) for a binary classification task. In this example, the machine learning algorithm will predict that if current user will click a specified advertisment.
 
 Installation
 ^^^^^^^^^^^^^^
@@ -30,13 +29,13 @@ download the xLearn source code, build and install python package on your locall
 
     sudo pip install xlearn
 
-The installation process will take a while to complete. After that you can use the following 
-script in your python shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete, please wait with patience. After the installation, users can use the following 
+script in python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
 
-You will see: ::
+You will see the following message if you installed xLearn successfully: ::
 
   -------------------------------------------------------------------------
            _
@@ -50,16 +49,16 @@ You will see: ::
   -------------------------------------------------------------------------
 
 
-If you meet any installation problem, or you want to build the latest code from Github, or you want to use 
-the xLearn command line instead of the python API, you can see how to build xLearn from source code 
-in `Installation Guide`__.
+If you meet any installation problem, or you want to build the latest code from `Github`__, or you want to use 
+the xLearn command line interface instead of the Python API, you can see how to build xLearn from source code in `Installation Guide`__.
 
+.. __: https://github.com/aksnzhy/xlearn
 .. __: ./install/index.html
 
 Python Demo
 ^^^^^^^^^^^^^^
 
-Here is a simple Python demo no how to use xLearn for a binary classification problem:
+Here is a simple Python demo no how to use ffm algorithm of xLearn for a binary classification problem:
 
 .. code-block:: python
 
@@ -67,10 +66,10 @@ Here is a simple Python demo no how to use xLearn for a binary classification pr
 
     # Training task
     ffm_model = xl.create_ffm()                # Use field-aware factorization machine (ffm)
-    ffm_model.setTrain("./small_train.txt")    # Path of training data
-    ffm_model.setValidate("./small_test.txt")  # Path of validation data
+    ffm_model.setTrain("./small_train.txt")    # Set the path of training dataset
+    ffm_model.setValidate("./small_test.txt")  # Set the path of validation dataset
 
-    # param:
+    # Parameters:
     #  0. task: binary classification
     #  1. learning rate: 0.2
     #  2. regular lambda: 0.002
@@ -82,7 +81,7 @@ Here is a simple Python demo no how to use xLearn for a binary classification pr
     ffm_model.fit(param, './model.out')
 
     # Prediction task
-    ffm_model.setTest("./small_test.txt")  # Path of test data
+    ffm_model.setTest("./small_test.txt")  # Set the path of test dataset
     ffm_model.setSigmoid()                 # Convert output to 0-1
 
     # Start to predict
