@@ -8,37 +8,34 @@ two executable files to perform training and prediction tasks.
 Quick Start
 ----------------------------------------
 
-Make sure that you are in the ``build`` directory of xLearn, and you can find the demo data 
-``small_test.txt`` and ``small_train.txt`` in this directory. Now we can type the following 
-command to train a model: ::
+Make sure that you are in the ``build`` directory of xLearn, and you can find the demo data ``small_test.txt`` and ``small_train.txt`` in this directory. Now we can type the following command to train a model: ::
 
     ./xlearn_train ./small_train.txt
 
-Here, we show a portion of the output in this task. Note that the loss value shown in your 
-machine could be different with the following result. ::
+Here, we show a portion of the output in this task. Note that the loss value shown in your local machine could be different with the following result: ::
 
-    Epoch      Train log_loss     Time cost (sec)
-        1            0.567514                0.00
-        2            0.516861                0.00
-        3            0.489884                0.00
-        4            0.469971                0.00
-        5            0.452699                0.00
-        6            0.437590                0.00
-        7            0.425759                0.00
-        8            0.415190                0.00
-        9            0.405954                0.00
-       10            0.396313                0.00
+  [ ACTION     ] Start to train ...
+  [------------] Epoch      Train log_loss     Time cost (sec)
+  [   10%      ]     1            0.569292                0.00
+  [   20%      ]     2            0.517142                0.00
+  [   30%      ]     3            0.490124                0.00
+  [   40%      ]     4            0.470445                0.00
+  [   50%      ]     5            0.451919                0.00
+  [   60%      ]     6            0.437888                0.00
+  [   70%      ]     7            0.425603                0.00
+  [   80%      ]     8            0.415573                0.00
+  [   90%      ]     9            0.405933                0.00
+  [  100%      ]    10            0.396388                0.00
+  [ ACTION     ] Start to save model ...
+  [------------] Model file: ./small_train.txt.model
 
-By default, xLearn uses the logistic regression (LR) to train the model for 10 epoch.
+By default, xLearn uses the *logistic regression (LR)* to train the model within 10 epoch.
 
-We can see that a new file called ``small_train.txt.model`` has been generated in the current directory. 
-This file stores the trained model checkpoint, and we can use this model file to make a prediction in 
-the future ::
+After that, we can see that a new file called ``small_train.txt.model`` has been generated in the current directory. This file stores the trained model checkpoint, and we can use this model file to make a prediction in the future: ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model
 
-After that, we can get a new file called ``small_test.txt.out`` in the current directory. This is the output 
-of prediction. Here we show the first five lines of this output by using the following command ::
+After that, we can get a new file called ``small_test.txt.out`` in the current directory. This is the output of xLearn's prediction. Here we show the first five lines of this output by using the following command: ::
     
     head -n 5 ./small_test.txt.out
 
@@ -48,10 +45,7 @@ of prediction. Here we show the first five lines of this output by using the fol
     -0.170811
     -1.28986
 
-These lines of data is the prediction score calculated for each example in the test set. The 
-negative data represents the negative example and positive data represents the positive example. 
-In xLearn, you can convert the score to (0-1) by using ``--sigmoid`` option, and also you can convert 
-your result to binary result (0 and 1) by using ``--sign`` option ::
+These lines of data is the prediction score calculated for each example in the test set. The negative data represents the negative example and positive data represents the positive example. In xLearn, you can convert the score to (0-1) by using ``--sigmoid`` option, and also you can convert your result to binary result (0 and 1) by using ``--sign`` option: ::
 
     ./xlearn_predict ./small_test.txt ./small_train.txt.model --sigmoid
     head -n 5 ./small_test.txt.out
@@ -74,9 +68,8 @@ your result to binary result (0 and 1) by using ``--sign`` option ::
 Model Output
 ----------------------------------------
 
-Users may want to generate different model files (by using different hyper-parameters), so users can 
-set the name of the model checkpoint file by using ``-m`` option. By default, the name of the model 
-file is ``training_data_name`` + ``.model`` ::
+Users may want to generate different model files (by using different hyper-parameters), and hence users can set the name and path of the model checkpoint file by using ``-m`` option. By default, the name of the model 
+file is ``training_data_name`` + ``.model``: ::
 
   ./xlearn_train ./small_train.txt -m new_model
 
@@ -84,7 +77,7 @@ Also, users can save the model in ``TXT`` format by using ``-t`` option. For exa
 
   ./xlearn_train ./small_train.txt -t model.txt
 
-After that, we can get a new file called ``model.txt``, which stores the trained model in ``TXT`` format. ::
+After that, we can get a new file called ``model.txt``, which stores the trained model in ``TXT`` format: ::
 
   head -n 5 ./model.txt
 
@@ -129,7 +122,7 @@ Users can choose different machine learning algorithms by using ``-s`` option: :
          5 -- field-aware factorization machines (FFM)
 
 For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the 
-input data should be the ``libffm`` format. ::
+input data should be the ``libffm`` format: ::
 
   libsvm format:
 
@@ -179,7 +172,7 @@ A portion of xLearn's output: ::
 Here we can see that the training loss continuously goes down. But the validation loss (test loss) goes down 
 first, and then goes up. This is because the model has already overfitted current training dataset. By default, 
 xLearn will calculate the validation loss in each epoch, while users can also set different evaluation metrics by 
-using ``-x`` option. For classification problems, the metric can be : ``acc`` (accuracy), ``prec`` (precision), 
+using ``-x`` option. For classification problems, the metric can be: ``acc`` (accuracy), ``prec`` (precision), 
 ``f1`` (f1 score), ``auc`` (AUC score). For example: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -x acc
@@ -211,7 +204,7 @@ On default, xLearn uses 5-folds cross validation, and users can set the number o
     ./xlearn_train ./small_train.txt -f 3 --cv
 
 Here we set the number of folds to ``3``. The xLearn will calculate the average validation loss at 
-the end of its output message. ::
+the end of its output message: ::
 
      ...
     [------------] Average log_loss: 0.549417
@@ -252,7 +245,7 @@ By default, this value is set to ``0.2`` in xLearn, and we can tune this value b
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.01
 
 We can also use the ``-b`` option to perform regularization. By default, xLearn uses ``L2`` regularization, and 
-the *regular_lambda* has been set to ``0.00002``. ::
+the *regular_lambda* has been set to ``0.00002``: ::
 
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.001
     ./xlearn_train ./small_train.txt -v ./small_test.txt -r 0.1 -b 0.002
@@ -265,7 +258,7 @@ For the ``FTRL`` method, we also need to tune another four hyper-parameters, inc
     ./xlearn_train ./small_train.txt -p ftrl -alpha 0.002 -beta 0.8 -lambda_1 0.001 -lambda_2 1.0
 
 For FM and FFM, users also need to set the size of *latent factor* by using ``-k`` option. By default, xLearn 
-uses ``4`` for this value. ::
+uses ``4`` for this value: ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 2
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -k 4
@@ -274,7 +267,7 @@ uses ``4`` for this value. ::
 
 xLearn uses *SSE* instruction to accelerate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
 
-For FM and FFM, users can also set the hyper-parameter ``-u`` for model initialization. By default, this value is set to 0.66. ::
+For FM and FFM, users can also set the hyper-parameter ``-u`` for model initialization. By default, this value is set to ``0.66``: ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.80
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
@@ -284,7 +277,7 @@ Set Epoch Number and Early-Stopping
 ----------------------------------------
 
 For machine learning tasks, one epoch consists of one full training cycle on the training set. 
-In xLearn, users can set the number of epoch for training by using ``-e`` option. ::
+In xLearn, users can set the number of epoch for training by using ``-e`` option: ::
 
     ./xlearn_train ./small_train.txt -e 3
     ./xlearn_train ./small_train.txt -e 5
@@ -295,17 +288,17 @@ If you set the validation data, xLearn will perform early-stopping by default. F
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10
 
 Here, we set epoch number to ``10``, but xLearn stopped at epoch ``7`` because we get the best model 
-at that epoch (you may get different a stopping number on your local machine) ::
+at that epoch (you may get different a stopping number on your local machine): ::
 
    ...
   [ ACTION     ] Early-stopping at epoch 7
   [ ACTION     ] Start to save model ...
 
-Users can set the ``window size`` for early stopping by using ``-sw`` option. ::
+Users can set the ``window size`` for early stopping by using ``-sw`` option: ::
 
     ./xlearn_train ./small_train.txt -e 10 -v ./small_test.txt -sw 3
 
-Users can disable early-stopping by using ``--dis-es`` option ::
+Users can disable early-stopping by using ``--dis-es`` option: ::
 
     ./xlearn_train ./small_train.txt -s 2 -v ./small_test.txt -e 10 --dis-es
 
@@ -316,7 +309,7 @@ Lock-Free Learning
 
 By default, xLearn performs *Hogwild! lock-free* learning, which takes advantages of multiple cores of modern CPU to 
 accelerate training task. But lock-free training is *non-deterministic*. For example, if we run the following command 
-multiple times, we may get different loss value at each epoch. ::
+multiple times, we may get different loss value at each epoch: ::
 
    ./xlearn_train ./small_train.txt 
 
@@ -331,11 +324,11 @@ Users can set the number of thread for xLearn by using ``-nthread`` option: ::
 
 If you don't set this option, xLearn uses all of the CPU cores by default.
 
-Users can disable lock-free training by using ``--dis-lock-free`` ::
+Users can disable lock-free training by using ``--dis-lock-free``: ::
 
   ./xlearn_train ./small_train.txt --dis-lock-free
 
-In thie time, our result are *determinnistic*. ::
+In thie time, our result are *determinnistic*: ::
 
    The 1st time: 0.396372
    The 2nd time: 0.396372
@@ -347,7 +340,7 @@ Instance-wise Normalization
 ----------------------------------------
 
 For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, this technique is very
-useful. But sometimes it hurts model performance. Users can disable instance-wise normalization by using ``--no-norm`` option ::
+useful. But sometimes it hurts model performance. Users can disable instance-wise normalization by using ``--no-norm`` option: ::
 
   ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt --no-norm
 
@@ -357,7 +350,7 @@ Quiet Training
 ----------------------------------------
 
 When using ``--quiet`` option, xLearn will not calculate any evaluation information during the training, and 
-it will just train the model quietly ::
+it will just train the model quietly: ::
 
   ./xlearn_train ./small_train.txt --quiet
 
