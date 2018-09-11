@@ -8,7 +8,7 @@ shell and use the following Python code to check your installation: ::
     import xlearn as xl
     xl.hello()
 
-If you install xLearn Python package successfully, you will see ::
+If you install xLearn Python package successfully, you will see: ::
 
   -------------------------------------------------------------------------
            _
@@ -44,7 +44,7 @@ demo data (``small_train.txt`` and ``small_test.txt``) from the path ``demo/clas
    # Train model
    ffm_model.fit(param, "./model.out")  
 
-A portion of the xLearn's output ::
+A portion of the xLearn's output: ::
   
    ...
  [ ACTION     ] Start to train ...
@@ -63,7 +63,7 @@ A portion of the xLearn's output ::
 
 In this example, xLearn uses *feild-ware factorization machines* (ffm) for solving a binary 
 classification task. If you want train a model for regression task, you can reset the ``task`` 
-parameter to ``reg``. ::
+parameter to ``reg``: ::
 
     param = {'task':'reg', 'lr':0.2, 'lambda':0.002} 
 
@@ -75,7 +75,7 @@ in the future: ::
     ffm_model.predict("./model.out", "./output.txt")      
 
 After we run this Python code, we can get a new file called ``output.txt`` in current directory. 
-This is output prediction. Here we show the first five lines of this output by using the following command ::
+This is output prediction. Here we show the first five lines of this output by using the following command: ::
 
     head -n 5 ./output.txt
 
@@ -103,7 +103,7 @@ and then we can get the result ::
   0.414588
   0.250373
 
-We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` method ::
+We can also convert the score to binary result ``(0 and 1)`` by using ``setSign()`` method: ::
 
    ffm_model.setSign()
    ffm_model.setTest("./small_test.txt")  
@@ -129,7 +129,7 @@ Also, users can save the model in ``TXT`` format by using ``setTXTModel()`` meth
     ffm_model.setTest("./small_test.txt")  
     ffm_model.predict("./model.out", "./output.txt")
 
-After that, we get a new file called ``model.txt``, which stores the trained model in ``TXT`` format.::
+After that, we get a new file called ``model.txt``, which stores the trained model in ``TXT`` format: ::
 
   head -n 5 ./model.txt
 
@@ -146,7 +146,7 @@ Choose Machine Learning Algorithm
 ----------------------------------------
 
 For now, xLearn can support three different machine learning algorithms, including linear model, 
-factorization machine (FM), and field-aware factorization machine (FFM). ::
+factorization machine (FM), and field-aware factorization machine (FFM): ::
    
     import xlearn as xl
 
@@ -156,7 +156,7 @@ factorization machine (FM), and field-aware factorization machine (FFM). ::
 
 
 For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the input data should 
-be the ``libffm`` format. ::
+be the ``libffm`` format: ::
 
   libsvm format:
 
@@ -249,7 +249,7 @@ using the ``fold`` parameter: ::
     ffm_model.cv(param)     
 
 Here we set the number of folds to ``3``. The xLearn will calculate the average validation loss at the 
-end of its output message. ::
+end of its output message: ::
 
   [------------] Average log_loss: 0.549758
   [ ACTION     ] Finish Cross-Validation
@@ -289,7 +289,7 @@ this value is set to ``0.2`` in xLearn, and we can tune this value by using ``lr
     param = {'task':'binary', 'lr':0.01}
 
 We can also use the ``lambda`` parameter to perform regularization. By default, xLearn uses ``L2`` regularization, 
-and the *regular_lambda* has been set to ``0.00002``. ::
+and the *regular_lambda* has been set to ``0.00002``: ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.02} 
@@ -301,7 +301,7 @@ including ``alpha``, ``beta``, ``lambda_1``, and ``lambda_2``. For example: ::
     param = {'alpha':0.002, 'beta':0.8, 'lambda_1':0.001, 'lambda_2': 1.0}
 
 For FM and FFM, users also need to set the size of latent factor by using ``k`` parameter. By default, 
-xLearn uses ``4`` for this value. ::
+xLearn uses ``4`` for this value: ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':2}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'k':4}
@@ -312,7 +312,7 @@ xLearn uses *SSE* instruction to accelerate vector operation, and hence the time
 for ``k=2`` and ``k=4`` are the same.     
 
 For FM and FFM, users can also set the parameter ``init`` for model initialization. 
-By default, this value is set to ``0.66``. ::
+By default, this value is set to ``0.66``: ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.80}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'init':0.40}
@@ -322,7 +322,7 @@ Set Epoch Number and Early-Stopping
 ----------------------------------------
 
 For machine learning tasks, one epoch consists of one full training cycle on the training set. In xLearn, 
-users can set the number of epoch for training by using ``epoch`` parameter. ::
+users can set the number of epoch for training by using ``epoch`` parameter: ::
 
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':3}
     param = {'task':'binary', 'lr':0.2, 'lambda':0.01, 'epoch':5}
@@ -340,12 +340,12 @@ If you set the validation data, xLearn will perform early-stopping by default. F
    ffm_model.fit(param, "./model.out") 
 
 Here, we set epoch number to ``10``, but xLearn stopped at epoch ``7`` because we get the best model 
-at that epoch (you may get different a stopping number on your local machine) ::
+at that epoch (you may get different a stopping number on your local machine): ::
 
     Early-stopping at epoch 7
     Start to save model ...
 
-Users can set ``window size`` for early-stopping by using ``stop_window`` parameter ::
+Users can set ``window size`` for early-stopping by using ``stop_window`` parameter: ::
 
     param = {'task':'binary',  'lr':0.2, 
              'lambda':0.002, 'epoch':10,
@@ -372,7 +372,7 @@ Lock-Free Learning
 
 By default, xLearn performs Hogwild! lock-free learning, which takes advantages of multiple cores of 
 modern CPU to accelerate training task. But lock-free training is non-deterministic. For example, if we 
-run the following command multiple times, we may get different loss value at each epoch. ::
+run the following command multiple times, we may get different loss value at each epoch: ::
 
    import xlearn as xl
 
@@ -396,7 +396,7 @@ Users can set the number of thread for xLearn by using ``nthread`` parameter: ::
             
    ffm_model.fit(param, "./model.out") 
 
-Users can also disable lock-free training by using ``disableLockFree()`` API. ::
+Users can also disable lock-free training by using ``disableLockFree()`` API: ::
 
    import xlearn as xl
 
@@ -407,7 +407,7 @@ Users can also disable lock-free training by using ``disableLockFree()`` API. ::
             
    ffm_model.fit(param, "./model.out") 
 
-In this time, our result are *deterministic*. ::
+In this time, our result are *deterministic*: ::
 
    The 1st time: 0.449172
    The 2nd time: 0.449172
@@ -420,7 +420,7 @@ Instance-wise Normalization
 
 For FM and FFM, xLearn uses *instance-wise normalizarion* by default. In some scenes like CTR prediction, 
 this technique is very useful. But sometimes it hurts model performance. Users can disable instance-wise 
-normalization by using ``disableNorm()`` API. ::
+normalization by using ``disableNorm()`` API: ::
 
    import xlearn as xl
 
@@ -437,7 +437,7 @@ Quiet Training
 ----------------------------------------
 
 When using ``setQuiet()`` API, xLearn will not calculate any evaluation information during 
-the training, and it just train the model quietly ::
+the training, and it just train the model quietly: ::
 
    import xlearn as xl
 
