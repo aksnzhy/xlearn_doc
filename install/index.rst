@@ -105,7 +105,7 @@ Install xLearn from pip
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest way to install xLearn Python package is to use ``pip``. The following command will 
-download the xLearn source code from pip and install Python package locally. You must make sure that you have already installed C++11 and CMake in your local machine ::
+download the xLearn source code from pip and install Python package locally. You must make sure that you have already installed C++11 and CMake in your local machine: ::
 
     sudo pip install xlearn
 
