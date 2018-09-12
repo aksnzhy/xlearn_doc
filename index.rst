@@ -88,7 +88,7 @@ Here is a simple Python demo no how to use FFM algorithm of xLearn for a binary 
     # The output result will be stored in output.txt
     ffm_model.predict("./model.out", "./output.txt")
 
-This example shows how to use *field-aware factorizations machine (ffm)* to solve a 
+This example shows how to use *field-aware factorizations machine (FFM)* to solve a 
 simple binary classification task. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
