@@ -68,8 +68,7 @@ These lines of data is the prediction score calculated for each example in the t
 Model Output
 ----------------------------------------
 
-Users may want to generate different model files (by using different hyper-parameters), and hence users can set the name and path of the model checkpoint file by using ``-m`` option. By default, the name of the model 
-file is ``training_data_name`` + ``.model``: ::
+Users may want to generate different model files (by using different hyper-parameters), and hence users can set the name and path of the model checkpoint file by using ``-m`` option. By default, the name of the model file is ``training_data_name`` + ``.model``: ::
 
   ./xlearn_train ./small_train.txt -m new_model
 
@@ -87,8 +86,7 @@ After that, we can get a new file called ``model.txt``, which stores the trained
   0
   0
 
-For the linear and bias term, we store each parameter in each line. For FM and FFM, we store each 
-vector of the latent factor in each line.
+For the linear and bias term, we store each parameter in each line. For FM and FFM, we store each vector of the latent factor in each line.
 
 Users can also set ``-o`` option to specify the output file. For example: ::
 
@@ -121,8 +119,7 @@ Users can choose different machine learning algorithms by using ``-s`` option: :
          4 -- factorization machines (FM)
          5 -- field-aware factorization machines (FFM)
 
-For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the 
-input data should be the ``libffm`` format: ::
+For LR and FM, the input data format can be ``CSV`` or ``libsvm``. For FFM, the input data should be the ``libffm`` format: ::
 
   libsvm format:
 
