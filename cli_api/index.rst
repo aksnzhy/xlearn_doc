@@ -264,7 +264,7 @@ uses ``4`` for this value: ::
 
 xLearn uses *SSE* instruction to accelerate vector operation, and hence the time cost for ``k=2`` and ``k=4`` are the same.
 
-For FM and FFM, users can also set the hyper-parameter ``-u`` for scalling model initialization. By default, this value is set to ``0.66``: ::
+For FM and FFM, users can also set the hyper-parameter ``-u`` for scalling model initialization. By default, this value is ``0.66``: ::
 
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.80
     ./xlearn_train ./small_train.txt -s 1 -v ./small_test.txt -u 0.40
