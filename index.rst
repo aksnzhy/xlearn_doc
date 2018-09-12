@@ -58,7 +58,7 @@ the xLearn command line interface instead of the Python API, you can see how to 
 Python Demo
 ^^^^^^^^^^^^^^
 
-Here is a simple Python demo no how to use ffm algorithm of xLearn for a binary classification problem:
+Here is a simple Python demo no how to use FFM algorithm of xLearn for a binary classification problem:
 
 .. code-block:: python
 
