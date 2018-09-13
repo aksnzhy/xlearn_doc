@@ -18,8 +18,7 @@ uniform way, and it provides better performance, ease-of-use, and scalability.
 A Quick Example
 ----------------------------------
 
-This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small demo dataset 
-(Criteo CTR prediction) for a binary classification task. In this example, the machine learning algorithm will predict that if current user will click a specified advertisment.
+This is a quick start tutorial showing snippets for you to quickly try out xLearn on a small demo dataset (Criteo CTR prediction) for a binary classification task. In this example, the machine learning algorithm will predict that if current user will click a specified online advertisment.
 
 Installation
 ^^^^^^^^^^^^^^
@@ -29,8 +28,7 @@ download the xLearn source code, build and install python package on your locall
 
     sudo pip install xlearn
 
-The installation process will take a while to complete, please wait with patience. After the installation, users can use the following 
-script in python shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete, please wait with patience. After the installation, users can use the following script in Python shell to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
@@ -58,7 +56,7 @@ the xLearn command line interface instead of the Python API, you can see how to 
 Python Demo
 ^^^^^^^^^^^^^^
 
-Here is a simple Python demo no how to use FFM algorithm of xLearn for a binary classification problem:
+Here is a simple Python demo no how to use *FFM* algorithm of xLearn for solving a binary classification problem:
 
 .. code-block:: python
 
@@ -88,8 +86,7 @@ Here is a simple Python demo no how to use FFM algorithm of xLearn for a binary 
     # The output result will be stored in output.txt
     ffm_model.predict("./model.out", "./output.txt")
 
-This example shows how to use *field-aware factorization machines (FFM)* to solve a 
-simple binary classification task. You can check out the demo data 
+This example shows how to use *field-aware factorization machines (FFM)* to solve a simple binary classification task. You can check out the demo data 
 (``small_train.txt`` and ``small_test.txt``) from the path ``demo/classification/criteo_ctr``.
 
 
