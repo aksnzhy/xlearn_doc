@@ -48,7 +48,7 @@ You will see the following message if you installed xLearn successfully: ::
 
 
 If you meet any installation problem, or you want to build the latest code from `Github`__, or you want to use 
-the xLearn command line interface instead of the Python API, you can see how to build xLearn from source code in `Installation Guide`__.
+the xLearn command line API instead of the Python API, you can see how to build xLearn from source code in `Installation Guide`__.
 
 .. __: https://github.com/aksnzhy/xlearn
 .. __: ./install/index.html
