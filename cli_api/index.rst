@@ -301,6 +301,8 @@ Users can disable early-stopping by using ``--dis-es`` option: ::
 
 At this time, xLearn performed completed 10 epoch for training.
 
+By default, xLearn will use the metric value to choose the best epoch if user has set the metric (``-x``). If not, xLearn uses the test_loss to choose the best epoch.
+
 Lock-Free Learning
 ----------------------------------------
 
