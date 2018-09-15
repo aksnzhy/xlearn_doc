@@ -237,18 +237,18 @@ this technique. For example: ::
             
     ffm_model.cv(param)
 
-On default, xLearn uses 5-folds cross validation, and users can set the number of fold by 
+On default, xLearn uses 3-folds cross validation, and users can set the number of fold by 
 using the ``fold`` parameter: ::
 
     import xlearn as xl
 
     ffm_model = xl.create_ffm()
     ffm_model.setTrain("./small_train.txt")  
-    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'fold':3} 
+    param = {'task':'binary', 'lr':0.2, 'lambda':0.002, 'fold':5} 
             
     ffm_model.cv(param)     
 
-Here we set the number of folds to ``3``. The xLearn will calculate the average validation loss at the 
+Here we set the number of folds to ``5``. The xLearn will calculate the average validation loss at the 
 end of its output message: ::
 
   [------------] Average log_loss: 0.549758

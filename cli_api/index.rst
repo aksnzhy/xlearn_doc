@@ -195,12 +195,12 @@ can use the ``--cv`` option to use this technique. For example: ::
 
     ./xlearn_train ./small_train.txt --cv
 
-On default, xLearn uses 5-folds cross validation, and users can set the number of fold by using 
+On default, xLearn uses 3-folds cross validation, and users can set the number of fold by using 
 ``-f`` option: ::
     
-    ./xlearn_train ./small_train.txt -f 3 --cv
+    ./xlearn_train ./small_train.txt -f 5 --cv
 
-Here we set the number of folds to ``3``. The xLearn will calculate the average validation loss at 
+Here we set the number of folds to ``5``. The xLearn will calculate the average validation loss at 
 the end of its output message: ::
 
      ...
