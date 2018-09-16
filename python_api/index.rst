@@ -140,7 +140,7 @@ After that, we get a new file called ``model.txt``, which stores the trained mod
   0
 
 For the linear and bias term, we store each parameter in each line. For FM and FFM, 
-we store each vector of the latent factor in each line.
+we store each vector of the latent factor in each line.  For example:
 
 Linear: ::
 
