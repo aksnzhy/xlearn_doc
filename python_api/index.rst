@@ -477,7 +477,7 @@ normalization by using ``disableNorm()`` API: ::
             
    ffm_model.fit(param, "./model.out") 
 
-Note that we usually use ``disableNorm()`` in regression tasks.
+Note that if you use Instance-wise Normalization in training process, you also need to use the meachnism in prediction process.
 
 Quiet Training
 ----------------------------------------
