@@ -66,7 +66,11 @@ If you delete the ``--disk`` option, xLearn can train faster. ::
 
 In this time, the training of each epoch will only spend nearly ``1.8`` seconds.
 
-We can set the block size for on-disk training by using ``-block`` options.
+We can set the block size for on-disk training by using ``-block`` option.
+
+Users can also use ``--disk`` option in the prediction task: ::
+
+    ./xlearn_predict ./big_data_test.txt ./big_data.txt.model --disk
 
 Out-of-Core Learning Using xLearn Python API
 ===================================================
