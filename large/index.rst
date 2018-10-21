@@ -66,7 +66,11 @@ If you delete the ``--disk`` option, xLearn can train faster. ::
 
 In this time, the training of each epoch will only spend nearly ``1.8`` seconds.
 
-We can set the block size for on-disk training by using ``-block`` option.
+We can set the block size for on-disk training by using ``-block`` option. For example: ::
+
+    ./xlearn_train ./big_data.txt -s 2 -block 1000 --disk
+
+In this example, we set the block size to ``1000MB``. On default, this value will be set to ``500``.
 
 Users can also use ``--disk`` option in the prediction task: ::
 
