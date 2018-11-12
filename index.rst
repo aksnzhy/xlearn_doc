@@ -43,7 +43,7 @@ You will see the following message if you installed xLearn successfully: ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.37 Version --
+        xLearn   -- 0.38 Version --
   -------------------------------------------------------------------------
 
 
