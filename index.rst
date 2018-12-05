@@ -23,7 +23,7 @@ This is a quick start tutorial showing snippets for you to quickly try out xLear
 Installation
 ^^^^^^^^^^^^^^
 
-The easiest way to install xLearn Python package is to use x``pip``. The following command will 
+The easiest way to install xLearn Python package is to use ``pip``. The following command will 
 download the xLearn source code, build and install python package on your locally machine: ::
 
     sudo pip install xlearn
