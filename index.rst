@@ -28,7 +28,7 @@ download the xLearn source code, build and install python package on your locall
 
     sudo pip install xlearn
 
-The installation process will take a while to complete, please wait with patience. After the installation, users can use the following script in Python shell to check whether the xLearn has been installed successfully:
+The installation process will take a while to complete, please wait with patience. After the installation, users can use the following script in Python script to check whether the xLearn has been installed successfully:
 
 >>> import xlearn as xl
 >>> xl.hello()
