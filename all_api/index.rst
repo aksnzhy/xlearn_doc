@@ -89,6 +89,8 @@ Options: ::
                                                                                          
   --no-norm            :  Disable instance-wise normalization. By default, xLearn will use instance-wise 
                           normalization in both training and prediction processes.
+
+  --no-bin             :  Do not generate bin file for training and test data file.
                                                                  
   --quiet              :  Don't print any evaluation information during the training and just train the 
                           model quietly. It can accelerate the training process.
@@ -148,6 +150,8 @@ API List: ::
     model.setQuiet()    #  Set xlearn to train model quietly.
 
     model.setOnDisk()   #  Set xlearn to use on-disk training.
+
+    model.setNoBin()    # Do not generate bin file for training and test data.
 
     model.setSign()     # Convert prediction to 0 and 1.
 
