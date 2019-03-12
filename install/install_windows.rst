@@ -78,18 +78,12 @@ We have already write a script ``build.bat`` to do all the cumbersome work for u
 
 You should make sure that you enter DOS as Administrator.
 
-Install xLearn from pip
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-We will update Python package for Windows soon later.
-
-The installation process will take a while to complete. 
-After that, you can type the following script in your python shell to check whether the xLearn has been installed successfully: ::
+You can check if you install xLearn successfully by the following command: ::
 
   >>> import xlearn as xl
   >>> xl.hello()
 
-You will see the following message if the installation is successful: ::
+You will see the following message: ::
 
   -------------------------------------------------------------------------
            _
