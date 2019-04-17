@@ -53,6 +53,18 @@ Users can test the installation by using the following command: ::
 
   run_example.bat
 
+Build from Visual Studio solution
+=======================
+This build method is optional for Build from Source Code, if you already use method above, you can skip this part.
+
+We support an Visual Studio(vs) solution for users, it's in the directory ``windows`` which is in root of xLearn project. 
+
+There are three vs project in this solution: ``xlearn_train``, ``xlearn_test``, ``xlearn_api``, respectively relation to build executable train,predict entry program and DLL(dynamic link library) API for windows. 
+
+Users should make sure that your vs platform toolset is greater than v141(It works well if you use vs2017).
+
+**Note:** Files(both executable file and DLL) compiling from this solution is different from cmake solution, because of different structure.
+
 Install Python Package
 =======================
 
@@ -78,12 +90,21 @@ We have already write a script ``build.bat`` to do all the cumbersome work for u
 
 You should make sure that you enter DOS as Administrator.
 
-You can check if you install xLearn successfully by the following command: ::
+Install xLearn from pip
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+We provide Python package on Windows, it supports these Python(x64) versions: ``2.7, 3.4, 3.5, 3.6, 3.7``.
+
+Users can download this binary python package from tab release_, then use ``pip`` command install the ``.whl`` file which you download.
+
+.. _release: https://github.com/aksnzhy/xlearn/releases
+
+After that, you can type the following script in your python shell to check whether the xLearn has been installed successfully: ::
 
   >>> import xlearn as xl
   >>> xl.hello()
 
-You will see the following message: ::
+You will see the following message if the installation is successful: ::
 
   -------------------------------------------------------------------------
            _
@@ -93,5 +114,5 @@ You will see the following message: ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.42 Version --
+        xLearn   -- 0.43 Version --
   -------------------------------------------------------------------------
