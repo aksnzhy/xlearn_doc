@@ -114,5 +114,5 @@ You will see the following message if the installation is successful: ::
       >  <| |___|  __/ (_| | |  | | | |
      /_/\_\_____/\___|\__,_|_|  |_| |_|
 
-        xLearn   -- 0.43 Version --
+        xLearn   -- 0.44 Version --
   -------------------------------------------------------------------------
