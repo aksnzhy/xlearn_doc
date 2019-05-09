@@ -61,7 +61,7 @@ A portion of the xLearn's output: ::
  [  100%      ]    10            0.448725                0.00
  [ ACTION     ] Start to save model ...
 
-In this example, xLearn uses *feild-ware factorization machines* (ffm) for solving a binary 
+In this example, xLearn uses *field-aware factorization machines* (ffm) for solving a binary 
 classification task. If you want train a model for regression task, you can reset the ``task`` 
 parameter to ``reg``: ::
 
