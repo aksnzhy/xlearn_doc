@@ -207,7 +207,7 @@ Parameter List: ::
 
     nthread  : int value    # the number of CPU cores
 
-    epoch    : int vlaue    # number of epoch
+    epoch    : int value    # number of epoch
 
     fold     : int value    # number of fold for cross-validation
 
